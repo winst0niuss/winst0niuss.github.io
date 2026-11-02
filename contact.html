@@ -7,18 +7,56 @@
 <meta name="description" content="Questions, bugs or ideas about winst0niuss apps for Wix stores: email, Telegram and GitHub.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="legal.css">
+<style>
+  /* Заголовок и строки появляются по очереди, линия рисуется как на главной */
+  h1, .lead, .contact { animation:rise .7s cubic-bezier(.2,.8,.2,1) both; }
+  .lead { animation-delay:.1s; color:#c9d3ce; }
+  .line { width:min(300px, 100%); height:11px; margin:18px 0 22px; position:relative; border-inline:1px solid #c6f135; animation:draw 1s .25s cubic-bezier(.2,.8,.2,1) both; }
+  .line::before { content:""; position:absolute; top:5px; left:0; right:0; height:1px; background:#c6f135; }
+  @keyframes rise { from { opacity:0; transform:translateY(16px); } }
+  @keyframes draw { from { clip-path:inset(0 100% 0 0); } to { clip-path:inset(0); } }
+
+  .contacts { display:grid; gap:12px; margin:28px 0 0; padding:0; list-style:none; }
+  .contacts li { margin:0; }
+  .contact { --brand:#f2f6f3; display:flex; align-items:center; gap:16px; padding:14px 16px; border:1px solid #27302c; border-radius:16px; background:#111614; color:#f2f6f3; text-decoration:none; transition:transform .2s, border-color .2s, background-color .2s; }
+  .contacts li:nth-child(1) .contact { animation-delay:.2s; }
+  .contacts li:nth-child(2) .contact { animation-delay:.28s; }
+  .contacts li:nth-child(3) .contact { animation-delay:.36s; }
+  .contacts li:nth-child(4) .contact { animation-delay:.44s; }
+  .contact:hover { transform:translateX(6px); border-color:var(--brand); background:#181e1b; }
+  .gmail { --brand:#ea4335; }
+  .telegram { --brand:#26a5e4; }
+  .icon { flex:none; display:grid; place-items:center; width:48px; height:48px; border-radius:12px; background:#0a0d0c; transition:transform .25s cubic-bezier(.2,.8,.2,1); }
+  .icon svg { width:26px; height:26px; fill:var(--brand); }
+  .contact:hover .icon { transform:scale(1.1) rotate(-6deg); }
+  .text { min-width:0; }
+  .kind { display:block; color:#9daaa4; font:500 12px "Geist Mono", ui-monospace, Menlo, Consolas, monospace; }
+  .value { display:block; font-size:18px; line-height:1.35; overflow-wrap:anywhere; }
+
+  @media (prefers-reduced-motion:reduce) {
+    h1, .lead, .line, .contact, .icon { animation:none; transition:none; }
+    .contact:hover { transform:none; }
+    .contact:hover .icon { transform:none; }
+  }
+</style>
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="icon-gmail" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></symbol>
+    <symbol id="icon-telegram" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></symbol>
+    <symbol id="icon-github" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+  </svg>
   <main>
     <a class="back" href="./">← All apps</a>
     <h1>Contact</h1>
-    <p>Questions, bugs or ideas? Write to me here:</p>
-    <dl class="contacts">
-      <dt>Email</dt><dd><a href="mailto:chumachenko.vadym@gmail.com">chumachenko.vadym@gmail.com</a></dd>
-      <dt>Email</dt><dd><a href="mailto:winst0niuss@gmail.com">winst0niuss@gmail.com</a></dd>
-      <dt>Telegram</dt><dd><a href="https://t.me/winst0niuss">@winst0niuss</a></dd>
-      <dt>GitHub</dt><dd><a href="https://github.com/winst0niuss">winst0niuss</a></dd>
-    </dl>
+    <div class="line" aria-hidden="true"></div>
+    <p class="lead">Questions, bugs or ideas? Write to me here:</p>
+    <ul class="contacts">
+      <li><a class="contact gmail" href="mailto:chumachenko.vadym@gmail.com"><span class="icon"><svg aria-hidden="true"><use href="#icon-gmail"/></svg></span><span class="text"><span class="kind">Email</span><span class="value">chumachenko.vadym@gmail.com</span></span></a></li>
+      <li><a class="contact gmail" href="mailto:winst0niuss@gmail.com"><span class="icon"><svg aria-hidden="true"><use href="#icon-gmail"/></svg></span><span class="text"><span class="kind">Email</span><span class="value">winst0niuss@gmail.com</span></span></a></li>
+      <li><a class="contact telegram" href="https://t.me/winst0niuss"><span class="icon"><svg aria-hidden="true"><use href="#icon-telegram"/></svg></span><span class="text"><span class="kind">Telegram</span><span class="value">@winst0niuss</span></span></a></li>
+      <li><a class="contact" href="https://github.com/winst0niuss"><span class="icon"><svg aria-hidden="true"><use href="#icon-github"/></svg></span><span class="text"><span class="kind">GitHub</span><span class="value">winst0niuss</span></span></a></li>
+    </ul>
   </main>
 </body>
 </html>
