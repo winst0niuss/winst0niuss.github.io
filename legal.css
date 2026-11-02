@@ -11,4 +11,7 @@ h2 { margin:36px 0 8px; padding-top:18px; border-top:1px solid #27302c; color:#f
 p { margin:0 0 12px; }
 ul { margin:0 0 12px; padding-left:22px; }
 li { margin-bottom:6px; }
+.contacts { display:grid; grid-template-columns:auto 1fr; gap:12px 20px; align-items:baseline; margin:24px 0 0; }
+.contacts dt { color:#9daaa4; font:500 13px "Geist Mono", ui-monospace, Menlo, Consolas, monospace; }
+.contacts dd { margin:0; min-width:0; overflow-wrap:anywhere; font-size:19px; }
 .updated { margin-bottom:32px; color:#9daaa4; font:500 13px "Geist Mono", ui-monospace, Menlo, Consolas, monospace; }

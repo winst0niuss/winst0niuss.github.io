@@ -29,7 +29,6 @@
   a { color:inherit; }
   :focus-visible { outline:2px solid var(--lime); outline-offset:3px; border-radius:4px; }
   .wrap { width:min(1240px, 100%); margin:0 auto; padding:0 24px; }
-  .label { font:500 13px/1.3 var(--mono); letter-spacing:.04em; color:var(--muted); }
 
   /* Шапка */
   .nav { display:flex; justify-content:space-between; align-items:center; padding-top:20px; padding-bottom:20px; }
@@ -109,14 +108,8 @@
   a.shot { transition:transform .2s, border-color .2s; }
   a.shot:hover { transform:translateY(-4px); border-color:var(--lime); }
 
-  /* Контакты и подвал */
-  .support { padding-top:clamp(56px, 8vw, 96px); padding-bottom:clamp(48px, 6vw, 80px); }
-  .support dl { display:grid; grid-template-columns:auto 1fr; gap:10px 20px; align-items:baseline; margin:14px 0 0; }
-  .support dt { font:500 13px var(--mono); color:var(--muted); }
-  .support dd { margin:0; min-width:0; }
-  .support dd a { font:800 clamp(1.05rem, 3vw, 1.6rem)/1.2 var(--display); letter-spacing:-.02em; overflow-wrap:anywhere; text-decoration:none; }
-  .support dd a:hover { color:var(--lime); }
-  footer { border-top:1px solid var(--line); padding-top:22px; padding-bottom:30px; }
+  /* Подвал */
+  footer { margin-top:clamp(48px, 6vw, 80px); border-top:1px solid var(--line); padding-top:22px; padding-bottom:30px; }
   footer p { margin:0; font-size:14px; color:var(--muted); }
 
   @media (max-width:860px) { .hero-body { grid-template-columns:minmax(0, 1fr); } }
@@ -130,7 +123,7 @@
   <header class="hero">
     <div class="wrap nav">
       <a class="brand" href="./"><img src="favicon.svg" alt="" width="30" height="30">winst0niuss</a>
-      <nav aria-label="Main"><a href="#apps">Apps</a><a href="#support">Support</a></nav>
+      <nav aria-label="Main"><a href="#apps">Apps</a><a href="contact">Contact</a></nav>
     </div>
     <div class="wrap hero-body">
       <div>
@@ -296,20 +289,10 @@
         </div>
       </article>
     </section>
-
-    <section class="support" id="support">
-      <span class="label">Questions, bugs or ideas</span>
-      <dl>
-        <dt>Email</dt><dd><a href="mailto:chumachenko.vadym@gmail.com">chumachenko.vadym@gmail.com</a></dd>
-        <dt>Email</dt><dd><a href="mailto:winst0niuss@gmail.com">winst0niuss@gmail.com</a></dd>
-        <dt>Telegram</dt><dd><a href="https://t.me/winst0niuss">@winst0niuss</a></dd>
-        <dt>GitHub</dt><dd><a href="https://github.com/winst0niuss">winst0niuss</a></dd>
-      </dl>
-    </section>
   </main>
 
   <footer>
-    <div class="wrap"><p>© 2026 <span style="font-family:var(--mono)">winst0niuss</span> · Independent apps published in the Wix App Market. Not affiliated with or endorsed by Wix.com Ltd. · <a href="privacy">Privacy policies</a></p></div>
+    <div class="wrap"><p>© 2026 <span style="font-family:var(--mono)">winst0niuss</span> · Independent apps published in the Wix App Market. Not affiliated with or endorsed by Wix.com Ltd. · <a href="contact">Contact</a> · <a href="privacy">Privacy policies</a></p></div>
   </footer>
 
 <script>
