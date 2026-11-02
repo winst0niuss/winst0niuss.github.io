@@ -88,7 +88,7 @@
   .cta:hover { transform:translateY(-2px); }
 
   /* Мини-демо */
-  .demo { display:flex; flex-direction:column; gap:18px; padding:clamp(16px, 2.4vw, 26px); background:var(--bg); border:1px solid var(--line); border-radius:18px; }
+  .demo { align-self:start; display:flex; flex-direction:column; gap:18px; padding:clamp(16px, 2.4vw, 26px); background:var(--bg); border:1px solid var(--line); border-radius:18px; }
   .demo-head { display:flex; justify-content:space-between; align-items:center; gap:12px; }
   .switch { display:flex; padding:3px; background:var(--panel-2); border-radius:10px; }
   .switch button { padding:5px 12px; border:0; border-radius:8px; background:none; color:var(--muted); font:500 13px var(--mono); cursor:pointer; }
@@ -97,16 +97,20 @@
   th { padding:8px 10px; text-align:left; font-weight:500; color:var(--muted); border-bottom:1px solid var(--line); }
   td { padding:9px 10px; border-bottom:1px solid var(--panel-2); transition:background .2s, color .2s; }
   tr.hit td { background:rgba(45,212,191,.16); color:#7cf0dd; }
-  .field { display:grid; gap:8px; }
-  .field div { display:flex; justify-content:space-between; gap:12px; font-size:14px; }
-  .field output { font-family:var(--mono); }
-  input[type=range] { width:100%; margin:0; accent-color:var(--lime); cursor:pointer; }
+  .fields { display:flex; flex-wrap:wrap; align-items:flex-end; gap:12px; }
+  .field { display:grid; flex:1 1 90px; min-width:0; gap:6px; font-size:14px; }
+  .field input { width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:var(--panel-2); color:var(--ink); font:400 15px var(--mono); }
+  .field input::placeholder { color:var(--muted); }
+  .field input[aria-invalid="true"] { border-color:#ff7a70; }
+  .find { padding:10px 18px; border:0; border-radius:10px; background:var(--ink); color:var(--bg); font:600 15px var(--body); cursor:pointer; }
+  .finder summary { font-weight:600; font-size:15px; cursor:pointer; }
+  .finder form { margin-top:12px; }
+  .finder-result { margin:12px 0 0; font-size:14px; color:#c9d3ce; }
+  .finder-result:empty { display:none; }
+  .finder-result strong { display:block; color:var(--lime); font:800 22px/1.2 var(--display); }
+  .finder-result span { display:block; }
   .result { display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding-top:14px; border-top:1px solid var(--line); }
   .result strong { font:800 clamp(1.7rem, 3.4vw, 2.4rem)/1 var(--display); color:var(--lime); }
-  .stage { display:grid; place-items:center; height:190px; background:
-      linear-gradient(var(--panel-2) 1px, transparent 1px) 0 0 / 100% 16px,
-      linear-gradient(90deg, var(--panel-2) 1px, transparent 1px) 0 0 / 16px 100%; border-radius:10px; }
-  .sheet { position:relative; display:grid; place-items:center; background:linear-gradient(135deg, #4d8cff, #1f5fe0); border-radius:4px; transition:width .18s, height .18s; font:500 12px var(--mono); }
 
   /* Контакты и подвал */
   .support { padding-top:clamp(72px, 10vw, 136px); padding-bottom:clamp(56px, 8vw, 104px); }
@@ -179,11 +183,17 @@
               <tr><td>XL</td><td data-cm="102-107">102–107</td><td data-cm="84-89">84–89</td></tr>
             </tbody>
           </table>
-          <label class="field">
-            <div><span>Your bust</span><output id="bust-value">92 cm</output></div>
-            <input id="bust" type="range" min="78" max="107" value="92">
-          </label>
-          <div class="result"><span class="label">Find my size</span><strong id="size-result" aria-live="polite">M</strong></div>
+          <details class="finder" open>
+            <summary>Find my size</summary>
+            <form id="finder" novalidate>
+              <div class="fields">
+                <label class="field">Bust<input id="bust" data-col="1" type="text" inputmode="decimal" autocomplete="off" placeholder="cm"></label>
+                <label class="field">Waist<input id="waist" data-col="2" type="text" inputmode="decimal" autocomplete="off" placeholder="cm"></label>
+                <button class="find" type="submit">Find</button>
+              </div>
+              <p class="finder-result" id="finder-result" role="status"></p>
+            </form>
+          </details>
         </div>
       </article>
 
@@ -204,16 +214,12 @@
         </div>
         <div class="demo">
           <div class="demo-head"><span class="label">Try it · sample banner, $12 per sq ft</span></div>
-          <div class="stage" aria-hidden="true"><div class="sheet" id="sheet" style="width:96px;height:64px"><span id="sheet-label">3 × 2 ft</span></div></div>
-          <label class="field">
-            <div><span>Width</span><output id="width-value">3 ft</output></div>
-            <input id="width" type="range" min="1" max="10" value="3">
-          </label>
-          <label class="field">
-            <div><span>Height</span><output id="height-value">2 ft</output></div>
-            <input id="height" type="range" min="1" max="8" value="2">
-          </label>
-          <div class="result"><span class="label" id="area">6 sq ft</span><strong id="total" aria-live="polite">$72</strong></div>
+          <div class="fields">
+            <label class="field">Width (ft)<input id="width" type="text" inputmode="decimal" autocomplete="off" value="3"></label>
+            <label class="field">Height (ft)<input id="height" type="text" inputmode="decimal" autocomplete="off" value="2"></label>
+            <label class="field">Quantity<input id="quantity" type="text" inputmode="numeric" autocomplete="off" value="1"></label>
+          </div>
+          <div class="result"><span class="label">Total</span><strong id="total" aria-live="polite">$72.00</strong></div>
         </div>
       </article>
     </section>
@@ -256,41 +262,91 @@
       const [from, to] = cell.dataset.cm.split("-");
       cell.textContent = `${show(from)}–${show(to)}`;
     });
-    const bust = Number($("bust").value);
-    $("bust-value").textContent = `${show(bust)} ${unit}`;
-    document.querySelectorAll("#chart tr").forEach((row) => {
-      const [from, to] = row.cells[1].dataset.cm.split("-").map(Number);
-      const hit = bust >= from && bust <= to;
-      row.classList.toggle("hit", hit);
-      if (hit) $("size-result").textContent = row.cells[0].textContent;
-    });
+  }
+
+  // Как в приложении: смена единиц сбрасывает результат, мерки надо пересчитать
+  function clearResult() {
+    $("finder-result").textContent = "";
+    document.querySelectorAll("#chart tr").forEach((row) => row.classList.remove("hit"));
   }
 
   document.querySelectorAll("[data-unit]").forEach((button) => {
     button.addEventListener("click", () => {
       unit = button.dataset.unit;
       document.querySelectorAll("[data-unit]").forEach((b) => b.setAttribute("aria-pressed", String(b === button)));
+      document.querySelectorAll("#finder input").forEach((input) => (input.placeholder = unit));
       renderChart();
+      clearResult();
     });
   });
-  $("bust").addEventListener("input", renderChart);
 
-  // Демо Price by Size: площадь и итоговая цена
-  const RATE = 12;
-  function renderPrice() {
-    const width = Number($("width").value);
-    const height = Number($("height").value);
-    const area = width * height;
-    $("width-value").textContent = `${width} ft`;
-    $("height-value").textContent = `${height} ft`;
-    $("sheet").style.width = `${width * 32}px`;
-    $("sheet").style.height = `${height * 20}px`;
-    $("sheet-label").textContent = width > 1 && height > 0 ? `${width} × ${height} ft` : "";
-    $("area").textContent = `${area} sq ft`;
-    $("total").textContent = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(area * RATE);
+  // Упрощённый подбор: по каждой мерке ближайшая строка, при расхождении берём больший размер
+  const parse = (value) => {
+    const text = value.trim().replace(",", ".");
+    if (!text) return null;
+    const number = Number(text);
+    return number > 0 ? number : NaN;
+  };
+
+  function nearestRow(col, value) {
+    const rows = [...document.querySelectorAll("#chart tr")];
+    let best = null;
+    rows.forEach((row, index) => {
+      const [low, high] = row.cells[col].dataset.cm.split("-").map((cm) => Number(show(cm)));
+      const distance = value < low ? low - value : value > high ? value - high : 0;
+      if (!best || distance <= best.distance) best = { index, low, distance };
+    });
+    return { ...best, size: rows[best.index].cells[0].textContent };
   }
-  $("width").addEventListener("input", renderPrice);
-  $("height").addEventListener("input", renderPrice);
+
+  $("finder").addEventListener("submit", (event) => {
+    event.preventDefault();
+    clearResult();
+    const result = $("finder-result");
+    const picks = [];
+    for (const input of document.querySelectorAll("#finder input")) {
+      const value = parse(input.value);
+      input.setAttribute("aria-invalid", String(Number.isNaN(value)));
+      if (Number.isNaN(value)) {
+        result.textContent = "Enter a number, e.g. 92";
+        input.focus();
+        return;
+      }
+      if (value !== null) {
+        const label = input.closest("label").firstChild.textContent;
+        picks.push({ label, value, ...nearestRow(Number(input.dataset.col), value) });
+      }
+    }
+    if (!picks.length) {
+      result.textContent = "Enter at least one measurement";
+      return;
+    }
+    const top = picks.reduce((a, b) => (b.index > a.index ? b : a));
+    const exact = picks.every((p) => p.distance === 0 && p.index === picks[0].index);
+    document.querySelectorAll("#chart tr")[top.index].classList.add("hit");
+    const title = document.createElement("strong");
+    title.textContent = `${exact ? "Your size:" : "Recommended size:"} ${top.size}`;
+    const sameSize = picks.every((p) => p.index === top.index);
+    const lines = exact && picks.length === 1 ? [] : picks.map((p) => {
+      const status = p.distance === 0 ? "fits" : p.value < p.low ? "too large" : "too small";
+      const line = document.createElement("span");
+      line.textContent = `${p.label}: ${sameSize ? "" : `${p.size} · `}${status}`;
+      return line;
+    });
+    result.replaceChildren(title, ...lines);
+  });
+
+  // Демо Price by Size: итог обновляется при вводе, неполный ввод даёт прочерк
+  const RATE = 12;
+  const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+  function renderPrice() {
+    const width = parse($("width").value);
+    const height = parse($("height").value);
+    const quantity = parse($("quantity").value);
+    const valid = width && height && Number.isInteger(quantity);
+    $("total").textContent = valid ? money.format(width * height * RATE * quantity) : "—";
+  }
+  ["width", "height", "quantity"].forEach((id) => $(id).addEventListener("input", renderPrice));
 
   renderChart();
   renderPrice();
