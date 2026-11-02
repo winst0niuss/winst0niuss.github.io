@@ -85,6 +85,13 @@
   .app.size { --glow:77,140,255; }
   .app.offer { --glow:250,204,21; }
   .app > * { min-width:0; }
+  /* В сетке по две карточки порядок из HTML ставит синие друг под другом: меняем местами 3-ю и 4-ю */
+  @media (min-width:708px) and (max-width:1047px) {
+    .app:nth-child(4) { order:1; }
+    .app:nth-child(3) { order:2; }
+    .app:nth-child(5) { order:3; }
+    .app:nth-child(6) { order:4; }
+  }
   .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
   .app-top { display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; margin-bottom:12px; }
   .app-top img { width:40px; height:40px; border-radius:10px; }
@@ -174,31 +181,6 @@
       <article class="app offer">
         <div class="app-copy">
           <div class="app-top">
-            <img src="img/make-offer-button.png" alt="" width="64" height="64" loading="lazy">
-            <span class="tag live">Live</span>
-          </div>
-          <h2>Make Offer Button</h2>
-          <p>Let shoppers offer their price on product pages.</p>
-          <ul>
-            <li>A “Make an offer” button in the shopper's language</li>
-            <li>Accept, decline or counter from one list in your dashboard</li>
-            <li>Accepted offers are paid by a personal link at the agreed price</li>
-          </ul>
-          <div class="actions">
-            <a class="cta" href="https://www.wix.com/app-market/d751f5e5-d3e9-4a36-a458-bc3f82de1bde">App Market ↗</a>
-            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/make-offer-button">Live demo</a>
-            <a href="make-offer-button/terms">Terms</a>
-            <a href="make-offer-button/privacy">Privacy</a>
-          </div>
-        </div>
-        <a class="shot" href="https://www.wix.com/app-market/d751f5e5-d3e9-4a36-a458-bc3f82de1bde" aria-label="Open Make Offer Button on the Wix App Market">
-          <img src="img/make-offer-button-screenshot.jpg" alt="Make Offer Button on a product page: a button that opens a form for the shopper's price" width="1200" height="900" loading="lazy">
-        </a>
-      </article>
-
-      <article class="app offer">
-        <div class="app-copy">
-          <div class="app-top">
             <img src="img/quantity-discounts.png" alt="" width="64" height="64" loading="lazy">
             <span class="tag live">Live</span>
           </div>
@@ -246,6 +228,51 @@
         </a>
       </article>
 
+      <article class="app size">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/price-by-size.png" alt="" width="64" height="64" loading="lazy">
+            <span class="tag live">Live</span>
+          </div>
+          <h2>Price by Size Calculator</h2>
+          <p>Charge by size, length, weight or letter count, without a variant for every size.</p>
+          <ul>
+            <li>Shoppers enter a size and see the total update live</li>
+            <li>Limits, rounding, pack sizes and a minimum charge</li>
+            <li>The exact size appears on the cart line and the order</li>
+          </ul>
+          <div class="actions"><a class="cta" href="https://www.wix.com/app-market/b77a9858-c3f9-4fb8-a1d8-9c34297b7fe5">App Market ↗</a><a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/price-by-size">Live demo</a><a href="price-by-size/terms">Terms</a><a href="price-by-size/privacy">Privacy</a></div>
+        </div>
+        <div class="shot">
+          <img src="img/price-by-size-screenshot.jpg" alt="Price by Size Calculator on a product page: width, height and quantity fields with the total price" width="1200" height="900" loading="lazy">
+        </div>
+      </article>
+
+      <article class="app offer">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/make-offer-button.png" alt="" width="64" height="64" loading="lazy">
+            <span class="tag live">Live</span>
+          </div>
+          <h2>Make Offer Button</h2>
+          <p>Let shoppers offer their price on product pages.</p>
+          <ul>
+            <li>A “Make an offer” button in the shopper's language</li>
+            <li>Accept, decline or counter from one list in your dashboard</li>
+            <li>Accepted offers are paid by a personal link at the agreed price</li>
+          </ul>
+          <div class="actions">
+            <a class="cta" href="https://www.wix.com/app-market/d751f5e5-d3e9-4a36-a458-bc3f82de1bde">App Market ↗</a>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/make-offer-button">Live demo</a>
+            <a href="make-offer-button/terms">Terms</a>
+            <a href="make-offer-button/privacy">Privacy</a>
+          </div>
+        </div>
+        <a class="shot" href="https://www.wix.com/app-market/d751f5e5-d3e9-4a36-a458-bc3f82de1bde" aria-label="Open Make Offer Button on the Wix App Market">
+          <img src="img/make-offer-button-screenshot.jpg" alt="Make Offer Button on a product page: a button that opens a form for the shopper's price" width="1200" height="900" loading="lazy">
+        </a>
+      </article>
+
       <article class="app offer">
         <div class="app-copy">
           <div class="app-top">
@@ -267,26 +294,6 @@
         </div>
         <div class="shot">
           <img src="img/staff-pay-calculator-screenshot.jpg" alt="Staff Pay Calculator report: estimated pay for each staff member" width="1200" height="900" loading="lazy">
-        </div>
-      </article>
-
-      <article class="app size">
-        <div class="app-copy">
-          <div class="app-top">
-            <img src="img/price-by-size.png" alt="" width="64" height="64" loading="lazy">
-            <span class="tag live">Live</span>
-          </div>
-          <h2>Price by Size Calculator</h2>
-          <p>Charge by size, length, weight or letter count, without a variant for every size.</p>
-          <ul>
-            <li>Shoppers enter a size and see the total update live</li>
-            <li>Limits, rounding, pack sizes and a minimum charge</li>
-            <li>The exact size appears on the cart line and the order</li>
-          </ul>
-          <div class="actions"><a class="cta" href="https://www.wix.com/app-market/b77a9858-c3f9-4fb8-a1d8-9c34297b7fe5">App Market ↗</a><a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/price-by-size">Live demo</a><a href="price-by-size/terms">Terms</a><a href="price-by-size/privacy">Privacy</a></div>
-        </div>
-        <div class="shot">
-          <img src="img/price-by-size-screenshot.jpg" alt="Price by Size Calculator on a product page: width, height and quantity fields with the total price" width="1200" height="900" loading="lazy">
         </div>
       </article>
     </section>
