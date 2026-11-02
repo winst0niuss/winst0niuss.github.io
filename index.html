@@ -68,15 +68,19 @@
   .marker output { position:absolute; left:8px; bottom:4px; white-space:nowrap; font:500 12px var(--mono); color:var(--lime); }
   .hero:hover .marker { opacity:1; }
 
-  /* Вертикальная линейка: длина страницы, деления едут при прокрутке */
-  .tape { position:fixed; top:0; right:0; bottom:0; z-index:5; width:14px; pointer-events:none; border-left:1px solid var(--line);
-    background:
-      linear-gradient(#66736d 1px, transparent 1px) right 0 / 12px var(--cm) repeat-y,
-      linear-gradient(#39433f 1px, transparent 1px) right 0 / 6px calc(var(--cm) / 5) repeat-y,
-      var(--bg); }
-  .tape::after { content:""; position:absolute; top:50%; left:0; right:0; height:1px; background:var(--lime); }
-  .tape output { position:absolute; top:50%; right:18px; padding:2px 6px; transform:translateY(-50%); border-radius:4px; background:var(--lime); color:var(--lime-ink); font:500 12px var(--mono); white-space:nowrap; opacity:0; transition:opacity .25s; }
-  .tape.scrolling output { opacity:1; }
+  /* Футболка на первом экране: сама перебирает размеры */
+  .fit { position:absolute; top:50%; right:24px; width:clamp(240px, 26vw, 340px); transform:translateY(-50%); animation:fade 1s .3s both; pointer-events:none; }
+  @keyframes fade { from { opacity:0; } }
+  .fit svg { display:block; width:100%; height:auto; overflow:visible; }
+  .fit-shape { transform-origin:150px 150px; transition:transform .7s cubic-bezier(.3,1.4,.5,1); }
+  .fit-shape * { vector-effect:non-scaling-stroke; }
+  .fit-shirt { fill:rgba(198,241,53,.05); stroke:var(--ink); stroke-width:1.5; stroke-linejoin:round; }
+  .fit-dim { stroke:var(--lime); stroke-width:1; }
+  .fit-sizes { display:flex; align-items:center; gap:6px; margin-top:18px; font:500 13px var(--mono); color:var(--muted); }
+  .fit-sizes span { min-width:34px; padding:4px 8px; border:1px solid var(--line); border-radius:99px; text-align:center; transition:color .25s, border-color .25s; }
+  .fit-sizes span.on { border-color:var(--lime); color:var(--lime); }
+  .fit-sizes output { margin-left:auto; color:var(--lime); white-space:nowrap; }
+  @media (max-width:860px) { .fit { display:none; } }
 
   /* Карточки приложений */
   section.apps { padding-top:clamp(48px, 7vw, 96px); display:grid; gap:24px; }
@@ -130,10 +134,18 @@
       <h1 id="title"><span>Small apps</span><span>for Wix</span><span>stores.</span></h1>
       <div class="dim" id="dim" aria-hidden="true"><output id="dim-value"></output></div>
       <p class="hero-lead">Each one solves a single problem and needs no code to set up.</p>
+      <div class="fit" aria-hidden="true">
+        <svg viewBox="0 0 300 300" width="300" height="300">
+          <g class="fit-shape" id="fit-shape">
+            <path class="fit-shirt" d="M110 40 Q150 70 190 40 L240 60 L285 120 L250 145 L225 115 L225 260 L75 260 L75 115 L50 145 L15 120 L60 60 Z"/>
+            <path class="fit-dim" d="M75 272 V288 M75 280 H225 M225 272 V288"/>
+          </g>
+        </svg>
+        <div class="fit-sizes"><span>S</span><span>M</span><span>L</span><span>XL</span><output id="fit-value"></output></div>
+      </div>
     </div>
     <div class="ruler" aria-hidden="true"><div class="marker" id="marker"><output id="marker-value">0.0 cm</output></div></div>
   </header>
-  <div class="tape" id="tape" aria-hidden="true"><output id="tape-value"></output></div>
 
   <main class="wrap">
     <section class="apps" id="apps" aria-label="Apps">
@@ -210,19 +222,28 @@
     $("dim-value").textContent = toCm(width);
   }).observe($("title"));
 
-  // Вертикальная линейка: деления едут со страницей, значение видно только при прокрутке
-  let hideTimer;
-  const updateTape = () => {
-    $("tape").style.backgroundPositionY = `${-scrollY}px`;
-    $("tape-value").textContent = toCm(scrollY + innerHeight / 2);
+  // Футболка: перебор размеров; при отключённой анимации остаётся размер M
+  const sizes = [
+    { scale:.78, width:"46 cm" },
+    { scale:.88, width:"51 cm" },
+    { scale:1, width:"56 cm" },
+    { scale:1.12, width:"61 cm" },
+  ];
+  const sizeLabels = document.querySelectorAll(".fit-sizes span");
+  let sizeIndex = 1;
+  const showSize = () => {
+    const size = sizes[sizeIndex];
+    $("fit-shape").style.transform = `scale(${size.scale})`;
+    $("fit-value").textContent = size.width;
+    sizeLabels.forEach((label, i) => label.classList.toggle("on", i === sizeIndex));
   };
-  addEventListener("scroll", () => {
-    updateTape();
-    $("tape").classList.add("scrolling");
-    clearTimeout(hideTimer);
-    hideTimer = setTimeout(() => $("tape").classList.remove("scrolling"), 800);
-  }, { passive:true });
-  updateTape();
+  showSize();
+  if (!matchMedia("(prefers-reduced-motion:reduce)").matches) {
+    setInterval(() => {
+      sizeIndex = (sizeIndex + 1) % sizes.length;
+      showSize();
+    }, 1800);
+  }
 
   // Подсветка карточки вслед за курсором
   document.querySelectorAll(".app").forEach((card) => {
