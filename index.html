@@ -87,30 +87,11 @@
   .cta { padding:12px 20px; border-radius:12px; background:var(--lime); color:var(--lime-ink); font-weight:600; transition:transform .15s; }
   .cta:hover { transform:translateY(-2px); }
 
-  /* Мини-демо */
-  .demo { align-self:start; display:flex; flex-direction:column; gap:18px; padding:clamp(16px, 2.4vw, 26px); background:var(--bg); border:1px solid var(--line); border-radius:18px; }
-  .demo-head { display:flex; justify-content:space-between; align-items:center; gap:12px; }
-  .switch { display:flex; padding:3px; background:var(--panel-2); border-radius:10px; }
-  .switch button { padding:5px 12px; border:0; border-radius:8px; background:none; color:var(--muted); font:500 13px var(--mono); cursor:pointer; }
-  .switch button[aria-pressed="true"] { background:var(--ink); color:var(--bg); }
-  table { width:100%; border-collapse:collapse; font:400 14px var(--mono); }
-  th { padding:8px 10px; text-align:left; font-weight:500; color:var(--muted); border-bottom:1px solid var(--line); }
-  td { padding:9px 10px; border-bottom:1px solid var(--panel-2); transition:background .2s, color .2s; }
-  tr.hit td { background:rgba(45,212,191,.16); color:#7cf0dd; }
-  .fields { display:flex; flex-wrap:wrap; align-items:flex-end; gap:12px; }
-  .field { display:grid; flex:1 1 90px; min-width:0; gap:6px; font-size:14px; }
-  .field input { width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:var(--panel-2); color:var(--ink); font:400 15px var(--mono); }
-  .field input::placeholder { color:var(--muted); }
-  .field input[aria-invalid="true"] { border-color:#ff7a70; }
-  .find { padding:10px 18px; border:0; border-radius:10px; background:var(--ink); color:var(--bg); font:600 15px var(--body); cursor:pointer; }
-  .finder summary { font-weight:600; font-size:15px; cursor:pointer; }
-  .finder form { margin-top:12px; }
-  .finder-result { margin:12px 0 0; font-size:14px; color:#c9d3ce; }
-  .finder-result:empty { display:none; }
-  .finder-result strong { display:block; color:var(--lime); font:800 22px/1.2 var(--display); }
-  .finder-result span { display:block; }
-  .result { display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding-top:14px; border-top:1px solid var(--line); }
-  .result strong { font:800 clamp(1.7rem, 3.4vw, 2.4rem)/1 var(--display); color:var(--lime); }
+  /* Скриншот приложения */
+  .shot { display:block; align-self:start; overflow:hidden; border:1px solid var(--line); border-radius:18px; }
+  .shot img { display:block; width:100%; height:auto; }
+  a.shot { transition:transform .2s, border-color .2s; }
+  a.shot:hover { transform:translateY(-4px); border-color:var(--lime); }
 
   /* Контакты и подвал */
   .support { padding-top:clamp(72px, 10vw, 136px); padding-bottom:clamp(56px, 8vw, 104px); }
@@ -120,7 +101,6 @@
   footer p { margin:0; font-size:14px; color:var(--muted); }
 
   @media (max-width:860px) { .app { grid-template-columns:1fr; } }
-  @media (max-width:420px) { td, th { padding-left:6px; padding-right:6px; } table { font-size:13px; } }
   @media (prefers-reduced-motion:reduce) {
     html { scroll-behavior:auto; }
     *, *::before { animation:none !important; transition:none !important; }
@@ -165,36 +145,9 @@
             <a href="fitly/privacy">Privacy</a>
           </div>
         </div>
-        <div class="demo">
-          <div class="demo-head">
-            <span class="label">Try it · sample chart</span>
-            <div class="switch" role="group" aria-label="Units">
-              <button type="button" data-unit="cm" aria-pressed="true">cm</button>
-              <button type="button" data-unit="in" aria-pressed="false">in</button>
-            </div>
-          </div>
-          <table>
-            <thead><tr><th scope="col">Size</th><th scope="col">Bust</th><th scope="col">Waist</th></tr></thead>
-            <tbody id="chart">
-              <tr><td>XS</td><td data-cm="78-83">78–83</td><td data-cm="60-65">60–65</td></tr>
-              <tr><td>S</td><td data-cm="84-89">84–89</td><td data-cm="66-71">66–71</td></tr>
-              <tr><td>M</td><td data-cm="90-95">90–95</td><td data-cm="72-77">72–77</td></tr>
-              <tr><td>L</td><td data-cm="96-101">96–101</td><td data-cm="78-83">78–83</td></tr>
-              <tr><td>XL</td><td data-cm="102-107">102–107</td><td data-cm="84-89">84–89</td></tr>
-            </tbody>
-          </table>
-          <details class="finder" open>
-            <summary>Find my size</summary>
-            <form id="finder" novalidate>
-              <div class="fields">
-                <label class="field">Bust<input id="bust" data-col="1" type="text" inputmode="decimal" autocomplete="off" placeholder="cm"></label>
-                <label class="field">Waist<input id="waist" data-col="2" type="text" inputmode="decimal" autocomplete="off" placeholder="cm"></label>
-                <button class="find" type="submit">Find</button>
-              </div>
-              <p class="finder-result" id="finder-result" role="status"></p>
-            </form>
-          </details>
-        </div>
+        <a class="shot" href="https://www.wix.com/app-market/25007601-9bac-4fb1-a2f8-7ece2c45822f" aria-label="Open Fitly Size Chart on the Wix App Market">
+          <img src="img/fitly-screenshot.jpg" alt="Fitly Size Chart on a product page: a size chart window with Find my size and the matching size highlighted" width="1200" height="900" loading="lazy">
+        </a>
       </article>
 
       <article class="app size">
@@ -212,14 +165,8 @@
           </ul>
           <div class="actions"><a href="price-by-size/terms">Terms</a><a href="price-by-size/privacy">Privacy</a></div>
         </div>
-        <div class="demo">
-          <div class="demo-head"><span class="label">Try it · sample banner, $12 per sq ft</span></div>
-          <div class="fields">
-            <label class="field">Width (ft)<input id="width" type="text" inputmode="decimal" autocomplete="off" value="3"></label>
-            <label class="field">Height (ft)<input id="height" type="text" inputmode="decimal" autocomplete="off" value="2"></label>
-            <label class="field">Quantity<input id="quantity" type="text" inputmode="numeric" autocomplete="off" value="1"></label>
-          </div>
-          <div class="result"><span class="label">Total</span><strong id="total" aria-live="polite">$72.00</strong></div>
+        <div class="shot">
+          <img src="img/price-by-size-screenshot.jpg" alt="Price by Size Calculator on a product page: width, height and quantity fields with the total price" width="1200" height="900" loading="lazy">
         </div>
       </article>
     </section>
@@ -251,105 +198,6 @@
       card.style.setProperty("--y", `${e.clientY - box.top}px`);
     });
   });
-
-  // Демо Fitly: единицы измерения и подбор размера
-  let unit = "cm";
-  const inches = (cm) => (cm / 2.54).toFixed(1);
-  const show = (cm) => (unit === "cm" ? String(cm) : inches(cm));
-
-  function renderChart() {
-    document.querySelectorAll("#chart td[data-cm]").forEach((cell) => {
-      const [from, to] = cell.dataset.cm.split("-");
-      cell.textContent = `${show(from)}–${show(to)}`;
-    });
-  }
-
-  // Как в приложении: смена единиц сбрасывает результат, мерки надо пересчитать
-  function clearResult() {
-    $("finder-result").textContent = "";
-    document.querySelectorAll("#chart tr").forEach((row) => row.classList.remove("hit"));
-  }
-
-  document.querySelectorAll("[data-unit]").forEach((button) => {
-    button.addEventListener("click", () => {
-      unit = button.dataset.unit;
-      document.querySelectorAll("[data-unit]").forEach((b) => b.setAttribute("aria-pressed", String(b === button)));
-      document.querySelectorAll("#finder input").forEach((input) => (input.placeholder = unit));
-      renderChart();
-      clearResult();
-    });
-  });
-
-  // Упрощённый подбор: по каждой мерке ближайшая строка, при расхождении берём больший размер
-  const parse = (value) => {
-    const text = value.trim().replace(",", ".");
-    if (!text) return null;
-    const number = Number(text);
-    return number > 0 ? number : NaN;
-  };
-
-  function nearestRow(col, value) {
-    const rows = [...document.querySelectorAll("#chart tr")];
-    let best = null;
-    rows.forEach((row, index) => {
-      const [low, high] = row.cells[col].dataset.cm.split("-").map((cm) => Number(show(cm)));
-      const distance = value < low ? low - value : value > high ? value - high : 0;
-      if (!best || distance <= best.distance) best = { index, low, distance };
-    });
-    return { ...best, size: rows[best.index].cells[0].textContent };
-  }
-
-  $("finder").addEventListener("submit", (event) => {
-    event.preventDefault();
-    clearResult();
-    const result = $("finder-result");
-    const picks = [];
-    for (const input of document.querySelectorAll("#finder input")) {
-      const value = parse(input.value);
-      input.setAttribute("aria-invalid", String(Number.isNaN(value)));
-      if (Number.isNaN(value)) {
-        result.textContent = "Enter a number, e.g. 92";
-        input.focus();
-        return;
-      }
-      if (value !== null) {
-        const label = input.closest("label").firstChild.textContent;
-        picks.push({ label, value, ...nearestRow(Number(input.dataset.col), value) });
-      }
-    }
-    if (!picks.length) {
-      result.textContent = "Enter at least one measurement";
-      return;
-    }
-    const top = picks.reduce((a, b) => (b.index > a.index ? b : a));
-    const exact = picks.every((p) => p.distance === 0 && p.index === picks[0].index);
-    document.querySelectorAll("#chart tr")[top.index].classList.add("hit");
-    const title = document.createElement("strong");
-    title.textContent = `${exact ? "Your size:" : "Recommended size:"} ${top.size}`;
-    const sameSize = picks.every((p) => p.index === top.index);
-    const lines = exact && picks.length === 1 ? [] : picks.map((p) => {
-      const status = p.distance === 0 ? "fits" : p.value < p.low ? "too large" : "too small";
-      const line = document.createElement("span");
-      line.textContent = `${p.label}: ${sameSize ? "" : `${p.size} · `}${status}`;
-      return line;
-    });
-    result.replaceChildren(title, ...lines);
-  });
-
-  // Демо Price by Size: итог обновляется при вводе, неполный ввод даёт прочерк
-  const RATE = 12;
-  const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
-  function renderPrice() {
-    const width = parse($("width").value);
-    const height = parse($("height").value);
-    const quantity = parse($("quantity").value);
-    const valid = width && height && Number.isInteger(quantity);
-    $("total").textContent = valid ? money.format(width * height * RATE * quantity) : "—";
-  }
-  ["width", "height", "quantity"].forEach((id) => $(id).addEventListener("input", renderPrice));
-
-  renderChart();
-  renderPrice();
 </script>
 </body>
 </html>
