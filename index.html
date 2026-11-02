@@ -21,7 +21,6 @@
     --display:"Bricolage Grotesque", Impact, "Arial Narrow", sans-serif;
     --body:Geist, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --mono:"Geist Mono", ui-monospace, Menlo, Consolas, monospace;
-    --cm:37.795px;
   }
   * { box-sizing:border-box; }
   html { scroll-behavior:smooth; }
@@ -38,7 +37,7 @@
   .nav nav a { text-decoration:none; }
   .nav nav a:hover { color:var(--ink); }
 
-  /* Первый экран: заголовок, карусель, линейка с линией за курсором */
+  /* Первый экран: заголовок и карусель */
   .hero { position:relative; border-bottom:1px solid var(--line); overflow:hidden; }
   .hero::before { content:""; position:absolute; inset:0; pointer-events:none;
     background:
@@ -68,14 +67,6 @@
   .carousel-controls output { margin-right:auto; font:500 13px var(--mono); color:var(--muted); }
   .carousel-controls button { width:38px; height:38px; border:1px solid var(--line); border-radius:10px; background:var(--panel); color:var(--ink); font-size:14px; cursor:pointer; }
   .carousel-controls button:hover { border-color:var(--lime); color:var(--lime); }
-  .ruler { position:relative; height:30px; border-top:1px solid var(--line); opacity:.95;
-    background:
-      linear-gradient(90deg, #66736d 1px, transparent 1px) 0 0 / var(--cm) 16px repeat-x,
-      linear-gradient(90deg, #39433f 1px, transparent 1px) 0 0 / calc(var(--cm) / 5) 8px repeat-x; }
-  .marker { position:absolute; top:0; bottom:0; left:0; width:1px; background:var(--lime); opacity:0; transition:opacity .2s; pointer-events:none; }
-  /* Направляющая от линейки вверх через весь первый экран */
-  .marker::before { content:""; position:absolute; left:0; bottom:100%; width:1px; height:70vh; background:linear-gradient(to top, rgba(198,241,53,.5), transparent); }
-  .hero:hover .marker { opacity:1; }
 
   /* Карточки приложений */
   section.apps { padding-top:clamp(40px, 5vw, 64px); display:grid; grid-template-columns:repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap:20px; }
@@ -148,7 +139,6 @@
         </div>
       </div>
     </div>
-    <div class="ruler" aria-hidden="true"><div class="marker" id="marker"></div></div>
   </header>
 
   <main class="wrap">
@@ -167,7 +157,7 @@
             <li>Show charts on chosen products, categories or the whole store</li>
           </ul>
           <div class="actions">
-            <a class="cta" href="https://www.wix.com/app-market/25007601-9bac-4fb1-a2f8-7ece2c45822f">App Market ↗</a>
+            <a class="cta" href="https://www.wix.com/app-market/25007601-9bac-4fb1-a2f8-7ece2c45822f">App Market</a>
             <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/fitly">Live demo</a>
             <a href="fitly/terms">Terms</a>
             <a href="fitly/privacy">Privacy</a>
@@ -192,7 +182,7 @@
             <li>A percentage or a fixed amount off each item, tier by tier</li>
           </ul>
           <div class="actions">
-            <a class="cta" href="https://www.wix.com/app-market/bbfe5c0c-9476-48bf-b8e5-4ee6835a0a1a">App Market ↗</a>
+            <a class="cta" href="https://www.wix.com/app-market/bbfe5c0c-9476-48bf-b8e5-4ee6835a0a1a">App Market</a>
             <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/quantity-discounts">Live demo</a>
             <a href="quantity-discounts/terms">Terms</a>
             <a href="quantity-discounts/privacy">Privacy</a>
@@ -217,7 +207,7 @@
             <li>Guests and other members keep your regular prices</li>
           </ul>
           <div class="actions">
-            <a class="cta" href="https://www.wix.com/app-market/86fd1474-2c9e-4983-8b39-6f90af3115c2">App Market ↗</a>
+            <a class="cta" href="https://www.wix.com/app-market/86fd1474-2c9e-4983-8b39-6f90af3115c2">App Market</a>
             <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/wholesale-prices">Live demo</a>
             <a href="wholesale-prices/terms">Terms</a>
             <a href="wholesale-prices/privacy">Privacy</a>
@@ -241,7 +231,7 @@
             <li>Limits, rounding, pack sizes and a minimum charge</li>
             <li>The exact size appears on the cart line and the order</li>
           </ul>
-          <div class="actions"><a class="cta" href="https://www.wix.com/app-market/b77a9858-c3f9-4fb8-a1d8-9c34297b7fe5">App Market ↗</a><a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/price-by-size">Live demo</a><a href="price-by-size/terms">Terms</a><a href="price-by-size/privacy">Privacy</a></div>
+          <div class="actions"><a class="cta" href="https://www.wix.com/app-market/b77a9858-c3f9-4fb8-a1d8-9c34297b7fe5">App Market</a><a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/price-by-size">Live demo</a><a href="price-by-size/terms">Terms</a><a href="price-by-size/privacy">Privacy</a></div>
         </div>
         <div class="shot">
           <img src="img/price-by-size-screenshot.jpg" alt="Price by Size Calculator on a product page: width, height and quantity fields with the total price" width="1200" height="900" loading="lazy">
@@ -262,7 +252,7 @@
             <li>Accepted offers are paid by a personal link at the agreed price</li>
           </ul>
           <div class="actions">
-            <a class="cta" href="https://www.wix.com/app-market/d751f5e5-d3e9-4a36-a458-bc3f82de1bde">App Market ↗</a>
+            <a class="cta" href="https://www.wix.com/app-market/d751f5e5-d3e9-4a36-a458-bc3f82de1bde">App Market</a>
             <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/make-offer-button">Live demo</a>
             <a href="make-offer-button/terms">Terms</a>
             <a href="make-offer-button/privacy">Privacy</a>
@@ -287,7 +277,7 @@
             <li>An estimate to check before you pay, not payroll</li>
           </ul>
           <div class="actions">
-            <a href="https://www.wix.com/app-market/3600e2c1-61de-4b1a-b3f8-c2a1500751a8">App Market</a>
+            <a class="cta" href="https://www.wix.com/app-market/3600e2c1-61de-4b1a-b3f8-c2a1500751a8">App Market</a>
             <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/staff-pay-calculator">Live demo</a>
             <a href="staff-pay-calculator/terms">Terms</a>
             <a href="staff-pay-calculator/privacy">Privacy</a>
@@ -312,7 +302,7 @@
             <li>Checkout stays with Wix, nothing new to set up</li>
           </ul>
           <div class="actions">
-            <a href="https://www.wix.com/app-market/ebc8cf83-36cb-45fa-8283-f6a00b0a6e94">App Market</a>
+            <a class="cta" href="https://www.wix.com/app-market/ebc8cf83-36cb-45fa-8283-f6a00b0a6e94">App Market</a>
             <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/course-landing-page">Live demo</a>
             <a href="course-landing-page/terms">Terms</a>
             <a href="course-landing-page/privacy">Privacy</a>
@@ -331,11 +321,6 @@
 
 <script>
   const $ = (id) => document.getElementById(id);
-
-  // Линейка: линия идёт за курсором
-  document.querySelector(".hero").addEventListener("pointermove", (e) => {
-    $("marker").style.left = `${e.clientX}px`;
-  });
 
   // Линия под заголовком: повторяет его ширину, в том числе после загрузки шрифта
   new ResizeObserver(() => {
