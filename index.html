@@ -90,7 +90,6 @@
   .app-top { display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; margin-bottom:12px; }
   .app-top img { width:40px; height:40px; border-radius:10px; }
   .tag { padding:4px 10px; border:1px solid var(--line); border-radius:99px; font:500 11px var(--mono); white-space:nowrap; }
-  .tag.live { border-color:var(--lime); color:var(--lime); }
   h2 { margin:0 0 8px; font:800 1.45rem/1.1 var(--display); letter-spacing:-.02em; }
   /* Главная фраза карточки: крупнее и ярче списка под ней */
   .app-copy > p { margin:0 0 14px; font-size:17px; line-height:1.35; font-weight:500; color:var(--ink); }
@@ -106,8 +105,8 @@
   .cta.soon { background:#ff9f1c; color:#1a0f00; cursor:default; }
   .cta.soon:hover { transform:none; }
   .tags { display:flex; align-items:center; gap:6px; }
-  /* Полностью бесплатное приложение */
-  .tag.free { border:0; padding:5px 11px; background:linear-gradient(135deg,#22c55e,#14b8a6); color:#03140c; font-weight:700; letter-spacing:.04em; box-shadow:0 0 0 1px rgba(255,255,255,.12) inset, 0 4px 14px rgba(20,184,166,.35); }
+  /* Полностью бесплатное приложение: в стиле прежней метки Live, на 25% крупнее */
+  .tag.free { padding:5px 12.5px; border-color:var(--lime); color:var(--lime); font-size:13.75px; }
 
   /* Скриншот приложения */
   .shot { display:block; order:-1; overflow:hidden; border:1px solid var(--line); border-radius:12px; }
@@ -156,7 +155,6 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/fitly.png" alt="" width="64" height="64">
-            <span class="tag live">Live</span>
           </div>
           <h2>Fitly Size Chart</h2>
           <p>Size charts and a size finder for your product pages.</p>
@@ -181,7 +179,6 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/quantity-discounts.png" alt="" width="64" height="64" loading="lazy">
-            <span class="tag live">Live</span>
           </div>
           <h2>Quantity Discounts</h2>
           <p>Lower the price when shoppers buy more.</p>
@@ -206,7 +203,6 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/wholesale-prices.png" alt="" width="64" height="64" loading="lazy">
-            <span class="tag live">Live</span>
           </div>
           <h2>Wholesale Prices</h2>
           <p>Approve wholesale buyers and give them discounts.</p>
@@ -231,7 +227,6 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/price-by-size.png" alt="" width="64" height="64" loading="lazy">
-            <span class="tag live">Live</span>
           </div>
           <h2>Price by Size Calculator</h2>
           <p>Charge by size, length, weight or letter count, without a variant for every size.</p>
@@ -251,7 +246,6 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/make-offer-button.png" alt="" width="64" height="64" loading="lazy">
-            <span class="tag live">Live</span>
           </div>
           <h2>Make Offer Button</h2>
           <p>Let shoppers offer their price on product pages.</p>
@@ -276,7 +270,6 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/staff-pay-calculator.png" alt="" width="64" height="64" loading="lazy">
-            <span class="tag live">Live</span>
           </div>
           <h2>Staff Pay Calculator</h2>
           <p>Estimate staff pay from your bookings and pay rules.</p>
@@ -301,7 +294,6 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/course-landing-page.png" alt="" width="64" height="64" loading="lazy">
-            <span class="tag live">Live</span>
           </div>
           <h2>Course Landing Page</h2>
           <p>Build a sales page for each of your online courses.</p>
@@ -327,7 +319,6 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/social-follower-counter.png" alt="" width="64" height="64" loading="lazy">
-            <span class="tag live">Live</span>
           </div>
           <h2>Subscriber Counter for YouTube</h2>
           <p>Show your YouTube channel and its subscriber count in one small card.</p>
@@ -351,7 +342,7 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/donation-goal.png" alt="" width="64" height="64" loading="lazy">
-            <span class="tags"><span class="tag free">Free</span><span class="tag live">Live</span></span>
+            <span class="tag free">Free</span>
           </div>
           <h2>Donation Goal</h2>
           <p>Show visitors how close you are to your fundraising goal.</p>
