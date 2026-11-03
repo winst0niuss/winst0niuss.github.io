@@ -87,8 +87,11 @@
     .app:nth-child(11) { order:7; }
   }
   .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
-  .app-top { display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; margin-bottom:12px; }
+  .app-top { display:flex; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
+  .app-top img { flex:none; }
   .app-top img { width:40px; height:40px; border-radius:10px; }
+  /* Название — справа от иконки, метки — у правого края */
+  .app-top h2 { flex:1; min-width:0; margin:0; }
   .tag { padding:4px 10px; border:1px solid var(--line); border-radius:99px; font:500 11px var(--mono); white-space:nowrap; }
   h2 { margin:0 0 8px; font:800 1.45rem/1.1 var(--display); letter-spacing:-.02em; }
   /* Главная фраза карточки: крупнее и ярче списка под ней */
@@ -155,8 +158,8 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/fitly.png" alt="" width="64" height="64">
+            <h2>Fitly Size Chart</h2>
           </div>
-          <h2>Fitly Size Chart</h2>
           <p>Size charts and a size finder for your product pages.</p>
           <ul>
             <li>A “Size chart” link right under the size picker</li>
@@ -179,8 +182,8 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/quantity-discounts.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Quantity Discounts</h2>
           </div>
-          <h2>Quantity Discounts</h2>
           <p>Lower the price when shoppers buy more.</p>
           <ul>
             <li>A discount table on the product page, in the shopper's language</li>
@@ -203,8 +206,8 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/wholesale-prices.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Wholesale Prices</h2>
           </div>
-          <h2>Wholesale Prices</h2>
           <p>Approve wholesale buyers and give them discounts.</p>
           <ul>
             <li>Members apply on the product page, and you review them in your dashboard</li>
@@ -227,8 +230,8 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/price-by-size.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Price by Size Calculator</h2>
           </div>
-          <h2>Price by Size Calculator</h2>
           <p>Charge by size, length, weight or letter count, without a variant for every size.</p>
           <ul>
             <li>Shoppers enter a size and see the total update live</li>
@@ -246,8 +249,8 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/make-offer-button.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Make Offer Button</h2>
           </div>
-          <h2>Make Offer Button</h2>
           <p>Let shoppers offer their price on product pages.</p>
           <ul>
             <li>A “Make an offer” button in the shopper's language</li>
@@ -270,8 +273,8 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/staff-pay-calculator.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Staff Pay Calculator</h2>
           </div>
-          <h2>Staff Pay Calculator</h2>
           <p>Estimate staff pay from your bookings and pay rules.</p>
           <ul>
             <li>Combine fixed pay, commission and hourly or per-session rates</li>
@@ -294,8 +297,8 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/course-landing-page.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Course Landing Page</h2>
           </div>
-          <h2>Course Landing Page</h2>
           <p>Build a sales page for each of your online courses.</p>
           <ul>
             <li>Price and buy button at the top of the page</li>
@@ -319,8 +322,8 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/social-follower-counter.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Subscriber Counter for YouTube</h2>
           </div>
-          <h2>Subscriber Counter for YouTube</h2>
           <p>Show your YouTube channel and its subscriber count in one small card.</p>
           <ul>
             <li>Avatar, channel name and a clear subscribers button</li>
@@ -342,9 +345,9 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/donation-goal.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Donation Goal</h2>
             <span class="tag free">Free</span>
           </div>
-          <h2>Donation Goal</h2>
           <p>Show visitors how close you are to your fundraising goal.</p>
           <ul>
             <li>Raised, percent, donations and days left</li>
@@ -366,9 +369,9 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/social-media-card.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Social Media Card</h2>
             <span class="tag free">Free</span>
           </div>
-          <h2>Social Media Card</h2>
           <p>Show your social profiles in one stylish card.</p>
           <ul>
             <li>Links to every profile, follower counts optional</li>
@@ -390,9 +393,9 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/price-on-request.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Price on Request</h2>
             <span class="tags"><span class="tag free">Free</span><span class="tag">Coming soon</span></span>
           </div>
-          <h2>Price on Request</h2>
           <p>Hide the price on chosen products and get price requests instead.</p>
           <ul>
             <li>Request a price button instead of the price and buy buttons</li>
