@@ -102,6 +102,12 @@
   .actions a:not(.cta):hover { text-decoration:underline; }
   .cta { padding:8px 12px; border-radius:10px; background:var(--lime); color:var(--lime-ink); font-weight:600; transition:transform .15s; }
   .cta:hover { transform:translateY(-2px); }
+  /* Ещё не в App Market: оранжевая кнопка на месте App Market, без ссылки */
+  .cta.soon { background:#ff9f1c; color:#1a0f00; cursor:default; }
+  .cta.soon:hover { transform:none; }
+  .tags { display:flex; align-items:center; gap:6px; }
+  /* Полностью бесплатное приложение */
+  .tag.free { border:0; padding:5px 11px; background:linear-gradient(135deg,#22c55e,#14b8a6); color:#03140c; font-weight:700; letter-spacing:.04em; box-shadow:0 0 0 1px rgba(255,255,255,.12) inset, 0 4px 14px rgba(20,184,166,.35); }
 
   /* Скриншот приложения */
   .shot { display:block; order:-1; overflow:hidden; border:1px solid var(--line); border-radius:12px; }
@@ -345,7 +351,7 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/donation-goal.png" alt="" width="64" height="64" loading="lazy">
-            <span class="tag live">Live</span>
+            <span class="tags"><span class="tag free">Free</span><span class="tag live">Live</span></span>
           </div>
           <h2>Donation Goal</h2>
           <p>Show visitors how close you are to your fundraising goal.</p>
@@ -369,7 +375,7 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/social-media-card.png" alt="" width="64" height="64" loading="lazy">
-            <span class="tag">Coming soon</span>
+            <span class="tags"><span class="tag free">Free</span><span class="tag">Coming soon</span></span>
           </div>
           <h2>Social Media Card</h2>
           <p>Show your social profiles in one stylish card.</p>
@@ -379,6 +385,7 @@
             <li>18 networks or your own. Free</li>
           </ul>
           <div class="actions">
+            <span class="cta soon">Coming soon</span>
             <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/social-media-card">Live demo</a>
             <a href="social-media-card/terms">Terms</a>
             <a href="social-media-card/privacy">Privacy</a>
@@ -392,7 +399,7 @@
         <div class="app-copy">
           <div class="app-top">
             <img src="img/price-on-request.png" alt="" width="64" height="64" loading="lazy">
-            <span class="tag">Coming soon</span>
+            <span class="tags"><span class="tag free">Free</span><span class="tag">Coming soon</span></span>
           </div>
           <h2>Price on Request</h2>
           <p>Hide the price on chosen products and get price requests instead.</p>
@@ -402,6 +409,7 @@
             <li>Cart and checkout block these products. Free</li>
           </ul>
           <div class="actions">
+            <span class="cta soon">Coming soon</span>
             <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/price-on-request">Live demo</a>
             <a href="price-on-request/terms">Terms</a>
             <a href="price-on-request/privacy">Privacy</a>
