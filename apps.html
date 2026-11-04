@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Apps — winst0niuss</title>
+<meta name="description" content="All winst0niuss apps for Wix stores: size charts, quantity and wholesale discounts, make an offer, price on request and more.">
+<meta name="theme-color" content="#0a0d0c">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Apps — winst0niuss">
+<meta property="og:description" content="Small apps for Wix stores.">
+<meta property="og:image" content="https://winst0niuss.github.io/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* Заголовок страницы */
+  .page-head { position:relative; border-bottom:1px solid var(--line); overflow:hidden; }
+  .page-head::before { content:""; position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(60% 90% at 85% 0%, rgba(198,241,53,.12), transparent 70%); }
+  .page-head > * { position:relative; }
+  .page-title { padding-top:clamp(16px, 3vw, 32px); padding-bottom:clamp(28px, 4vw, 44px); }
+  h1 { margin:0; font:800 clamp(2.5rem, 7vw, 4.5rem)/1 var(--display); letter-spacing:-.035em; }
+  .lead { margin:14px 0 0; max-width:560px; font-size:clamp(16px, 1.8vw, 19px); color:#c9d3ce; }
+
+  /* Чипы фильтра: все, платные, бесплатные */
+  .filters { display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
+  .chip { display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border:1px solid var(--line); border-radius:99px; background:var(--panel); color:var(--ink); font:500 14px var(--body); cursor:pointer; transition:border-color .15s, color .15s, background-color .15s; }
+  .chip:hover { border-color:var(--lime); color:var(--lime); }
+  .chip b { font:500 12px var(--mono); color:var(--muted); }
+  .chip[aria-pressed="true"] { border-color:var(--lime); background:var(--lime); color:var(--lime-ink); }
+  .chip[aria-pressed="true"] b { color:var(--lime-ink); }
+  .app[hidden] { display:none; }
+
+  /* Карточки приложений */
+  section.apps { padding-top:clamp(40px, 5vw, 64px); display:grid; grid-template-columns:repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap:20px; }
+  .app { --glow:198,241,53; --x:50%; --y:0%; position:relative; display:flex; flex-direction:column; gap:16px; padding:16px; border:1px solid var(--line); border-radius:18px; overflow:hidden;
+    background:radial-gradient(320px circle at var(--x) var(--y), rgba(var(--glow),.13), transparent 70%), var(--panel); }
+  .app.fitly { --glow:45,212,191; }
+  .app.size { --glow:77,140,255; }
+  .app.offer { --glow:250,204,21; }
+  .app > * { min-width:0; }
+  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 */
+  @media (min-width:708px) and (max-width:1047px) {
+    .app:nth-child(7) { order:1; }
+    .app:nth-child(5) { order:2; }
+    .app:nth-child(6) { order:3; }
+    .app:nth-child(8) { order:4; }
+    .app:nth-child(9) { order:5; }
+    .app:nth-child(10) { order:6; }
+    .app:nth-child(11) { order:7; }
+    .app:nth-child(12) { order:8; }
+    .app:nth-child(13) { order:9; }
+  }
+  .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
+  .app-top { display:flex; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
+  .app-top img { flex:none; }
+  .app-top img { width:40px; height:40px; border-radius:10px; }
+  /* Название — справа от иконки, метки — у правого края */
+  .app-top { flex-wrap:wrap; }
+  .app-top h2 { flex:1 1 170px; min-width:0; margin:0; }
+  .tag { padding:4px 10px; border:1px solid var(--line); border-radius:99px; font:500 11px var(--mono); white-space:nowrap; }
+  h2 { margin:0 0 8px; font:800 1.45rem/1.1 var(--display); letter-spacing:-.02em; }
+  /* Главная фраза карточки: крупнее и ярче списка под ней */
+  .app-copy > p { margin:0 0 14px; font-size:17px; line-height:1.35; font-weight:500; color:var(--ink); }
+  .app ul { margin:0 0 18px; padding:14px 0 0; border-top:1px solid var(--line); list-style:none; width:100%; }
+  .app li { position:relative; padding:0 0 6px 14px; font-size:13px; line-height:1.45; color:var(--muted); }
+  .app li::before { content:""; position:absolute; left:0; top:.55em; width:5px; height:5px; border-radius:50%; background:rgb(var(--glow)); }
+  .actions { display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center; margin-top:auto; font-size:13px; font-weight:500; }
+  .actions a { text-decoration:none; }
+  .actions a:not(.cta):hover { text-decoration:underline; }
+  .cta { padding:8px 12px; border-radius:10px; background:var(--lime); color:var(--lime-ink); font-weight:600; transition:transform .15s; }
+  .cta:hover { transform:translateY(-2px); }
+  /* Ещё не в App Market: оранжевая кнопка на месте App Market, без ссылки */
+  .cta.soon { background:#ff9f1c; color:#1a0f00; cursor:default; }
+  .cta.soon:hover { transform:none; }
+  .tags { display:flex; align-items:center; gap:6px; }
+  /* Полностью бесплатное приложение: в стиле прежней метки Live, на 25% крупнее */
+  .tag.free { padding:5px 12.5px; border-color:var(--lime); color:var(--lime); font-size:13.75px; }
+
+  /* Скриншот приложения */
+  .shot { display:block; order:-1; overflow:hidden; border:1px solid var(--line); border-radius:12px; }
+  .shot img { display:block; width:100%; height:auto; }
+  a.shot { transition:transform .2s, border-color .2s; }
+  a.shot:hover { transform:translateY(-4px); border-color:var(--lime); }
+</style>
+</head>
+<body>
+  <header class="page-head">
+    <div class="wrap nav">
+      <a class="brand" href="./"><img src="favicon.svg" alt="" width="30" height="30">winst0niuss</a>
+      <nav aria-label="Main"><a class="nav-btn primary" href="apps" aria-current="page">Apps</a><a class="nav-btn" href="contact">Contact</a></nav>
+    </div>
+    <div class="wrap page-title">
+      <h1>Apps</h1>
+      <p class="lead">Each one solves a single problem and needs no code to set up.</p>
+      <div class="filters" role="group" aria-label="Filter apps">
+        <button type="button" class="chip" data-filter="all" aria-pressed="true">All <b></b></button>
+        <button type="button" class="chip" data-filter="paid" aria-pressed="false">Paid <b></b></button>
+        <button type="button" class="chip" data-filter="free" aria-pressed="false">Free <b></b></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="apps" id="apps" aria-label="Apps">
+      <article class="app fitly">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/fitly.png" alt="" width="64" height="64">
+            <h2>Fitly Size Chart</h2>
+          </div>
+          <p>Size charts and a size finder for your product pages.</p>
+          <ul>
+            <li>A “Size chart” link right under the size picker</li>
+            <li>Shoppers enter measurements and get a size suggestion</li>
+            <li>Show charts on chosen products, categories or the whole store</li>
+          </ul>
+          <div class="actions">
+            <a class="cta" href="https://www.wix.com/app-market/25007601-9bac-4fb1-a2f8-7ece2c45822f">App Market</a>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/fitly">Live demo</a>
+            <a href="fitly/terms">Terms</a>
+            <a href="fitly/privacy">Privacy</a>
+          </div>
+        </div>
+        <a class="shot" href="https://www.wix.com/app-market/25007601-9bac-4fb1-a2f8-7ece2c45822f" aria-label="Open Fitly Size Chart on the Wix App Market">
+          <img src="img/fitly-screenshot.jpg" alt="Fitly Size Chart on a product page: a size chart window with Find my size and the matching size highlighted" width="1200" height="900" loading="lazy">
+        </a>
+      </article>
+
+      <article class="app offer">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/quantity-discounts.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Quantity Discounts</h2>
+          </div>
+          <p>Lower the price when shoppers buy more.</p>
+          <ul>
+            <li>A discount table on the product page, in the shopper's language</li>
+            <li>Discounts apply in the cart automatically, with no coupon code</li>
+            <li>A percentage or a fixed amount off each item, tier by tier</li>
+          </ul>
+          <div class="actions">
+            <a class="cta" href="https://www.wix.com/app-market/bbfe5c0c-9476-48bf-b8e5-4ee6835a0a1a">App Market</a>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/quantity-discounts">Live demo</a>
+            <a href="quantity-discounts/terms">Terms</a>
+            <a href="quantity-discounts/privacy">Privacy</a>
+          </div>
+        </div>
+        <a class="shot" href="https://www.wix.com/app-market/bbfe5c0c-9476-48bf-b8e5-4ee6835a0a1a" aria-label="Open Quantity Discounts on the Wix App Market">
+          <img src="img/quantity-discounts-screenshot.jpg" alt="Quantity Discounts on a product page: a table of quantity tiers with the price per item" width="1200" height="900" loading="lazy">
+        </a>
+      </article>
+
+      <article class="app offer">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/wholesale-prices.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Wholesale Prices</h2>
+          </div>
+          <p>Approve wholesale buyers and give them discounts.</p>
+          <ul>
+            <li>Members apply on the product page, and you review them in your dashboard</li>
+            <li>Approved buyers get your discount in the cart and at checkout</li>
+            <li>Guests and other members keep your regular prices</li>
+          </ul>
+          <div class="actions">
+            <a class="cta" href="https://www.wix.com/app-market/86fd1474-2c9e-4983-8b39-6f90af3115c2">App Market</a>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/wholesale-prices">Live demo</a>
+            <a href="wholesale-prices/terms">Terms</a>
+            <a href="wholesale-prices/privacy">Privacy</a>
+          </div>
+        </div>
+        <a class="shot" href="https://www.wix.com/app-market/86fd1474-2c9e-4983-8b39-6f90af3115c2" aria-label="Open Wholesale Prices on the Wix App Market">
+          <img src="img/wholesale-prices-screenshot.jpg" alt="Wholesale Prices on a product page: the buyer's wholesale price under the product details" width="1200" height="900" loading="lazy">
+        </a>
+      </article>
+
+      <article class="app size">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/price-by-size.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Price by Size Calculator</h2>
+          </div>
+          <p>Charge by size, length, weight or letter count, without a variant for every size.</p>
+          <ul>
+            <li>Shoppers enter a size and see the total update live</li>
+            <li>Limits, rounding, pack sizes and a minimum charge</li>
+            <li>The exact size appears on the cart line and the order</li>
+          </ul>
+          <div class="actions"><a class="cta" href="https://www.wix.com/app-market/b77a9858-c3f9-4fb8-a1d8-9c34297b7fe5">App Market</a><a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/price-by-size">Live demo</a><a href="price-by-size/terms">Terms</a><a href="price-by-size/privacy">Privacy</a></div>
+        </div>
+        <div class="shot">
+          <img src="img/price-by-size-screenshot.jpg" alt="Price by Size Calculator on a product page: width, height and quantity fields with the total price" width="1200" height="900" loading="lazy">
+        </div>
+      </article>
+
+      <article class="app offer">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/make-offer-button.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Make Offer Button</h2>
+          </div>
+          <p>Let shoppers offer their price on product pages.</p>
+          <ul>
+            <li>A “Make an offer” button in the shopper's language</li>
+            <li>Accept, decline or counter from one list in your dashboard</li>
+            <li>Accepted offers are paid by a personal link at the agreed price</li>
+          </ul>
+          <div class="actions">
+            <a class="cta" href="https://www.wix.com/app-market/d751f5e5-d3e9-4a36-a458-bc3f82de1bde">App Market</a>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/make-offer-button">Live demo</a>
+            <a href="make-offer-button/terms">Terms</a>
+            <a href="make-offer-button/privacy">Privacy</a>
+          </div>
+        </div>
+        <a class="shot" href="https://www.wix.com/app-market/d751f5e5-d3e9-4a36-a458-bc3f82de1bde" aria-label="Open Make Offer Button on the Wix App Market">
+          <img src="img/make-offer-button-screenshot.jpg" alt="Make Offer Button on a product page: a button that opens a form for the shopper's price" width="1200" height="900" loading="lazy">
+        </a>
+      </article>
+
+      <article class="app offer">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/staff-pay-calculator.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Staff Pay Calculator</h2>
+          </div>
+          <p>Estimate staff pay from your bookings and pay rules.</p>
+          <ul>
+            <li>Combine fixed pay, commission and hourly or per-session rates</li>
+            <li>See each person's pay, session by session</li>
+            <li>An estimate to check before you pay, not payroll</li>
+          </ul>
+          <div class="actions">
+            <a class="cta" href="https://www.wix.com/app-market/3600e2c1-61de-4b1a-b3f8-c2a1500751a8">App Market</a>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/staff-pay-calculator">Live demo</a>
+            <a href="staff-pay-calculator/terms">Terms</a>
+            <a href="staff-pay-calculator/privacy">Privacy</a>
+          </div>
+        </div>
+        <div class="shot">
+          <img src="img/staff-pay-calculator-screenshot.jpg" alt="Staff Pay Calculator report: estimated pay for each staff member" width="1200" height="900" loading="lazy">
+        </div>
+      </article>
+
+      <article class="app fitly">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/course-landing-page.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Course Landing Page</h2>
+          </div>
+          <p>Build a sales page for each of your online courses.</p>
+          <ul>
+            <li>Price and buy button at the top of the page</li>
+            <li>A YouTube or Vimeo video or your own image next to the headline</li>
+            <li>Benefits, instructor, testimonials and answers in your site's fonts and colors</li>
+            <li>Checkout stays with Wix, nothing new to set up</li>
+          </ul>
+          <div class="actions">
+            <a class="cta" href="https://www.wix.com/app-market/ebc8cf83-36cb-45fa-8283-f6a00b0a6e94">App Market</a>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/course-landing-page">Live demo</a>
+            <a href="course-landing-page/terms">Terms</a>
+            <a href="course-landing-page/privacy">Privacy</a>
+          </div>
+        </div>
+        <div class="shot">
+          <img src="img/course-landing-page-screenshot.jpg" alt="Course Landing Page on a sample course: headline, price, an Enroll now button and a video at the top" width="1200" height="900" loading="lazy">
+        </div>
+      </article>
+
+      <article class="app size">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/social-follower-counter.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Subscriber Counter for YouTube</h2>
+          </div>
+          <p>Show your YouTube channel and its subscriber count in one small card.</p>
+          <ul>
+            <li>Avatar, channel name and a clear subscribers button</li>
+            <li>Numbers update once a day from YouTube</li>
+            <li>Free under 10,000 subscribers</li>
+          </ul>
+          <div class="actions">
+            <a class="cta" href="https://www.wix.com/app-market/f3cb1822-e6e4-4da9-9696-6ae57ea4925e">App Market</a>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/social-follower-counter">Live demo</a>
+            <a href="social-follower-counter/terms">Terms</a>
+            <a href="social-follower-counter/privacy">Privacy</a>
+          </div>
+        </div>
+        <a class="shot" href="https://www.wix.com/app-market/f3cb1822-e6e4-4da9-9696-6ae57ea4925e" aria-label="Open Subscriber Counter for YouTube on the App Market">
+          <img src="img/social-follower-counter-screenshot.jpg" alt="Subscriber Counter for YouTube card with a channel avatar, name and a YouTube subscribers button" width="1200" height="900" loading="lazy">
+        </a>
+      </article>
+      <article class="app fitly">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/donation-goal.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Donation Goal</h2>
+            <span class="tag free">Free</span>
+          </div>
+          <p>Show visitors how close you are to your fundraising goal.</p>
+          <ul>
+            <li>Raised, percent, donations and days left</li>
+            <li>Numbers from a Donations campaign or your own</li>
+            <li>Card styles, a green-to-red bar and confetti. Free</li>
+          </ul>
+          <div class="actions">
+            <a class="cta" href="https://www.wix.com/app-market/b0be57b7-0410-4a0c-b645-cf09349a4a61">App Market</a>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/donation-goal">Live demo</a>
+            <a href="donation-goal/terms">Terms</a>
+            <a href="donation-goal/privacy">Privacy</a>
+          </div>
+        </div>
+        <a class="shot" href="https://www.wix.com/app-market/b0be57b7-0410-4a0c-b645-cf09349a4a61" aria-label="Open Donation Goal on the App Market">
+          <img src="img/donation-goal-screenshot.jpg" alt="Donation Goal cards in white, sunset and grape styles with a progress bar, donations and days left" width="1200" height="900" loading="lazy">
+        </a>
+      </article>
+      <article class="app">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/social-media-card.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Social Media Card</h2>
+            <span class="tag free">Free</span>
+          </div>
+          <p>Show your social profiles in one stylish card.</p>
+          <ul>
+            <li>Links to every profile, follower counts optional</li>
+            <li>9 layouts, 6 themes, 3 sizes</li>
+            <li>18 networks or your own. Free</li>
+          </ul>
+          <div class="actions">
+            <a class="cta" href="https://www.wix.com/app-market/d003a951-3fe1-439e-9ec6-af46eafb69fb">App Market</a>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/social-media-card">Live demo</a>
+            <a href="social-media-card/terms">Terms</a>
+            <a href="social-media-card/privacy">Privacy</a>
+          </div>
+        </div>
+        <a class="shot" href="https://www.wix.com/app-market/d003a951-3fe1-439e-9ec6-af46eafb69fb" aria-label="Open Social Media Card on the App Market">
+          <img src="img/social-media-card-screenshot.jpg" alt="Social Media Card in list, tiles and buttons layouts with social network icons and follower counts" width="1200" height="900" loading="lazy">
+        </a>
+      </article>
+      <article class="app offer">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/price-on-request.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Price on Request</h2>
+            <span class="tags"><span class="tag free">Free</span></span>
+          </div>
+          <p>Hide the price on chosen products and get price requests instead.</p>
+          <ul>
+            <li>Request a price button instead of the price and buy buttons</li>
+            <li>Requests with name, email, quantity and a message</li>
+            <li>Cart and checkout block these products. Free</li>
+          </ul>
+          <div class="actions">
+            <a class="cta" href="https://www.wix.com/app-market/f1bae6ef-90c6-4601-bf0f-ec2f1e4c93dd">App Market</a>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/price-on-request">Live demo</a>
+            <a href="price-on-request/terms">Terms</a>
+            <a href="price-on-request/privacy">Privacy</a>
+          </div>
+        </div>
+        <a class="shot" href="https://www.wix.com/app-market/f1bae6ef-90c6-4601-bf0f-ec2f1e4c93dd" aria-label="Open Price on Request on the App Market">
+          <img src="img/price-on-request-screenshot.jpg" alt="Product page with Price on request and a Request a price button instead of the price" width="1200" height="900" loading="lazy">
+        </a>
+      </article>
+      <article class="app size">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/vinted-profile-badge.svg" alt="" width="64" height="64" loading="lazy">
+            <h2>Vinted Profile Badge</h2>
+            <span class="tags"><span class="tag free">Free</span><span class="tag">Coming soon</span></span>
+          </div>
+          <p>Show your Vinted rating and reviews on your site.</p>
+          <ul>
+            <li>Your profile name, star rating and number of reviews</li>
+            <li>A Follow on Vinted button that opens your profile</li>
+            <li>Updates once a day. Free</li>
+          </ul>
+          <div class="actions">
+            <span class="cta soon">Coming soon</span>
+          </div>
+        </div>
+        <div class="shot">
+          <img src="img/vinted-profile-badge-screenshot.jpg" alt="Vinted Profile Badge: profile name, five stars with a 4.9 rating and 1,234 reviews, and a Follow on Vinted button" width="960" height="720" loading="lazy">
+        </div>
+      </article>
+      <article class="app fitly">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/ask-seller-button.svg" alt="" width="64" height="64" loading="lazy">
+            <h2>Ask Seller Button</h2>
+            <span class="tag">Coming soon</span>
+          </div>
+          <p>Let shoppers ask you about a product right on its page.</p>
+          <ul>
+            <li>An “Ask a question” button on product pages</li>
+            <li>An email and a Wix app notification for every question</li>
+            <li>Reply from your inbox or your dashboard</li>
+          </ul>
+          <div class="actions">
+            <span class="cta soon">Coming soon</span>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap"><p>© 2026 <span style="font-family:var(--mono)">winst0niuss</span> · Independent apps published in the Wix App Market. Not affiliated with or endorsed by Wix.com Ltd. · <a href="contact">Contact</a> · <a href="privacy">Privacy policies</a></p></div>
+  </footer>
+
+<script>
+  // Фильтр: бесплатное приложение — с меткой Free на карточке, остальные платные
+  const cards = [...document.querySelectorAll(".app")];
+  const isFree = (card) => card.querySelector(".tag.free") !== null;
+  const matches = { all: () => true, paid: (card) => !isFree(card), free: isFree };
+  const chips = [...document.querySelectorAll(".chip")];
+  chips.forEach((chip) => {
+    chip.querySelector("b").textContent = cards.filter(matches[chip.dataset.filter]).length;
+    chip.addEventListener("click", () => {
+      chips.forEach((other) => other.setAttribute("aria-pressed", String(other === chip)));
+      cards.forEach((card) => { card.hidden = !matches[chip.dataset.filter](card); });
+    });
+  });
+
+  // Подсветка карточки вслед за курсором
+  document.querySelectorAll(".app").forEach((card) => {
+    card.addEventListener("pointermove", (e) => {
+      const box = card.getBoundingClientRect();
+      card.style.setProperty("--x", `${e.clientX - box.left}px`);
+      card.style.setProperty("--y", `${e.clientY - box.top}px`);
+    });
+  });
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "76807075799a4c879defb6611f18b595"}'></script>
+</body>
+</html>

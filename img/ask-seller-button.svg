@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+<!-- Временная иконка: пузырь с вопросом в палитре наших приложений; итоговую рисует image-designer -->
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E91EFF"/><stop offset="0.5" stop-color="#7B2FF7"/><stop offset="1" stop-color="#2F6BFF"/></linearGradient></defs>
+<rect width="1000" height="1000" rx="220" fill="url(#bg)"/>
+<path d="M250 260h500a70 70 0 0 1 70 70v300a70 70 0 0 1-70 70H480l-150 120v-120h-80a70 70 0 0 1-70-70V330a70 70 0 0 1 70-70z" fill="#FFF8EC"/>
+<path d="M430 420a70 70 0 1 1 110 58c-28 19-40 34-40 62v12" fill="none" stroke="#7B2FF7" stroke-width="56" stroke-linecap="round"/>
+<circle cx="500" cy="630" r="34" fill="#FFC83D"/>
+</svg>
