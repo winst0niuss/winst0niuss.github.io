@@ -34,7 +34,6 @@
   h1 .by .char { display:inline; animation:type .01s var(--d) both; }
   @keyframes letter { from { opacity:0; transform:translateY(.45em) rotate(8deg); filter:blur(10px); } }
   @keyframes type { from { opacity:0; } }
-  .hero-lead { margin:26px 0 0; max-width:520px; font-size:clamp(17px, 2vw, 21px); color:#c9d3ce; }
 
   /* Карусель скриншотов: слайды собираются из карточек приложений */
   .track { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:none; border:1px solid var(--line); border-radius:18px; background:var(--panel); }
@@ -62,7 +61,6 @@
     <div class="wrap hero-body">
       <div>
         <h1 id="title" aria-label="Small apps for Wix stores by Winst0niuss"><span class="line">Small apps</span><span class="line">for Wix</span><span class="line">stores</span><span class="line by">by <b>Winst0niuss</b></span></h1>
-        <p class="hero-lead">Each one solves a single problem and needs no code to set up.</p>
       </div>
       <div id="carousel" role="group" aria-roledescription="carousel" aria-label="App screenshots" hidden>
         <div class="track" id="track"></div>
