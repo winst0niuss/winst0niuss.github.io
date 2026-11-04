@@ -26,18 +26,14 @@
   h1 { margin:0; font:800 clamp(2.5rem, min(9vw, 12vh), 6.5rem)/.98 var(--display); letter-spacing:-.035em; width:fit-content; }
   h1 .line { display:block; }
   h1 .line:nth-child(3) { color:var(--lime); }
-  /* Подпись: моноширинный шрифт, как у логотипа, печатается с курсором */
+  /* Подпись: моноширинный шрифт, как у логотипа, печатается по символу */
   h1 .by { margin-top:.4em; font:500 clamp(1.1rem, 2.3vw, 1.65rem)/1.2 var(--mono); letter-spacing:0; color:var(--muted); }
   h1 .by b { font-weight:500; color:var(--ink); }
   /* Буквы заголовка поднимаются из размытия по очереди, подпись появляется по символу */
   h1 .char { display:inline-block; animation:letter .7s var(--d) cubic-bezier(.2,.8,.2,1) both; }
   h1 .by .char { display:inline; animation:type .01s var(--d) both; }
-  h1 .by::after { content:""; display:inline-block; width:.55em; height:.12em; margin-left:.08em; background:var(--lime); animation:appear .01s var(--caret, 0s) both, blink 1s var(--caret, 0s) steps(1) infinite; }
   @keyframes letter { from { opacity:0; transform:translateY(.45em) rotate(8deg); filter:blur(10px); } }
   @keyframes type { from { opacity:0; } }
-  @keyframes blink { 50% { opacity:0; } }
-  /* Курсор скрыт, пока подпись не допечатана */
-  @keyframes appear { from { visibility:hidden; } }
   .hero-lead { margin:26px 0 0; max-width:520px; font-size:clamp(17px, 2vw, 21px); color:#c9d3ce; }
 
   /* Карусель скриншотов: слайды собираются из карточек приложений */
@@ -65,7 +61,7 @@
     </div>
     <div class="wrap hero-body">
       <div>
-        <h1 id="title" aria-label="Small apps for Wix stores by Winst0niuss."><span class="line">Small apps</span><span class="line">for Wix</span><span class="line">stores</span><span class="line by">by <b>Winst0niuss</b>.</span></h1>
+        <h1 id="title" aria-label="Small apps for Wix stores by Winst0niuss"><span class="line">Small apps</span><span class="line">for Wix</span><span class="line">stores</span><span class="line by">by <b>Winst0niuss</b></span></h1>
         <p class="hero-lead">Each one solves a single problem and needs no code to set up.</p>
       </div>
       <div id="carousel" role="group" aria-roledescription="carousel" aria-label="App screenshots" hidden>
@@ -113,8 +109,7 @@
     let delay = 0;
     lines.filter((line) => !line.classList.contains("by")).forEach((line) => { delay = splitChars(line, delay, 35); });
     const by = document.querySelector("#title .by");
-    const end = splitChars(by, 1000, 55);
-    by.style.setProperty("--caret", `${end}ms`);
+    splitChars(by, 1000, 55);
     // Буквы — только для глаз, экранный диктор читает aria-label заголовка
     lines.forEach((line) => line.setAttribute("aria-hidden", "true"));
   }
