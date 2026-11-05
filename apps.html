@@ -41,7 +41,7 @@
   .app.size { --glow:77,140,255; }
   .app.offer { --glow:250,204,21; }
   .app > * { min-width:0; }
-  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 */
+  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 */
   @media (min-width:708px) and (max-width:1047px) {
     .app:nth-child(7) { order:1; }
     .app:nth-child(5) { order:2; }
@@ -53,6 +53,7 @@
     .app:nth-child(12) { order:8; }
     .app:nth-child(13) { order:9; }
     .app:nth-child(14) { order:10; }
+    .app:nth-child(15) { order:11; }
   }
   .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
   .app-top { display:flex; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
@@ -433,6 +434,30 @@
         <a class="shot" href="https://www.wix.com/app-market/ec7d0d49-f0ea-433b-8b7f-d29f6de19b71" aria-label="Open ZIP Delivery Checker on the App Market">
           <img src="img/zip-delivery-checker-screenshot.jpg" alt="Product page with a mug and a delivery check: We deliver to 10001, with delivery time, estimated cost and free delivery over $50" width="1200" height="900" loading="lazy">
         </a>
+      </article>
+      <article class="app">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/product-enquiry-buttons.svg" alt="" width="64" height="64" loading="lazy">
+            <h2>Product Enquiry Buttons</h2>
+            <span class="tags"><span class="tag">Coming soon</span></span>
+          </div>
+          <p>Make an offer, ask a question and request a price on product pages.</p>
+          <ul>
+            <li>Choose where each of the three buttons appears</li>
+            <li>Hide the price and buy buttons on chosen products and get price requests</li>
+            <li>Accept, decline or counter offers, buyers pay by a personal link</li>
+          </ul>
+          <div class="actions">
+            <span class="cta soon">Coming soon</span>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/product-enquiry-buttons">Live demo</a>
+            <a href="product-enquiry-buttons/terms">Terms</a>
+            <a href="product-enquiry-buttons/privacy">Privacy</a>
+          </div>
+        </div>
+        <div class="shot">
+          <img src="img/product-enquiry-buttons-screenshot.jpg" alt="Product page with a mug: Make an offer and Ask a question buttons under Add to Cart and Buy Now" width="1200" height="900" loading="lazy">
+        </div>
       </article>
     </section>
   </main>
