@@ -1,0 +1,19 @@
+<!-- Иконка ZIP Delivery Checker — вариант пользователя (2026-11-05, референс listing/icon-options/user-reference.png):
+     тёмно-синий фон #2B3990, белый фургон с синей галочкой, золотые колёса и точка #D9A93A. Квадрат без скруглений: squircle делает Wix -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <rect width="1000" height="1000" fill="#2B3990"/>
+  <!-- Кузов и кабина -->
+  <rect x="150" y="270" width="470" height="350" rx="26" fill="#FFFFFF"/>
+  <path d="M600 380 H738 Q754 380 765 391 L842 468 Q853 479 853 495 V594 Q853 620 827 620 H600 Z" fill="#FFFFFF"/>
+  <!-- Окно кабины -->
+  <path d="M672 420 H736 L790 474 H672 Z" fill="#2B3990"/>
+  <!-- Галочка на кузове -->
+  <path d="M268 448 L338 516 L478 372" fill="none" stroke="#2B3990" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Колёса -->
+  <circle cx="325" cy="630" r="78" fill="#D9A93A"/>
+  <circle cx="325" cy="630" r="26" fill="#2B3990"/>
+  <circle cx="710" cy="630" r="78" fill="#D9A93A"/>
+  <circle cx="710" cy="630" r="26" fill="#2B3990"/>
+  <!-- Точка-акцент -->
+  <circle cx="842" cy="842" r="52" fill="#D9A93A"/>
+</svg>
