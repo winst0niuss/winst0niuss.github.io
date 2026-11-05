@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
-<!-- Иконка для страницы приложений: плашка со звездой, без знаков и цветов Vinted -->
-<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2F6BFF"/><stop offset="1" stop-color="#1B3FA8"/></linearGradient></defs>
-<rect width="1000" height="1000" rx="220" fill="url(#bg)"/>
-<rect x="200" y="290" width="600" height="420" rx="80" fill="#FFF8EC"/>
-<path d="M500 360l44 90 99 14-72 70 17 99-88-47-88 47 17-99-72-70 99-14z" fill="#FFC83D"/>
-</svg>
