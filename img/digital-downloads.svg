@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+<!-- option-3 download+refresh: градиент #FF3D9A>#7B2FF7>#2F6BFF; знак #FFFFFF, акцент стрелка #FFC83D -->
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF3D9A"/><stop offset="0.5" stop-color="#7B2FF7"/><stop offset="1" stop-color="#2F6BFF"/></linearGradient></defs>
+<rect width="1000" height="1000" fill="url(#bg)"/>
+<path d="M237.2 377.4 A290 290 0 0 1 762.8 377.4" fill="none" stroke="#FFFFFF" stroke-width="70" stroke-linecap="round"/><polygon points="798.8,454.5 839.9,341.5 685.8,413.4" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="24" stroke-linejoin="round"/><path d="M762.8 622.6 A290 290 0 0 1 237.2 622.6" fill="none" stroke="#FFFFFF" stroke-width="70" stroke-linecap="round"/><polygon points="201.2,545.5 160.1,658.5 314.2,586.6" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="24" stroke-linejoin="round"/>
+<g fill="none" stroke="#FFC83D" stroke-width="64" stroke-linecap="round" stroke-linejoin="round"><path d="M500 370 V630"/><path d="M400 530 L500 630 L600 530"/></g>
+</svg>

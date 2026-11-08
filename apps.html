@@ -41,7 +41,7 @@
   .app.size { --glow:77,140,255; }
   .app.offer { --glow:250,204,21; }
   .app > * { min-width:0; }
-  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 */
+  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 */
   @media (min-width:708px) and (max-width:1047px) {
     .app:nth-child(7) { order:1; }
     .app:nth-child(5) { order:2; }
@@ -54,6 +54,7 @@
     .app:nth-child(13) { order:9; }
     .app:nth-child(14) { order:10; }
     .app:nth-child(15) { order:11; }
+    .app:nth-child(16) { order:12; }
   }
   .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
   .app-top { display:flex; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
@@ -411,6 +412,30 @@
         <a class="shot" href="https://www.wix.com/app-market/b45a45fa-9bae-41f5-be9a-afcd73188010" aria-label="Open Ask Seller Button on the App Market">
           <img src="img/ask-seller-button-screenshot.jpg" alt="Product page with a mug and an Ask a question button under Add to Cart" width="1200" height="900" loading="lazy">
         </a>
+      </article>
+      <article class="app">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/digital-downloads.svg" alt="" width="64" height="64" loading="lazy">
+            <h2>Digital Downloads &amp; Updates</h2>
+            <span class="tags"><span class="tag">Coming soon</span></span>
+          </div>
+          <p>Personal download links for digital products that don’t expire.</p>
+          <ul>
+            <li>Several files per product, or a separate file for each variant</li>
+            <li>New versions reach buyers through the same link, with an email</li>
+            <li>Download limits, access periods and links for past buyers. 7-day free trial</li>
+          </ul>
+          <div class="actions">
+            <span class="cta soon">Coming soon</span>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/digital-downloads">Live demo</a>
+            <a href="digital-downloads/terms">Terms</a>
+            <a href="digital-downloads/privacy">Privacy</a>
+          </div>
+        </div>
+        <div class="shot">
+          <img src="img/digital-downloads-screenshot.jpg" alt="Product page with a Your download card listing three files with Download buttons" width="1200" height="900" loading="lazy">
+        </div>
       </article>
       <article class="app">
         <div class="app-copy">
