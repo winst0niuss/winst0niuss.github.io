@@ -41,7 +41,7 @@
   .app.size { --glow:77,140,255; }
   .app.offer { --glow:250,204,21; }
   .app > * { min-width:0; }
-  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 */
+  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 */
   @media (min-width:708px) and (max-width:1047px) {
     .app:nth-child(7) { order:1; }
     .app:nth-child(5) { order:2; }
@@ -55,6 +55,7 @@
     .app:nth-child(14) { order:10; }
     .app:nth-child(15) { order:11; }
     .app:nth-child(16) { order:12; }
+    .app:nth-child(17) { order:13; }
   }
   .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
   .app-top { display:flex; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
@@ -435,6 +436,27 @@
         <a class="shot" href="https://www.wix.com/app-market/2b35b55a-f3d6-4812-907b-6621773bfdf1" aria-label="Open Digital Downloads &amp; Updates on the App Market">
           <img src="img/digital-downloads-screenshot.jpg" alt="Product page with a Your download card listing three files with Download buttons" width="1200" height="900" loading="lazy">
         </a>
+      </article>
+      <article class="app size">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/also-available-on.svg" alt="" width="64" height="64" loading="lazy">
+            <h2>Also Available On</h2>
+            <span class="tags"><span class="tag">Coming soon</span></span>
+          </div>
+          <p>Show shoppers where else they can buy each product.</p>
+          <ul>
+            <li>An “Also available on:” bar with buttons to Amazon, eBay, Etsy and other marketplaces</li>
+            <li>Buttons in marketplace colors, one color or your site’s style</li>
+            <li>Links by country with a country switcher on Pro. Links for 5 products free</li>
+          </ul>
+          <div class="actions">
+            <span class="cta soon">Coming soon</span>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/also-available-on">Live demo</a>
+            <a href="also-available-on/terms">Terms</a>
+            <a href="also-available-on/privacy">Privacy</a>
+          </div>
+        </div>
       </article>
       <article class="app">
         <div class="app-copy">
