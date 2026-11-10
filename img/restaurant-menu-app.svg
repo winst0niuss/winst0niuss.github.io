@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+<!-- FINAL: teal #0B3C49 bg, white cloche+tray symmetric on x=500 (tray x125-875, y275-726), coral #FF6B4A offline badge r105 (0.7x) with teal gap ring, on dome lower-right edge, right edge x875 -->
+<rect width="1000" height="1000" fill="#0B3C49"/>
+<path d="M200 644A300 300 0 0 1 800 644Z" fill="#FFFFFF"/><circle cx="500" cy="314" r="39" fill="#FFFFFF"/><rect x="485" y="314" width="30" height="34" fill="#FFFFFF"/><rect x="125" y="666" width="750" height="60" rx="30" fill="#FFFFFF"/><circle cx="770" cy="535" r="125" fill="#0B3C49"/><circle cx="770" cy="535" r="105" fill="#FF6B4A"/><g fill="none" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round"><path d="M740 540A42 42 0 0 1 800 540"/><path d="M713 513A80 80 0 0 1 827 513"/></g><circle cx="770" cy="570" r="14" fill="#FFFFFF"/><path d="M710 475L830 595" stroke="#0B3C49" stroke-width="17" stroke-linecap="round"/><path d="M710 475L830 595" stroke="#FFFFFF" stroke-width="17" stroke-linecap="round"/>
+</svg>
