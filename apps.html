@@ -41,7 +41,7 @@
   .app.size { --glow:77,140,255; }
   .app.offer { --glow:250,204,21; }
   .app > * { min-width:0; }
-  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 */
+  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 */
   @media (min-width:708px) and (max-width:1047px) {
     .app:nth-child(7) { order:1; }
     .app:nth-child(5) { order:2; }
@@ -57,6 +57,7 @@
     .app:nth-child(16) { order:12; }
     .app:nth-child(17) { order:13; }
     .app:nth-child(18) { order:14; }
+    .app:nth-child(19) { order:15; }
   }
   .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
   .app-top { display:flex; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
@@ -526,6 +527,31 @@
         <a class="shot" href="https://www.wix.com/app-market/06582e9e-23a8-422b-81a4-23f1431f4e61" aria-label="Open Shabbat &amp; Holiday Closing on the App Market">
           <img src="img/shabbat-holiday-closing-screenshot.jpg" alt="Product page with a vase and a bar at the bottom: We're closed for Shabbat. Ordering reopens Saturday 5:22 PM EST" width="1200" height="900" loading="lazy">
         </a>
+      </article>
+
+      <article class="app size">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/pricing-plans-table.svg" alt="" width="64" height="64" loading="lazy">
+            <h2>Pricing Plans Table</h2>
+            <span class="tags"><span class="tag">Coming soon</span></span>
+          </div>
+          <p>Show your pricing plans as a pricing table with a monthly/yearly switch.</p>
+          <ul>
+            <li>Plan cards built from your pricing plans, always up to date</li>
+            <li>Yearly prices per month with the saving on every card</li>
+            <li>Most popular badge, price on request and a comparison table</li>
+          </ul>
+          <div class="actions">
+            <span class="cta soon">Coming soon</span>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/pricing-plans-table">Live demo</a>
+            <a href="pricing-plans-table/terms">Terms</a>
+            <a href="pricing-plans-table/privacy">Privacy</a>
+          </div>
+        </div>
+        <div class="shot">
+          <img src="img/pricing-plans-table-screenshot.jpg" alt="Pricing table with Basic, Pro and Enterprise plans, the Yearly switch on, Pro marked Most popular and Enterprise with price on request" width="1200" height="900" loading="lazy">
+        </div>
       </article>
     </section>
   </main>
