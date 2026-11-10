@@ -41,7 +41,7 @@
   .app.size { --glow:77,140,255; }
   .app.offer { --glow:250,204,21; }
   .app > * { min-width:0; }
-  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 */
+  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 */
   @media (min-width:708px) and (max-width:1047px) {
     .app:nth-child(7) { order:1; }
     .app:nth-child(5) { order:2; }
@@ -60,6 +60,7 @@
     .app:nth-child(19) { order:15; }
     .app:nth-child(20) { order:16; }
     .app:nth-child(21) { order:17; }
+    .app:nth-child(22) { order:18; }
   }
   .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
   .app-top { display:flex; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
@@ -599,6 +600,30 @@
         </div>
         <div class="shot">
           <img src="img/restaurant-menu-app-screenshot.jpg" alt="A printable table card with a QR code next to a phone showing a café menu with coffee, prices and allergens" width="1200" height="900" loading="lazy">
+        </div>
+      </article>
+      <article class="app">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/free-gift-with-purchase.svg" alt="" width="64" height="64" loading="lazy">
+            <h2>Free Gift with Purchase</h2>
+            <span class="tags"><span class="tag">Coming soon</span></span>
+          </div>
+          <p>Give shoppers a free product when their cart reaches your amount.</p>
+          <ul>
+            <li>The gift goes into the cart on its own and shows as free</li>
+            <li>Progress bar in the side cart: how much is left to spend</li>
+            <li>The gift never counts toward the amount, one per order</li>
+          </ul>
+          <div class="actions">
+            <span class="cta soon">Coming soon</span>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/free-gift-with-purchase">Live demo</a>
+            <a href="free-gift-with-purchase/terms">Terms</a>
+            <a href="free-gift-with-purchase/privacy">Privacy</a>
+          </div>
+        </div>
+        <div class="shot">
+          <img src="img/free-gift-with-purchase-screenshot.jpg" alt="Side cart with a Baseball Cap marked Free gift at $0.00 and a note: Your free Baseball Cap is in the cart" width="1200" height="900" loading="lazy">
         </div>
       </article>
     </section>

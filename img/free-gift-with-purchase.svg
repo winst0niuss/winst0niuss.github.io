@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+<!-- Основной #FF6A1F оранжевый, акцент #14213D чернильный, белый знак -->
+<rect width="1000" height="1000" fill="#FF6A1F"/>
+
+<rect x="221" y="490" width="558" height="370" rx="31" fill="#FFFFFF"/><rect x="190" y="360" width="620" height="136" rx="37.199999999999996" fill="#FFFFFF"/><rect x="447.3" y="360" width="105.4" height="500" fill="#FF6A1F"/>
+<path d="M500 360 C470 172.5 282.5 195 327.5 345 C357.5 412.5 455 375 500 360 Z" fill="#FFFFFF"/><path d="M500 360 C530 172.5 717.5 195 672.5 345 C642.5 412.5 545 375 500 360 Z" fill="#FFFFFF"/><circle cx="500" cy="360" r="39" fill="#FFFFFF"/>
+<circle cx="500" cy="360" r="40" fill="#FF6A1F"/><circle cx="500" cy="360" r="26" fill="#FFFFFF"/>
+<circle cx="770" cy="770" r="150" fill="#FF6A1F"/>
+<circle cx="770" cy="770" r="118" fill="#14213D"/>
+<path d="M710 775 L755.6 820.6 L836 727" fill="none" stroke="#FFFFFF" stroke-width="28.799999999999997" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
