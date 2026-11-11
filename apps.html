@@ -41,7 +41,7 @@
   .app.size { --glow:77,140,255; }
   .app.offer { --glow:250,204,21; }
   .app > * { min-width:0; }
-  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 */
+  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 */
   @media (min-width:708px) and (max-width:1047px) {
     .app:nth-child(7) { order:1; }
     .app:nth-child(5) { order:2; }
@@ -62,6 +62,7 @@
     .app:nth-child(21) { order:17; }
     .app:nth-child(22) { order:18; }
     .app:nth-child(23) { order:19; }
+    .app:nth-child(24) { order:20; }
   }
   .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
   .app-top { display:flex; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
@@ -647,6 +648,26 @@
         <a class="shot" href="https://www.wix.com/app-market/19f895e0-f6a8-4c0e-95f2-53651c8060be" aria-label="Open Quiz &amp; Assessment Builder on the App Market">
           <img src="img/quiz-maker-screenshot.jpg" alt="Coffee quiz on a site: question 3 of 5 with a progress bar, the answer Cappuccino marked Correct and a Next button" width="1200" height="900" loading="lazy">
         </a>
+            <img src="img/guestbook.svg" alt="" width="64" height="64" loading="lazy">
+            <h2>Guestbook &amp; Message Wall</h2>
+            <span class="tags"><span class="tag">Coming soon</span></span>
+          </div>
+          <p>Let guests leave wishes, emoji and photos on your site.</p>
+          <ul>
+            <li>Guests sign with a message, an emoji and a photo</li>
+            <li>You approve entries; links and blocked words always wait</li>
+            <li>Cards or a list in your site colors, email alerts and CSV export</li>
+          </ul>
+          <div class="actions">
+            <span class="cta soon">Coming soon</span>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/guestbook">Live demo</a>
+            <a href="guestbook/terms">Terms</a>
+            <a href="guestbook/privacy">Privacy</a>
+          </div>
+        </div>
+        <div class="shot">
+          <img src="img/guestbook-screenshot.jpg" alt="Wedding guestbook with a Sign the guestbook button and message cards with emoji and a party photo" width="1200" height="900" loading="lazy">
+        </div>
       </article>
     </section>
   </main>
