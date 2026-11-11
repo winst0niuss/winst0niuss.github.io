@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+<!-- Giveaway icon 1: ticket with star. Основной: жёлтый #FFD23F (фон), знак: тёмно-синий #1B1B4B; акцент: звезда-вырез и перфорация цвета фона -->
+<rect width="1000" height="1000" fill="#FFD23F"/>
+<g transform="rotate(-10 500 500)">
+<path fill="#1B1B4B" fill-rule="evenodd" d="M160 260 H840 Q880 260 880 300 V430 A70 70 0 0 0 880 570 V700 Q880 740 840 740 H160 Q120 740 120 700 V570 A70 70 0 0 0 120 430 V300 Q120 260 160 260 Z M380.0 350.0 L416.4 449.8 L522.7 453.6 L439.0 519.2 L468.2 621.4 L380.0 562.0 L291.8 621.4 L321.0 519.2 L237.3 453.6 L343.6 449.8 Z"/>
+<line x1="680" y1="290" x2="680" y2="710" stroke="#FFD23F" stroke-width="16" stroke-dasharray="36 26" stroke-linecap="butt"/>
+</g>
+</svg>

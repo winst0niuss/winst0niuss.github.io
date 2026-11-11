@@ -41,7 +41,7 @@
   .app.size { --glow:77,140,255; }
   .app.offer { --glow:250,204,21; }
   .app > * { min-width:0; }
-  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 */
+  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 */
   @media (min-width:708px) and (max-width:1047px) {
     .app:nth-child(7) { order:1; }
     .app:nth-child(5) { order:2; }
@@ -63,6 +63,7 @@
     .app:nth-child(22) { order:18; }
     .app:nth-child(23) { order:19; }
     .app:nth-child(24) { order:20; }
+    .app:nth-child(25) { order:21; }
   }
   .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
   .app-top { display:flex; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
@@ -671,6 +672,30 @@
         <a class="shot" href="https://www.wix.com/app-market/aded0ceb-3eb9-49e0-bcce-d197b03c4f7b" aria-label="Open Guestbook &amp; Message Wall on the App Market">
           <img src="img/guestbook-screenshot.jpg" alt="Wedding guestbook with a Sign the guestbook button and message cards with emoji and a party photo" width="1200" height="900" loading="lazy">
         </a>
+      </article>
+      <article class="app offer">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/giveaway-raffle.svg" alt="" width="64" height="64" loading="lazy">
+            <h2>Giveaway &amp; Raffle</h2>
+            <span class="tags"><span class="tag">Coming soon</span></span>
+          </div>
+          <p>Run a giveaway on your site and pick a fair random winner.</p>
+          <ul>
+            <li>Entry form with a countdown and your official rules</li>
+            <li>One entry per email, a random winner in one click</li>
+            <li>Entrants in your contacts, CSV export and five designs</li>
+          </ul>
+          <div class="actions">
+            <span class="cta soon">Coming soon</span>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/giveaway-raffle">Live demo</a>
+            <a href="giveaway-raffle/terms">Terms</a>
+            <a href="giveaway-raffle/privacy">Privacy</a>
+          </div>
+        </div>
+        <div class="shot">
+          <img src="img/giveaway-raffle-screenshot.jpg" alt="Giveaway form Win a $100 gift card with a countdown, name and email, a box to accept the Official Rules and an Enter giveaway button" width="1200" height="900" loading="lazy">
+        </div>
       </article>
     </section>
   </main>
