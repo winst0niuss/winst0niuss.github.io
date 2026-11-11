@@ -1,0 +1,6 @@
+<!-- Concept 3: кубок (счёт Trivia). Фон indigo #4F46E5 (цвет виджета), акцент жёлтый #FFC83D -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000"><rect width="1000" height="1000" fill="#4F46E5"/>
+<g fill="none" stroke="#fff" stroke-width="44" stroke-linecap="round"><path d="M305 270 H215 C215 410 260 455 330 465"/><path d="M695 270 H785 C785 410 740 455 670 465"/></g>
+<g fill="#fff"><path d="M290 190 H710 V430 C710 545 615 615 500 615 C385 615 290 545 290 430 Z"/><rect x="440" y="600" width="120" height="120"/><rect x="330" y="715" width="340" height="80" rx="24"/></g>
+<g transform="translate(500 405) scale(100)"><path d="M0 -1 L0.235 -0.324 L0.951 -0.309 L0.38 0.124 L0.588 0.809 L0 0.4 L-0.588 0.809 L-0.38 0.124 L-0.951 -0.309 L-0.235 -0.324 Z" fill="#FFC83D"/></g>
+</svg>

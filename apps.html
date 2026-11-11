@@ -41,7 +41,7 @@
   .app.size { --glow:77,140,255; }
   .app.offer { --glow:250,204,21; }
   .app > * { min-width:0; }
-  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 */
+  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 */
   @media (min-width:708px) and (max-width:1047px) {
     .app:nth-child(7) { order:1; }
     .app:nth-child(5) { order:2; }
@@ -61,6 +61,7 @@
     .app:nth-child(20) { order:16; }
     .app:nth-child(21) { order:17; }
     .app:nth-child(22) { order:18; }
+    .app:nth-child(23) { order:19; }
   }
   .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
   .app-top { display:flex; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
@@ -623,6 +624,30 @@
         <a class="shot" href="https://www.wix.com/app-market/e146f907-9069-4953-bb40-781ff3ae1106" aria-label="Open Free Gift with Purchase on the App Market">
           <img src="img/free-gift-with-purchase-screenshot.jpg" alt="Side cart with a Baseball Cap marked Free gift at $0.00 and a note: Your free Baseball Cap is in the cart" width="1200" height="900" loading="lazy">
         </a>
+      </article>
+      <article class="app size">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/quiz-maker.svg" alt="" width="64" height="64" loading="lazy">
+            <h2>Quiz &amp; Assessment Builder</h2>
+            <span class="tags"><span class="tag">Coming soon</span></span>
+          </div>
+          <p>Add trivia and personality quizzes to any page of your site.</p>
+          <ul>
+            <li>Trivia with scores and personality quizzes with results</li>
+            <li>Results with your own text and a button to any page</li>
+            <li>Ask for a name and email before the result, export to CSV</li>
+          </ul>
+          <div class="actions">
+            <span class="cta soon">Coming soon</span>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/quiz-maker">Live demo</a>
+            <a href="quiz-maker/terms">Terms</a>
+            <a href="quiz-maker/privacy">Privacy</a>
+          </div>
+        </div>
+        <div class="shot">
+          <img src="img/quiz-maker-screenshot.jpg" alt="Coffee quiz on a site: question 3 of 5 with a progress bar, the answer Cappuccino marked Correct and a Next button" width="1200" height="900" loading="lazy">
+        </div>
       </article>
     </section>
   </main>
