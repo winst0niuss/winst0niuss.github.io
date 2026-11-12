@@ -41,7 +41,7 @@
   .app.size { --glow:77,140,255; }
   .app.offer { --glow:250,204,21; }
   .app > * { min-width:0; }
-  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 */
+  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28*/
   @media (min-width:708px) and (max-width:1047px) {
     .app:nth-child(7) { order:1; }
     .app:nth-child(5) { order:2; }
@@ -66,6 +66,7 @@
     .app:nth-child(25) { order:21; }
     .app:nth-child(26) { order:22; }
     .app:nth-child(27) { order:23; }
+    .app:nth-child(28) { order:24; }
   }
   .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
   .app-top { display:flex; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
@@ -742,6 +743,29 @@
         </div>
         <a class="shot" href="https://www.wix.com/app-market/da2610b6-69b3-4a9b-8914-7c9fb8f5f9b6" aria-label="Open Double Booking Rules &amp; Limits on the App Market">
           <img src="img/booking-rules-screenshot.jpg" alt="Shared space Studio with a yoga class and a studio rental, and a list of bookings the rules stopped" width="1200" height="900" loading="lazy">
+        </a>
+      </article>
+      <article class="app fitly">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/scratch-card-popup.svg" alt="" width="64" height="64" loading="lazy">
+            <h2>Scratch Card: Discount Popup</h2>
+          </div>
+          <p>Visitors scratch a card, win a discount and join your list.</p>
+          <ul>
+            <li>Scratch card popup with ready foils, your color or your image</li>
+            <li>One-time coupon code for each subscriber, fixed or random discount</li>
+            <li>Name, email and phone, subscribers in your contacts and CSV</li>
+          </ul>
+          <div class="actions">
+            <a class="cta" href="https://www.wix.com/app-market/c47eb721-552a-4830-b58b-928e9a60ea81">App Market</a>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/scratch-card-popup">Live demo</a>
+            <a href="scratch-card-popup/terms">Terms</a>
+            <a href="scratch-card-popup/privacy">Privacy</a>
+          </div>
+        </div>
+        <a class="shot" href="https://www.wix.com/app-market/c47eb721-552a-4830-b58b-928e9a60ea81" aria-label="Open Scratch Card: Discount Popup on the App Market">
+          <img src="img/scratch-card-popup-screenshot.jpg" alt="Full screen popup with a teapot photo: Try your luck, a gold scratch card half scratched off showing 12% OFF, and a Reveal my prize link" width="1200" height="900" loading="lazy">
         </a>
       </article>
     </section>

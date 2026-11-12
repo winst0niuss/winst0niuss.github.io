@@ -1,0 +1,21 @@
+<!-- Концепция 1: золотая скретч-карта со стёртой полосой и знаком %. Палитра: чёрный #15120D (основной) + золото #F6B820 (акцент), кремовый #FFF4D6 для стёртой полосы -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+  <rect width="1000" height="1000" fill="#15120D"/>
+  <defs>
+    <clipPath id="card"><rect x="140" y="250" width="720" height="500" rx="64"/></clipPath>
+  </defs>
+  <g transform="rotate(-8 500 500)">
+    <rect x="140" y="250" width="720" height="500" rx="64" fill="#F6B820"/>
+    <g clip-path="url(#card)">
+      <g stroke="#D9990C" stroke-width="14" stroke-linecap="round">
+        <path d="M200 330h90M330 330h60M200 690h70M720 690h100M780 340h50"/>
+      </g>
+      <path d="M90 560 C 300 640, 620 360, 910 450" fill="none" stroke="#FFF4D6" stroke-width="290" stroke-linecap="round"/>
+    </g>
+    <g fill="none" stroke="#15120D" stroke-width="40">
+      <circle cx="420" cy="440" r="48"/>
+      <circle cx="580" cy="560" r="48"/>
+    </g>
+    <path d="M610 400L390 600" stroke="#15120D" stroke-width="40" stroke-linecap="round"/>
+  </g>
+</svg>
