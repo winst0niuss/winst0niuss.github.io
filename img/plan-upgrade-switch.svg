@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000"><!-- Основной #0284C7 (небесно-синий), акцент #FACC15; белые карточки планов, стрелка вверх -->
+<rect width="1000" height="1000" fill="#0284C7"/>
+<rect x="130" y="400" width="380" height="400" rx="56" fill="#7DD3FC"/>
+<rect x="340" y="190" width="540" height="620" rx="64" fill="#fff"/>
+<path d="M340 254a64 64 0 0 1 64-64h412a64 64 0 0 1 64 64v70H340z" fill="#FACC15"/>
+<path d="M610 420 L755 580 H665 V740 H555 V580 H465 Z" fill="#0284C7" stroke="#0284C7" stroke-width="24" stroke-linejoin="round"/>
+</svg>
