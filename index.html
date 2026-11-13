@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>winst0niuss — apps for Wix stores</title>
-<meta name="description" content="Focused apps for Wix online stores. Each one does a single job: size charts, a size finder, pricing by size.">
+<title>winst0niuss — apps for Wix and Shopify stores</title>
+<meta name="description" content="Focused apps for Wix and Shopify online stores. Each one does a single job: size charts, a size finder, pricing by size.">
 <meta name="theme-color" content="#0a0d0c">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<meta property="og:title" content="winst0niuss — apps for Wix stores">
-<meta property="og:description" content="Small apps for Wix stores.">
+<meta property="og:title" content="winst0niuss — apps for Wix and Shopify stores">
+<meta property="og:description" content="Small apps for Wix and Shopify stores.">
 <meta property="og:image" content="https://winst0niuss.github.io/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,7 +39,7 @@
   .track { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:none; border:1px solid var(--line); border-radius:18px; background:var(--panel); }
   .track::-webkit-scrollbar { display:none; }
   .slide { flex:0 0 100%; scroll-snap-align:start; text-decoration:none; }
-  .slide img { display:block; width:100%; height:auto; }
+  .slide img { display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:contain; background:#0e1312; }
   .slide span { display:block; padding:10px 16px; font-size:15px; font-weight:600; }
   .slide:hover span { color:var(--lime); }
   .carousel-controls { display:flex; align-items:center; gap:8px; margin-top:10px; }
@@ -60,7 +60,7 @@
     </div>
     <div class="wrap hero-body">
       <div>
-        <h1 id="title" aria-label="Small apps for Wix stores by Winst0niuss"><span class="line">Small apps</span><span class="line">for Wix</span><span class="line">stores</span><span class="line by">by <b>Winst0niuss</b></span></h1>
+        <h1 id="title" aria-label="Small apps for Wix and Shopify stores by Winst0niuss"><span class="line">Small apps</span><span class="line">for Wix &amp; Shopify</span><span class="line">stores</span><span class="line by">by <b>Winst0niuss</b></span></h1>
       </div>
       <div id="carousel" role="group" aria-roledescription="carousel" aria-label="App screenshots" hidden>
         <div class="track" id="track"></div>
@@ -75,7 +75,7 @@
   </header>
 
   <footer>
-    <div class="wrap"><p>© 2026 <span style="font-family:var(--mono)">winst0niuss</span> · Independent apps published in the Wix App Market. Not affiliated with or endorsed by Wix.com Ltd. · <a href="contact">Contact</a> · <a href="privacy">Privacy policies</a></p></div>
+    <div class="wrap"><p>© 2026 <span style="font-family:var(--mono)">winst0niuss</span> · Independent apps published in the Wix App Market and the Shopify App Store. Not affiliated with or endorsed by Wix.com Ltd. or Shopify Inc. · <a href="contact">Contact</a> · <a href="privacy">Privacy policies</a></p></div>
   </footer>
 
 <script>
@@ -131,8 +131,10 @@
       image.alt = "";
       image.width = 1200;
       image.height = 900;
+      // Подпись с платформой: в карусели вперемешку приложения Wix и Shopify
       const name = document.createElement("span");
-      name.textContent = card.querySelector("h2").textContent;
+      const platform = card.closest(".platform")?.querySelector(".platform-head h2")?.textContent.replace(/ apps$/, "");
+      name.textContent = platform ? `${card.querySelector("h2").textContent} · ${platform}` : card.querySelector("h2").textContent;
       slide.append(image, name);
       track.append(slide);
     });

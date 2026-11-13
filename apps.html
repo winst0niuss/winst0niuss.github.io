@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Apps — winst0niuss</title>
-<meta name="description" content="All winst0niuss apps for Wix stores: size charts, quantity and wholesale discounts, make an offer, price on request and more.">
+<meta name="description" content="All winst0niuss apps for Wix and Shopify stores: size charts, quantity and wholesale discounts, make an offer, price on request and more.">
 <meta name="theme-color" content="#0a0d0c">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="Apps — winst0niuss">
-<meta property="og:description" content="Small apps for Wix stores.">
+<meta property="og:description" content="Small apps for Wix and Shopify stores.">
 <meta property="og:image" content="https://winst0niuss.github.io/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,17 +24,25 @@
   h1 { margin:0; font:800 clamp(2.5rem, 7vw, 4.5rem)/1 var(--display); letter-spacing:-.035em; }
   .lead { margin:14px 0 0; max-width:560px; font-size:clamp(16px, 1.8vw, 19px); color:#c9d3ce; }
 
-  /* Чипы фильтра: все, платные, бесплатные */
+  /* Чипы фильтров: платформа и цена */
   .filters { display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
+  .filters + .filters { margin-top:10px; }
   .chip { display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border:1px solid var(--line); border-radius:99px; background:var(--panel); color:var(--ink); font:500 14px var(--body); cursor:pointer; transition:border-color .15s, color .15s, background-color .15s; }
   .chip:hover { border-color:var(--lime); color:var(--lime); }
   .chip b { font:500 12px var(--mono); color:var(--muted); }
   .chip[aria-pressed="true"] { border-color:var(--lime); background:var(--lime); color:var(--lime-ink); }
   .chip[aria-pressed="true"] b { color:var(--lime-ink); }
-  .app[hidden] { display:none; }
+  .app[hidden], .platform[hidden] { display:none; }
+
+  /* Разделы по платформам */
+  .platform { padding-top:clamp(40px, 5vw, 64px); }
+  .platform-head { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 16px; margin-bottom:20px; }
+  .platform-head h2 { margin:0; font:800 clamp(1.8rem, 4vw, 2.6rem)/1 var(--display); letter-spacing:-.03em; }
+  .platform-head p { margin:0; color:var(--muted); }
+  .empty { padding-top:clamp(40px, 5vw, 64px); color:var(--muted); }
 
   /* Карточки приложений */
-  section.apps { padding-top:clamp(40px, 5vw, 64px); display:grid; grid-template-columns:repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap:20px; }
+  .apps { display:grid; grid-template-columns:repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap:20px; }
   .app { --glow:198,241,53; --x:50%; --y:0%; position:relative; display:flex; flex-direction:column; gap:16px; padding:16px; border:1px solid var(--line); border-radius:18px; overflow:hidden;
     background:radial-gradient(320px circle at var(--x) var(--y), rgba(var(--glow),.13), transparent 70%), var(--panel); }
   .app.fitly { --glow:45,212,191; }
@@ -110,8 +118,13 @@
     <div class="wrap page-title">
       <h1>Apps</h1>
       <p class="lead">Each one solves a single problem and needs no code to set up.</p>
-      <div class="filters" role="group" aria-label="Filter apps">
+      <div class="filters" role="group" aria-label="Filter by platform" data-group="platform">
         <button type="button" class="chip" data-filter="all" aria-pressed="true">All <b></b></button>
+        <button type="button" class="chip" data-filter="wix" aria-pressed="false">Wix <b></b></button>
+        <button type="button" class="chip" data-filter="shopify" aria-pressed="false">Shopify <b></b></button>
+      </div>
+      <div class="filters" role="group" aria-label="Filter by price" data-group="price">
+        <button type="button" class="chip" data-filter="all" aria-pressed="true">Any price</button>
         <button type="button" class="chip" data-filter="paid" aria-pressed="false">Paid <b></b></button>
         <button type="button" class="chip" data-filter="free" aria-pressed="false">Free <b></b></button>
       </div>
@@ -119,7 +132,14 @@
   </header>
 
   <main class="wrap">
-    <section class="apps" id="apps" aria-label="Apps">
+    <p class="empty" id="empty" hidden>No apps match these filters yet.</p>
+
+    <section class="platform" id="wix" data-platform="wix" aria-labelledby="wix-title">
+      <div class="platform-head">
+        <h2 id="wix-title">Wix apps</h2>
+        <p>Install from the Wix App Market.</p>
+      </div>
+      <div class="apps">
       <article class="app fitly">
         <div class="app-copy">
           <div class="app-top">
@@ -448,7 +468,7 @@
           <img src="img/digital-downloads-screenshot.jpg" alt="Product page with a Your download card listing three files with Download buttons" width="1200" height="900" loading="lazy">
         </a>
       </article>
-      <article class="app size">
+<article class="app size">
         <div class="app-copy">
           <div class="app-top">
             <img src="img/also-available-on.svg" alt="" width="64" height="64" loading="lazy">
@@ -467,6 +487,9 @@
             <a href="also-available-on/privacy">Privacy</a>
           </div>
         </div>
+        <a class="shot" href="https://www.wix.com/app-market/403045d0-f25d-4473-b5b4-62aefa500c76" aria-label="Open Also Available On on the App Market">
+          <img src="img/also-available-on-screenshot.jpg" alt="Also available on bar under a product with Amazon, eBay, Etsy and Walmart buttons, and a country switcher on mobile" width="1200" height="900" loading="lazy">
+        </a>
       </article>
       <article class="app">
         <div class="app-copy">
@@ -537,7 +560,6 @@
           <img src="img/shabbat-holiday-closing-screenshot.jpg" alt="Product page with a vase and a bar at the bottom: We're closed for Shabbat. Ordering reopens Saturday 5:22 PM EST" width="1200" height="900" loading="lazy">
         </a>
       </article>
-
       <article class="app size">
         <div class="app-copy">
           <div class="app-top">
@@ -630,7 +652,7 @@
           <img src="img/free-gift-with-purchase-screenshot.jpg" alt="Side cart with a Baseball Cap marked Free gift at $0.00 and a note: Your free Baseball Cap is in the cart" width="1200" height="900" loading="lazy">
         </a>
       </article>
-      <article class="app size">
+<article class="app size">
         <div class="app-copy">
           <div class="app-top">
             <img src="img/quiz-maker.svg" alt="" width="64" height="64" loading="lazy">
@@ -653,7 +675,7 @@
           <img src="img/quiz-maker-screenshot.jpg" alt="Coffee quiz on a site: question 3 of 5 with a progress bar, the answer Cappuccino marked Correct and a Next button" width="1200" height="900" loading="lazy">
         </a>
       </article>
-      <article class="app fitly">
+            <article class="app fitly">
         <div class="app-copy">
           <div class="app-top">
             <img src="img/guestbook.svg" alt="" width="64" height="64" loading="lazy">
@@ -768,24 +790,120 @@
           <img src="img/scratch-card-popup-screenshot.jpg" alt="Full screen popup with a teapot photo: Try your luck, a gold scratch card half scratched off showing 12% OFF, and a Reveal my prize link" width="1200" height="900" loading="lazy">
         </a>
       </article>
+      </div>
+    </section>
+
+    <section class="platform" id="shopify" data-platform="shopify" aria-labelledby="shopify-title">
+      <div class="platform-head">
+        <h2 id="shopify-title">Shopify apps</h2>
+        <p>Install from the Shopify App Store.</p>
+      </div>
+      <div class="apps">
+      <article class="app size">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/shopify-votely.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Votely: Polls &amp; Waitlist</h2>
+          </div>
+          <p>Let customers vote for your next product and join a launch waitlist.</p>
+          <ul>
+            <li>Polls from your products or new ideas, right on the store</li>
+            <li>Quizzes with one correct answer and a discount code as a prize</li>
+            <li>A waitlist under the poll: name, email or phone</li>
+          </ul>
+          <div class="actions">
+            <a class="cta" href="https://apps.shopify.com/product-vote">App Store</a>
+            <a href="https://votely.votely.workers.dev/privacy">Privacy</a>
+          </div>
+        </div>
+        <a class="shot" href="https://apps.shopify.com/product-vote" aria-label="Open Votely on the Shopify App Store">
+          <img src="img/shopify-votely-screenshot.jpg" alt="Votely poll on a store page: Which snowboard should we restock next, with three snowboards to vote for" width="1200" height="675" loading="lazy">
+        </a>
+      </article>
+
+      <article class="app fitly">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/shopify-fitly.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Fitly: Size Chart &amp; Guide</h2>
+            <span class="tags"><span class="tag">Coming soon</span></span>
+          </div>
+          <p>Size charts and a size finder for your product pages.</p>
+          <ul>
+            <li>A “Size chart” link under the size options, with a cm/inch switch</li>
+            <li>Find my size: shoppers enter measurements and get a size suggestion</li>
+            <li>Ready-made templates for tops, trousers, bras, kids and shoes</li>
+          </ul>
+          <div class="actions">
+            <span class="cta soon">Coming soon</span>
+            <a href="https://fitly.votely.workers.dev/privacy">Privacy</a>
+          </div>
+        </div>
+        <div class="shot">
+          <img src="img/shopify-fitly-screenshot.jpg" alt="Fitly on a Shopify product page: a Size chart link and the chart window with Find my size and a cm/in switch" width="1200" height="675" loading="lazy">
+        </div>
+      </article>
+
+      <article class="app offer">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/shopify-cartcap.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Cartcap: Min Max Order Limits</h2>
+            <span class="tags"><span class="tag">Coming soon</span></span>
+          </div>
+          <p>Minimum, maximum and pack quantity limits, checked at checkout.</p>
+          <ul>
+            <li>Min, max and multiples for all products, chosen products or collections</li>
+            <li>Order limits: minimum items, maximum items and minimum order amount</li>
+            <li>A product page block shows the limits and sets the quantity selector</li>
+          </ul>
+          <div class="actions">
+            <span class="cta soon">Coming soon</span>
+            <a href="https://cartcap.votely.workers.dev/privacy">Privacy</a>
+          </div>
+        </div>
+        <div class="shot">
+          <img src="img/shopify-cartcap-screenshot.jpg" alt="Cartcap: checkout errors for a minimum quantity and a minimum order amount, and a product page with quantity limits" width="1200" height="675" loading="lazy">
+        </div>
+      </article>
+      </div>
     </section>
   </main>
 
   <footer>
-    <div class="wrap"><p>© 2026 <span style="font-family:var(--mono)">winst0niuss</span> · Independent apps published in the Wix App Market. Not affiliated with or endorsed by Wix.com Ltd. · <a href="contact">Contact</a> · <a href="privacy">Privacy policies</a></p></div>
+    <div class="wrap"><p>© 2026 <span style="font-family:var(--mono)">winst0niuss</span> · Independent apps published in the Wix App Market and the Shopify App Store. Not affiliated with or endorsed by Wix.com Ltd. or Shopify Inc. · <a href="contact">Contact</a> · <a href="privacy">Privacy policies</a></p></div>
   </footer>
 
 <script>
-  // Фильтр: бесплатное приложение — с меткой Free на карточке, остальные платные
+  // Фильтры: платформа — по разделу карточки, цена — по метке Free (остальные платные)
   const cards = [...document.querySelectorAll(".app")];
+  const sections = [...document.querySelectorAll(".platform")];
+  const platformOf = (card) => card.closest(".platform").dataset.platform;
   const isFree = (card) => card.querySelector(".tag.free") !== null;
-  const matches = { all: () => true, paid: (card) => !isFree(card), free: isFree };
-  const chips = [...document.querySelectorAll(".chip")];
-  chips.forEach((chip) => {
-    chip.querySelector("b").textContent = cards.filter(matches[chip.dataset.filter]).length;
-    chip.addEventListener("click", () => {
-      chips.forEach((other) => other.setAttribute("aria-pressed", String(other === chip)));
-      cards.forEach((card) => { card.hidden = !matches[chip.dataset.filter](card); });
+  const tests = {
+    platform: { all: () => true, wix: (card) => platformOf(card) === "wix", shopify: (card) => platformOf(card) === "shopify" },
+    price: { all: () => true, paid: (card) => !isFree(card), free: isFree },
+  };
+  const selected = { platform: "all", price: "all" };
+  const applyFilters = () => {
+    cards.forEach((card) => {
+      card.hidden = !(tests.platform[selected.platform](card) && tests.price[selected.price](card));
+    });
+    // Раздел без видимых карточек прячем целиком, вместе с заголовком
+    sections.forEach((section) => { section.hidden = !section.querySelector(".app:not([hidden])"); });
+    document.getElementById("empty").hidden = sections.some((section) => !section.hidden);
+  };
+  document.querySelectorAll(".filters").forEach((group) => {
+    const kind = group.dataset.group;
+    const chips = [...group.querySelectorAll(".chip")];
+    chips.forEach((chip) => {
+      const count = chip.querySelector("b");
+      if (count) count.textContent = cards.filter(tests[kind][chip.dataset.filter]).length;
+      chip.addEventListener("click", () => {
+        chips.forEach((other) => other.setAttribute("aria-pressed", String(other === chip)));
+        selected[kind] = chip.dataset.filter;
+        applyFilters();
+      });
     });
   });
 
