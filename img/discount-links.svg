@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+<!-- coral #FF5A4F + white ticket; accent navy #0B1F3F. Купон 700x490 по центру (поля 150 слева/справа, 255 сверху/снизу),
+     вырезы r70 на y=500, перфорация на x=500, % и звено в центрах половин (350 и 650, y=500: центры свободной от вырезов части половин), единая толщина линий 28. -->
+<rect width="1000" height="1000" fill="#FF5A4F"/>
+<path d="M190 255H810a40 40 0 0 1 40 40V430a70 70 0 0 0 0 140V705a40 40 0 0 1-40 40H190a40 40 0 0 1-40-40V570a70 70 0 0 0 0-140V295a40 40 0 0 1 40-40Z" fill="#fff"/>
+<rect x="492" y="290" width="16" height="36" rx="8" fill="#FF5A4F"/><rect x="492" y="354" width="16" height="36" rx="8" fill="#FF5A4F"/><rect x="492" y="418" width="16" height="36" rx="8" fill="#FF5A4F"/><rect x="492" y="482" width="16" height="36" rx="8" fill="#FF5A4F"/><rect x="492" y="546" width="16" height="36" rx="8" fill="#FF5A4F"/><rect x="492" y="610" width="16" height="36" rx="8" fill="#FF5A4F"/><rect x="492" y="674" width="16" height="36" rx="8" fill="#FF5A4F"/>
+<g transform="translate(350 500)" fill="none" stroke="#FF5A4F" stroke-width="28" stroke-linecap="round">
+<circle cx="-54" cy="-54" r="38"/><circle cx="54" cy="54" r="38"/><line x1="72" y1="-90" x2="-72" y2="90"/></g>
+<g transform="translate(650 500) rotate(-45)" fill="none" stroke-width="28" stroke-linejoin="round">
+<rect x="-111" y="-38" width="126" height="76" rx="38" stroke="#0B1F3F"/><rect x="-15" y="-38" width="126" height="76" rx="38" stroke="#0B1F3F"/></g>
+</svg>
