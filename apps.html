@@ -49,7 +49,7 @@
   .app.size { --glow:77,140,255; }
   .app.offer { --glow:250,204,21; }
   .app > * { min-width:0; }
-  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28*/
+  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29*/
   @media (min-width:708px) and (max-width:1047px) {
     .app:nth-child(7) { order:1; }
     .app:nth-child(5) { order:2; }
@@ -75,6 +75,7 @@
     .app:nth-child(26) { order:22; }
     .app:nth-child(27) { order:23; }
     .app:nth-child(28) { order:24; }
+    .app:nth-child(29) { order:25; }
   }
   .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
   .app-top { display:flex; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
@@ -789,6 +790,30 @@
         <a class="shot" href="https://www.wix.com/app-market/c47eb721-552a-4830-b58b-928e9a60ea81" aria-label="Open Scratch Card: Discount Popup on the App Market">
           <img src="img/scratch-card-popup-screenshot.jpg" alt="Full screen popup with a teapot photo: Try your luck, a gold scratch card half scratched off showing 12% OFF, and a Reveal my prize link" width="1200" height="900" loading="lazy">
         </a>
+      </article>
+      <article class="app offer">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/tiered-discounts.svg" alt="" width="64" height="64" loading="lazy">
+            <h2>Tiered Discounts: Progress Bar</h2>
+            <span class="tags"><span class="tag">Coming soon</span></span>
+          </div>
+          <p>Buy more, save more: tier discounts with a progress window.</p>
+          <ul>
+            <li>Up to 5 discount tiers by items or by cart amount</li>
+            <li>A window on every page shows what the next tier unlocks</li>
+            <li>Checkout Bundle takes shoppers straight to checkout</li>
+          </ul>
+          <div class="actions">
+            <span class="cta soon">Coming soon</span>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/tiered-discounts">Live demo</a>
+            <a href="tiered-discounts/terms">Terms</a>
+            <a href="tiered-discounts/privacy">Privacy</a>
+          </div>
+        </div>
+        <div class="shot">
+          <img src="img/tiered-discounts-screenshot.jpg" alt="Demo store product page with the Your Bundle Bonus window in the corner: 3 pcs in the cart and Unlock 20% OFF: Only Add 2 pcs" width="1200" height="900" loading="lazy">
+        </div>
       </article>
       </div>
     </section>
