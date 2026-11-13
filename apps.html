@@ -49,7 +49,7 @@
   .app.size { --glow:77,140,255; }
   .app.offer { --glow:250,204,21; }
   .app > * { min-width:0; }
-  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29*/
+  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30*/
   @media (min-width:708px) and (max-width:1047px) {
     .app:nth-child(7) { order:1; }
     .app:nth-child(5) { order:2; }
@@ -76,6 +76,7 @@
     .app:nth-child(27) { order:23; }
     .app:nth-child(28) { order:24; }
     .app:nth-child(29) { order:25; }
+    .app:nth-child(30) { order:26; }
   }
   .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
   .app-top { display:flex; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
@@ -469,7 +470,31 @@
           <img src="img/digital-downloads-screenshot.jpg" alt="Product page with a Your download card listing three files with Download buttons" width="1200" height="900" loading="lazy">
         </a>
       </article>
-<article class="app size">
+      <article class="app offer">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/ebay-seller-badge.png" alt="" width="64" height="64" loading="lazy">
+            <h2>Seller Badge for eBay</h2>
+            <span class="tags"><span class="tag">Coming soon</span></span>
+          </div>
+          <p>Show your eBay positive feedback on your site.</p>
+          <ul>
+            <li>Your name and a Shop on eBay button, free</li>
+            <li>Positive feedback and feedback score on Pro</li>
+            <li>Just enter your eBay username: no eBay sign-in needed</li>
+          </ul>
+          <div class="actions">
+            <span class="cta soon">Coming soon</span>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/ebay-seller-badge">Live demo</a>
+            <a href="ebay-seller-badge/terms">Terms</a>
+            <a href="ebay-seller-badge/privacy">Privacy</a>
+          </div>
+        </div>
+        <div class="shot">
+          <img src="img/ebay-seller-badge-screenshot.jpg" alt="Shop site with a Seller Badge for eBay: seller name, 99.8% positive feedback with the feedback score, and a Shop on eBay button" width="1200" height="900" loading="lazy">
+        </div>
+      </article>
+      <article class="app size">
         <div class="app-copy">
           <div class="app-top">
             <img src="img/also-available-on.svg" alt="" width="64" height="64" loading="lazy">
@@ -492,7 +517,7 @@
           <img src="img/also-available-on-screenshot.jpg" alt="Also available on bar under a product with Amazon, eBay, Etsy and Walmart buttons, and a country switcher on mobile" width="1200" height="900" loading="lazy">
         </a>
       </article>
-      <article class="app">
+      <article class="app fitly">
         <div class="app-copy">
           <div class="app-top">
             <img src="img/zip-delivery-checker.svg" alt="" width="64" height="64" loading="lazy">
@@ -653,30 +678,7 @@
           <img src="img/free-gift-with-purchase-screenshot.jpg" alt="Side cart with a Baseball Cap marked Free gift at $0.00 and a note: Your free Baseball Cap is in the cart" width="1200" height="900" loading="lazy">
         </a>
       </article>
-<article class="app size">
-        <div class="app-copy">
-          <div class="app-top">
-            <img src="img/quiz-maker.svg" alt="" width="64" height="64" loading="lazy">
-            <h2>Quiz &amp; Assessment Builder</h2>
-          </div>
-          <p>Add trivia and personality quizzes to any page of your site.</p>
-          <ul>
-            <li>Trivia with scores and personality quizzes with results</li>
-            <li>Results with your own text and a button to any page</li>
-            <li>Ask for a name and email before the result, export to CSV</li>
-          </ul>
-          <div class="actions">
-            <a class="cta" href="https://www.wix.com/app-market/19f895e0-f6a8-4c0e-95f2-53651c8060be">App Market</a>
-            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/quiz-maker">Live demo</a>
-            <a href="quiz-maker/terms">Terms</a>
-            <a href="quiz-maker/privacy">Privacy</a>
-          </div>
-        </div>
-        <a class="shot" href="https://www.wix.com/app-market/19f895e0-f6a8-4c0e-95f2-53651c8060be" aria-label="Open Quiz &amp; Assessment Builder on the App Market">
-          <img src="img/quiz-maker-screenshot.jpg" alt="Coffee quiz on a site: question 3 of 5 with a progress bar, the answer Cappuccino marked Correct and a Next button" width="1200" height="900" loading="lazy">
-        </a>
-      </article>
-            <article class="app fitly">
+      <article class="app size">
         <div class="app-copy">
           <div class="app-top">
             <img src="img/guestbook.svg" alt="" width="64" height="64" loading="lazy">
@@ -697,6 +699,29 @@
         </div>
         <a class="shot" href="https://www.wix.com/app-market/aded0ceb-3eb9-49e0-bcce-d197b03c4f7b" aria-label="Open Guestbook &amp; Message Wall on the App Market">
           <img src="img/guestbook-screenshot.jpg" alt="Wedding guestbook with a Sign the guestbook button and message cards with emoji and a party photo" width="1200" height="900" loading="lazy">
+        </a>
+      </article>
+      <article class="app fitly">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/quiz-maker.svg" alt="" width="64" height="64" loading="lazy">
+            <h2>Quiz &amp; Assessment Builder</h2>
+          </div>
+          <p>Add trivia and personality quizzes to any page of your site.</p>
+          <ul>
+            <li>Trivia with scores and personality quizzes with results</li>
+            <li>Results with your own text and a button to any page</li>
+            <li>Ask for a name and email before the result, export to CSV</li>
+          </ul>
+          <div class="actions">
+            <a class="cta" href="https://www.wix.com/app-market/19f895e0-f6a8-4c0e-95f2-53651c8060be">App Market</a>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/quiz-maker">Live demo</a>
+            <a href="quiz-maker/terms">Terms</a>
+            <a href="quiz-maker/privacy">Privacy</a>
+          </div>
+        </div>
+        <a class="shot" href="https://www.wix.com/app-market/19f895e0-f6a8-4c0e-95f2-53651c8060be" aria-label="Open Quiz &amp; Assessment Builder on the App Market">
+          <img src="img/quiz-maker-screenshot.jpg" alt="Coffee quiz on a site: question 3 of 5 with a progress bar, the answer Cappuccino marked Correct and a Next button" width="1200" height="900" loading="lazy">
         </a>
       </article>
       <article class="app offer">
