@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+<!-- Концепция 3: печать-штамп с глобусом. Основной #2563EB, акцент #FFB020 -->
+<rect width="1000" height="1000" fill="#2563EB"/>
+<circle cx="500" cy="460" r="300" fill="none" stroke="#fff" stroke-width="40"/>
+<circle cx="500" cy="460" r="210" fill="#fff"/>
+<g fill="none" stroke="#2563EB" stroke-width="22" stroke-linecap="round">
+<ellipse cx="500" cy="460" rx="95" ry="210"/>
+<path d="M290 460 H710 M325 360 H675 M325 560 H675"/>
+</g>
+<rect x="230" y="800" width="540" height="60" rx="30" fill="#FFB020"/>
+</svg>

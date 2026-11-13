@@ -48,8 +48,10 @@
   .app.fitly { --glow:45,212,191; }
   .app.size { --glow:77,140,255; }
   .app.offer { --glow:250,204,21; }
+  /* Четвёртый цвет для карточки Made In: любой из трёх давал одноцветных соседей; после FAQ Accordion соседство перепроверить */
+  .app.coral { --glow:251,113,133; }
   .app > * { min-width:0; }
-  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30*/
+  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32*/
   @media (min-width:708px) and (max-width:1047px) {
     .app:nth-child(7) { order:1; }
     .app:nth-child(5) { order:2; }
@@ -77,6 +79,8 @@
     .app:nth-child(28) { order:24; }
     .app:nth-child(29) { order:25; }
     .app:nth-child(30) { order:26; }
+    .app:nth-child(31) { order:27; }
+    .app:nth-child(32) { order:28; }
   }
   .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
   .app-top { display:flex; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
@@ -860,6 +864,30 @@
         <a class="shot" href="https://www.wix.com/app-market/8ad11f39-e399-4806-b506-2115dd8b674b" aria-label="Open FAQ Accordion: Page &amp; Product on the App Market">
           <img src="img/faq-accordion-screenshot.jpg" alt="Running shoe product page with a Shipping and returns FAQ accordion under the description and a Sizing set below" width="1200" height="900" loading="lazy">
         </a>
+      </article>
+      <article class="app coral">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/made-in-badge.svg" alt="" width="64" height="64" loading="lazy">
+            <h2>Made In: Country of Origin</h2>
+            <span class="tags"><span class="tag">Coming soon</span></span>
+          </div>
+          <p>Show where each product is made, with the country flag.</p>
+          <ul>
+            <li>Made in USA, Made in EU, Designed in Italy and 250+ more places</li>
+            <li>One badge for the whole store, its own badge for any product</li>
+            <li>Your style, text size, corners, flag shape and colors</li>
+          </ul>
+          <div class="actions">
+            <span class="cta soon">Coming soon</span>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/made-in-badge">Live demo</a>
+            <a href="made-in-badge/terms">Terms</a>
+            <a href="made-in-badge/privacy">Privacy</a>
+          </div>
+        </div>
+        <div class="shot">
+          <img src="img/made-in-badge-screenshot.jpg" alt="Product page of a ceramic mug with a Made in USA badge and the US flag under the product name" width="1200" height="900" loading="lazy">
+        </div>
       </article>
       </div>
     </section>
