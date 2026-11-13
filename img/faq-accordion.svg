@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+<!-- Concept 5: stack of Q/A cards. Main #3730A3 (indigo), white sign (tints #C7D2FE, #818CF8 for back cards), accent #FB7185 (coral dot) -->
+<rect width="1000" height="1000" fill="#3730A3"/>
+
+<rect x="260" y="130" width="580" height="560" rx="50" fill="#818CF8"/>
+<rect x="210" y="190" width="580" height="560" rx="50" fill="#C7D2FE"/>
+<rect x="160" y="250" width="580" height="620" rx="50" fill="#fff"/>
+<g transform="translate(450 560) scale(1.5) translate(-430 -520)">
+<path d="M360 450c0-45 35-70 75-70s75 28 75 68c0 62-75 55-75 125" fill="none" stroke="#3730A3" stroke-width="40" stroke-linecap="round" transform="translate(-5,0)"/>
+<circle cx="430" cy="630" r="28" fill="#FB7185" transform="translate(-5,0)"/></g>
+<path d="M240 760h420M240 815h260" stroke="#3730A3" stroke-width="0"/>
+
+</svg>
