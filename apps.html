@@ -51,7 +51,7 @@
   /* Четвёртый цвет для карточки Made In: любой из трёх давал одноцветных соседей; после FAQ Accordion соседство перепроверить */
   .app.coral { --glow:251,113,133; }
   .app > * { min-width:0; }
-  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32*/
+  /* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33*/
   @media (min-width:708px) and (max-width:1047px) {
     .app:nth-child(7) { order:1; }
     .app:nth-child(5) { order:2; }
@@ -81,6 +81,7 @@
     .app:nth-child(30) { order:26; }
     .app:nth-child(31) { order:27; }
     .app:nth-child(32) { order:28; }
+    .app:nth-child(33) { order:29; }
   }
   .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
   .app-top { display:flex; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
@@ -887,6 +888,30 @@
         <a class="shot" href="https://www.wix.com/app-market/afa7ad7d-9626-4783-ba33-cbe3eed7d35c" aria-label="Open Made In: Country of Origin on the App Market">
           <img src="img/made-in-badge-screenshot.jpg" alt="Product page of a ceramic mug with a Made in USA badge and the US flag under the product name" width="1200" height="900" loading="lazy">
         </a>
+      </article>
+      <article class="app fitly">
+        <div class="app-copy">
+          <div class="app-top">
+            <img src="img/vat-price-toggle.png" alt="" width="64" height="64" loading="lazy">
+            <h2>VAT Toggle: Prices Excl VAT</h2>
+            <span class="tags"><span class="tag">Coming soon</span></span>
+          </div>
+          <p>Shoppers see every store price with or without VAT in one click.</p>
+          <ul>
+            <li>Prices keep your currency format and get an Incl. or Excl. VAT label</li>
+            <li>A floating switch and one right under the product price</li>
+            <li>Your VAT rate, colors and labels; cart and checkout unchanged</li>
+          </ul>
+          <div class="actions">
+            <span class="cta soon">Coming soon</span>
+            <a href="https://chumachenko-apps-chumachenkovadym-1010.wix-site-host.com/apps/vat-price-toggle">Live demo</a>
+            <a href="vat-price-toggle/terms">Terms</a>
+            <a href="vat-price-toggle/privacy">Privacy</a>
+          </div>
+        </div>
+        <div class="shot">
+          <img src="img/vat-price-toggle-screenshot.jpg" alt="Store gallery with prices shown excluding VAT, each with an Excl. VAT label, and the VAT switch in the corner" width="1200" height="900" loading="lazy">
+        </div>
       </article>
       </div>
     </section>
