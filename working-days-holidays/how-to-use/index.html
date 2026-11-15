@@ -1,0 +1,167 @@
+<!doctype html>
+<!-- Копия MONDAY/apps/workdays/client/how-to-use/index.html для постоянного адреса листинга monday: править оба файла. -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to use Working Days &amp; Holidays</title>
+    <meta name="description" content="Set due dates and timelines in working days on monday.com: skip weekends, public holidays and company days off." />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --text: #323338;
+        --muted: #676879;
+        --card: #f6f7fb;
+        --border: #d0d4e4;
+        --accent: #0073ea;
+        font-family: Figtree, Roboto, 'Helvetica Neue', Arial, sans-serif;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #181b34;
+          --text: #d5d8df;
+          --muted: #9699a6;
+          --card: #30324e;
+          --border: #4b4e69;
+          --accent: #579bfc;
+        }
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: var(--text); line-height: 1.55; }
+      main { max-width: 760px; margin: 0 auto; padding: 32px 20px 48px; }
+      h1 { font-size: 28px; line-height: 1.25; margin: 0 0 8px; }
+      h2 { font-size: 20px; margin: 36px 0 12px; }
+      p, li { font-size: 15px; }
+      .lead { color: var(--muted); font-size: 16px; margin: 0; }
+      .muted { color: var(--muted); }
+      ol.steps { padding-left: 22px; }
+      ol.steps li { margin-bottom: 10px; }
+      figure { margin: 16px 0 24px; }
+      figure img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 8px; }
+      figcaption { color: var(--muted); font-size: 13px; margin-top: 6px; }
+      table { width: 100%; border-collapse: collapse; font-size: 14px; }
+      th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+      th { color: var(--muted); font-weight: 600; }
+      .card { background: var(--card); border-radius: 8px; padding: 14px 16px; margin: 12px 0; }
+      code { background: var(--card); padding: 1px 6px; border-radius: 4px; }
+      a { color: var(--accent); }
+      details { border-bottom: 1px solid var(--border); padding: 10px 0; }
+      summary { cursor: pointer; font-weight: 600; }
+      details p { margin: 8px 0 0; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>How to use Working Days &amp; Holidays</h1>
+      <p class="lead">
+        Set due dates and timelines in working days. Your monday.com automations skip weekends, public holidays and your
+        company days off — for any work week and more than 200 countries, states and regions.
+      </p>
+
+      <h2>Before you start</h2>
+      <p>
+        An account admin installs the app from the monday.com marketplace. Automations with Working Days actions work on
+        any board you can automate. No extra columns are needed: you use your own Date, Timeline and
+        Numbers columns.
+      </p>
+
+      <h2>1. Set your calendar</h2>
+      <ol class="steps">
+        <li>Open <b>Apps</b> → <b>Installed apps</b> → <b>Working Days &amp; Holidays</b> → <b>Settings</b>.</li>
+        <li>Choose the days your team works. Monday to Friday is the default; Sunday to Thursday or a six-day week work too.</li>
+        <li>Pick your country and, if it has them, your state or region. Official public holidays are then skipped.</li>
+        <li>Add company days off, such as an office closure between Christmas and New Year, and click <b>Save</b>.</li>
+      </ol>
+      <figure>
+        <img src="img/work-week.png" alt="Work week with Monday to Friday selected" loading="lazy" />
+      </figure>
+      <figure>
+        <img src="img/holidays.png" alt="United States, California selected with the next public holidays listed" loading="lazy" />
+        <figcaption>The next public holidays are listed so you can check them before saving.</figcaption>
+      </figure>
+      <p>
+        Use <b>Try it</b> at the bottom of the settings to see the date your automations will set — and which days were
+        skipped and why.
+      </p>
+      <figure>
+        <img src="img/try-it.png" alt="Try it: Nov 25 plus 3 working days is Dec 2, skipping Thanksgiving and the weekend" loading="lazy" />
+      </figure>
+
+      <h2>2. Add an automation</h2>
+      <ol class="steps">
+        <li>On a board, click <b>Automate</b> → <b>Create automation</b>.</li>
+        <li>Choose a trigger, for example <b>When column changes</b> → your Start date column.</li>
+        <li>In the action list, scroll to <b>Working Days &amp; Holidays</b> and pick an action.</li>
+        <li>Select your columns and the number of days, then click <b>Create automation</b>.</li>
+      </ol>
+
+      <h2>Actions</h2>
+      <table>
+        <thead>
+          <tr><th>Action</th><th>What it does</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Add working days</td><td>Sets a date column to a date plus N working days. Use a negative number to go back.</td></tr>
+          <tr><td>Move to next working day</td><td>If a date falls on a weekend, holiday or day off, moves it to the next working day.</td></tr>
+          <tr><td>Move to previous working day</td><td>The same, but moves the date back — handy for deadlines that must not slip.</td></tr>
+          <tr><td>Count working days between dates</td><td>Writes the number of working days between two dates (both included) to a Numbers column.</td></tr>
+          <tr><td>Count working days in timeline</td><td>Writes the number of working days inside a timeline to a Numbers column.</td></tr>
+          <tr><td>Set timeline by working days</td><td>Fills a timeline that starts on a date and lasts N working days.</td></tr>
+          <tr><td>Set timeline from dates</td><td>Fills a timeline from a start date and an end date column.</td></tr>
+          <tr><td>Set dates from timeline</td><td>Copies the start and the end of a timeline into two date columns.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Popular automations</h2>
+      <div class="card">When <b>Start</b> changes → set <b>Due</b> to <b>5</b> working days after <b>Start</b></div>
+      <div class="card">When <b>Due</b> changes → move a weekend or holiday to the next working day in <b>Due</b></div>
+      <div class="card">When <b>Start</b> changes → set <b>Timeline</b> to <b>10</b> working days from <b>Start</b></div>
+      <div class="card">When <b>Timeline</b> changes → set <b>Duration</b> to working days in <b>Timeline</b></div>
+      <p class="muted">
+        Tip: for “due in 3 business days after an item is created”, add monday's own automation “When an item is created,
+        set Start to today”, then the first automation above.
+      </p>
+
+      <h2>Questions</h2>
+      <details>
+        <summary>Which holidays are skipped?</summary>
+        <p>
+          Official public holidays of the chosen country, plus those of the state or region if you pick one. Bank,
+          school and optional holidays are not skipped. Add any extra closures as company days off.
+        </p>
+      </details>
+      <details>
+        <summary>What if a date has a time?</summary>
+        <p>The time is kept. The working day is checked for the date as monday.com stores it (UTC).</p>
+      </details>
+      <details>
+        <summary>Will an automation run in a loop?</summary>
+        <p>
+          No. Working Days writes a value only when it changes, so chains like “Due changes → move Due” stop by
+          themselves. Choose different columns for the start date and the result.
+        </p>
+      </details>
+      <details>
+        <summary>What happens on a timeline that falls on a weekend?</summary>
+        <p>
+          The move actions pull the start forward and the end back to working days. If the whole timeline is on
+          non-working days, the automation reports an error instead of guessing.
+        </p>
+      </details>
+      <details>
+        <summary>Does it work on the mobile app?</summary>
+        <p>
+          Yes — automations run on monday.com's servers, so dates update whether the change was made on the web or on a
+          phone. Settings and automations are set up on the web.
+        </p>
+      </details>
+
+      <h2>Support</h2>
+      <p>
+        Questions or ideas? Email <a href="mailto:chumachenko.vadym@gmail.com">chumachenko.vadym@gmail.com</a>.
+      </p>
+      <p class="muted">Public holiday data: date-holidays (CC BY-SA 4.0).</p>
+    </main>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "76807075799a4c879defb6611f18b595"}'></script>
+  </body>
+</html>
