@@ -111,7 +111,7 @@
           <h1 id="title" aria-label="Small apps for Wix, Shopify and monday.com by Winst0niuss"><span class="line">Small apps</span><span class="line">for Wix, Shopify</span><span class="line">&amp;&nbsp;monday.com</span><span class="line by">by <b>Winst0niuss</b></span></h1>
           <p class="hero-lead">Focused apps for websites, online stores and work management boards. Each one does a single job and needs no code to set up.</p>
           <div class="hero-actions">
-            <a class="btn primary lg" href="#platforms">Browse apps <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="btn primary lg" href="apps">Browse apps <span class="arrow" aria-hidden="true">→</span></a>
             <a class="btn lg" href="contact">Contact me</a>
           </div>
         </div>
@@ -128,30 +128,6 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="wrap section" id="platforms" aria-labelledby="platforms-title">
-      <div class="section-head">
-        <h2 id="platforms-title">Apps by platform</h2>
-        <p>Pick your platform to see its apps.</p>
-      </div>
-    <div class="platforms">
-      <a class="platform-card wix reveal" href="wix">
-        <h3 class="platform-name">Wix</h3>
-        <span class="platform-text">Apps for Wix sites and online stores</span>
-        <span class="platform-foot"><span class="icons" data-icons="wix"></span><span class="platform-count" data-count="wix"></span><span class="go" aria-hidden="true">→</span></span>
-      </a>
-      <a class="platform-card shopify reveal" href="shopify">
-        <h3 class="platform-name">Shopify</h3>
-        <span class="platform-text">Apps for Shopify online stores</span>
-        <span class="platform-foot"><span class="icons" data-icons="shopify"></span><span class="platform-count" data-count="shopify"></span><span class="go" aria-hidden="true">→</span></span>
-      </a>
-      <a class="platform-card monday reveal" href="monday">
-        <h3 class="platform-name">monday.com</h3>
-        <span class="platform-text">Apps for monday.com work management boards</span>
-        <span class="platform-foot"><span class="icons" data-icons="monday"></span><span class="platform-count" data-count="monday"></span><span class="go" aria-hidden="true">→</span></span>
-      </a>
-    </div>
     </section>
 
     <section class="wrap section" aria-labelledby="why-title">
@@ -315,11 +291,8 @@
     $("progress").addEventListener("animationend", () => showSlide(currentSlide() + 1));
   };
 
-  // Без карусели и счётчиков остаются заголовок и плитки; ошибка — в консоли
-  loadPlatforms().then((platforms) => {
-    fillPlatformCards(platforms);
-    startCarousel(platforms);
-  }).catch((error) => console.error(error));
+  // Без карусели остаётся заголовок; ошибка — в консоли
+  loadPlatforms().then(startCarousel).catch((error) => console.error(error));
 </script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "76807075799a4c879defb6611f18b595"}'></script>
 </body>

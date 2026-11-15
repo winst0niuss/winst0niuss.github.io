@@ -16,7 +16,7 @@ body { margin:0; overflow-x:clip; background:var(--bg); color:var(--ink); font:1
 a { color:inherit; }
 img { max-width:100%; }
 :focus-visible { outline:2px solid var(--lime); outline-offset:3px; border-radius:6px; }
-.wrap { width:min(1240px, 100%); margin:0 auto; padding:0 24px; }
+.wrap { width:min(1240px, 100%); margin:0 auto; padding-inline:24px; }
 
 /* Плавный переход между страницами сайта (Chrome, Safari 18+; в остальных — обычный переход) */
 @view-transition { navigation:auto; }
@@ -130,7 +130,7 @@ img { max-width:100%; }
 }
 
 @media (max-width:480px) {
-  .wrap { padding:0 16px; }
+  .wrap { padding-inline:16px; }
   .btn { padding:10px 14px; font-size:15px; }
 }
 @media (prefers-reduced-motion:reduce) {
