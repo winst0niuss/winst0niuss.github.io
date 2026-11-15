@@ -5,8 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Wix apps — winst0niuss</title>
 <meta name="description" content="Apps for Wix sites and online stores: size charts, quantity and wholesale discounts, make an offer, price on request and more.">
+<link rel="canonical" href="https://winst0niuss.github.io/wix">
 <meta name="theme-color" content="#0a0d0c">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://winst0niuss.github.io/wix">
 <meta property="og:title" content="Wix apps — winst0niuss">
 <meta property="og:description" content="Apps for Wix sites and online stores: size charts, quantity and wholesale discounts, make an offer, price on request and more.">
 <meta property="og:image" content="https://winst0niuss.github.io/img/logo.png">
@@ -17,26 +20,57 @@
 <link rel="stylesheet" href="apps.css">
 </head>
 <body>
-  <header class="page-head">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
     <div class="wrap nav">
-      <a class="brand" href="./"><img src="favicon.svg" alt="" width="30" height="30">winst0niuss</a>
-      <nav aria-label="Main"><div class="menu"><a class="nav-btn primary" href="apps">Apps<span class="caret" aria-hidden="true">▾</span></a><ul class="menu-list"><li><a href="wix" aria-current="page">Wix apps<small>Sites and online stores</small></a></li><li><a href="shopify">Shopify apps<small>Online stores</small></a></li><li><a href="monday">monday.com apps<small>Work management boards</small></a></li></ul></div><a class="nav-btn" href="contact">Contact</a></nav>
-    </div>
-    <div class="wrap page-title">
-      <h1>Wix apps</h1>
-      <p class="lead">For Wix sites and online stores. Each app solves a single problem and needs no code to set up.</p>
-      <nav class="filters" aria-label="Platforms"><a class="chip" href="wix" aria-current="page">Wix</a><a class="chip" href="shopify">Shopify</a><a class="chip" href="monday">monday.com</a></nav>
+      <a class="brand" href="./"><img src="favicon.svg" alt="" width="30" height="30"><span>winst0niuss</span></a>
+      <nav class="nav-links" aria-label="Main">
+        <div class="menu">
+          <button type="button" class="btn primary" aria-expanded="false" aria-controls="apps-menu">Apps<svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="menu-panel" id="apps-menu" hidden>
+            <ul>
+            <li><a class="wix" href="wix" aria-current="page"><span class="menu-mark" aria-hidden="true">W</span><span class="menu-text"><span class="menu-name">Wix apps</span><span class="menu-note">Sites and online stores</span></span></a></li>
+            <li><a class="shopify" href="shopify"><span class="menu-mark" aria-hidden="true">S</span><span class="menu-text"><span class="menu-name">Shopify apps</span><span class="menu-note">Online stores</span></span></a></li>
+            <li><a class="monday" href="monday"><span class="menu-mark" aria-hidden="true">m</span><span class="menu-text"><span class="menu-name">monday.com apps</span><span class="menu-note">Work management boards</span></span></a></li>
+            </ul>
+            <div class="menu-all"><a href="apps">All platforms <span aria-hidden="true">→</span></a></div>
+          </div>
+        </div>
+        <a class="btn ghost" href="contact">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <main class="wrap" data-platform="Wix">
-      <div class="filters" role="group" aria-label="Filter by price">
-        <button type="button" class="chip" data-filter="all" aria-pressed="true">Any price <b></b></button>
-        <button type="button" class="chip" data-filter="paid" aria-pressed="false">Paid <b></b></button>
-        <button type="button" class="chip" data-filter="free" aria-pressed="false">Free <b></b></button>
+  <div class="page-head wix">
+    <div class="wrap page-title">
+      <p class="crumbs"><a href="apps">Apps</a> / Wix</p>
+      <h1>Wix apps</h1>
+      <p class="lead">For Wix sites and online stores. Each app solves a single problem and needs no code to set up.</p>
+      <nav class="switcher" aria-label="Platforms"><a href="wix" aria-current="page">Wix</a><a href="shopify">Shopify</a><a href="monday">monday.com</a></nav>
+    </div>
+  </div>
+
+  <main class="wrap" id="main" data-platform="Wix">
+    <div class="toolbar">
+      <div class="toolbar-row">
+        <div class="search" role="search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
+          <input type="search" id="search" placeholder="Search apps" aria-label="Search Wix apps" autocomplete="off">
+        </div>
+        <div class="chips" role="group" aria-label="Filter by price">
+          <button type="button" class="chip" data-filter="all" aria-pressed="true">Any price <b></b></button>
+          <button type="button" class="chip" data-filter="paid" aria-pressed="false">Paid <b></b></button>
+          <button type="button" class="chip" data-filter="free" aria-pressed="false">Free <b></b></button>
+        </div>
+        <p class="result-count" id="result-count" aria-live="polite"></p>
       </div>
-      <p class="empty" id="empty" hidden>No apps match this filter yet.</p>
-      <div class="apps">
+    </div>
+    <div class="empty" id="empty" hidden>
+      <h2>No apps found</h2>
+      <p>Try another word or show apps at any price.</p>
+      <button type="button" class="btn" id="reset">Clear search and filters</button>
+    </div>
+    <div class="apps">
       <article class="app fitly">
         <div class="app-copy">
           <div class="app-top">
@@ -828,10 +862,33 @@
       </div>
   </main>
 
-  <footer>
-    <div class="wrap"><p>© 2026 <span style="font-family:var(--mono)">winst0niuss</span> · Independent apps for Wix, Shopify and monday.com. Not affiliated with or endorsed by Wix.com Ltd., Shopify Inc. or monday.com Ltd. · <a href="contact">Contact</a> · <a href="privacy">Privacy policies</a></p></div>
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand" href="./"><img src="favicon.svg" alt="" width="30" height="30"><span>winst0niuss</span></a>
+        <p>Small, focused apps for Wix, Shopify and monday.com. Each one does a single job.</p>
+      </div>
+      <nav aria-labelledby="footer-apps">
+        <h2 id="footer-apps">Apps</h2>
+        <ul>
+          <li><a href="wix">Wix apps</a></li>
+          <li><a href="shopify">Shopify apps</a></li>
+          <li><a href="monday">monday.com apps</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="footer-info">
+        <h2 id="footer-info">Info</h2>
+        <ul>
+          <li><a href="contact">Contact</a></li>
+          <li><a href="privacy">Privacy policies</a></li>
+          <li><a href="https://github.com/winst0niuss">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="wrap legal"><p>© 2026 <span class="mono">winst0niuss</span> · Independent apps for Wix, Shopify and monday.com. Not affiliated with or endorsed by Wix.com Ltd., Shopify Inc. or monday.com Ltd.</p></div>
   </footer>
 
+<script src="site.js"></script>
 <script src="apps.js"></script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "76807075799a4c879defb6611f18b595"}'></script>
 </body>

@@ -1,67 +1,140 @@
-/* Общее для главной и страницы приложений: цвета, шрифты, шапка и подвал */
+/* Общее для страниц сайта: токены, шапка с меню, кнопки, плитки платформ, подвал */
 :root {
   color-scheme: dark;
-  --bg:#0a0d0c; --panel:#111614; --panel-2:#181e1b; --line:#27302c;
-  --ink:#f2f6f3; --muted:#9daaa4; --lime:#c6f135; --lime-ink:#0a0d0c;
+  --bg:#0a0d0c; --panel:#111614; --panel-2:#181e1b; --line:#27302c; --line-2:#36423d;
+  --ink:#f2f6f3; --soft:#c9d3ce; --muted:#9daaa4; --lime:#c6f135; --lime-ink:#0a0d0c;
   --display:"Bricolage Grotesque", Impact, "Arial Narrow", sans-serif;
   --body:Geist, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono:"Geist Mono", ui-monospace, Menlo, Consolas, monospace;
+  --header-h:68px;
+  --ease:cubic-bezier(.2,.8,.2,1);
 }
 * { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body { margin:0; overflow-x:clip; background:var(--bg); color:var(--ink); font:17px/1.55 var(--body); }
+/* Якоря не прячутся под липкой шапкой */
+html { scroll-behavior:smooth; scroll-padding-top:calc(var(--header-h) + 16px); }
+body { margin:0; overflow-x:clip; background:var(--bg); color:var(--ink); font:17px/1.55 var(--body); -webkit-font-smoothing:antialiased; }
 a { color:inherit; }
-:focus-visible { outline:2px solid var(--lime); outline-offset:3px; border-radius:4px; }
+img { max-width:100%; }
+:focus-visible { outline:2px solid var(--lime); outline-offset:3px; border-radius:6px; }
 .wrap { width:min(1240px, 100%); margin:0 auto; padding:0 24px; }
 
-/* Шапка: Apps — главная кнопка, Contact — с рамкой */
-.nav { display:flex; justify-content:space-between; align-items:center; gap:16px; padding-top:20px; padding-bottom:20px; }
+/* Плавный переход между страницами сайта (Chrome, Safari 18+; в остальных — обычный переход) */
+@view-transition { navigation:auto; }
+
+/* Ссылка «к содержимому» для клавиатуры: видна только в фокусе */
+.skip { position:fixed; top:12px; left:12px; z-index:100; padding:10px 16px; border-radius:10px; background:var(--lime); color:var(--lime-ink); font-weight:600; text-decoration:none; transform:translateY(-150%); transition:transform .2s; }
+.skip:focus-visible { transform:none; }
+
+/* Шапка: липкая, полупрозрачная, с размытием фона */
+.site-header { position:sticky; top:0; z-index:50; view-transition-name:site-header;
+  border-bottom:1px solid rgba(39,48,44,.7); background:rgba(10,13,12,.72); backdrop-filter:blur(16px) saturate(140%); -webkit-backdrop-filter:blur(16px) saturate(140%); }
+.nav { display:flex; justify-content:space-between; align-items:center; gap:16px; min-height:var(--header-h); }
 .brand { display:flex; align-items:center; gap:10px; font:600 17px var(--mono); text-decoration:none; }
 .brand img { width:30px; height:30px; }
-.nav nav { display:flex; gap:10px; }
-.nav-btn { white-space:nowrap; padding:10px 18px; border:1px solid var(--line); border-radius:12px; background:var(--panel); font:600 16px/1.2 var(--body); text-decoration:none; transition:transform .15s, border-color .15s, color .15s; }
-.nav-btn:hover { transform:translateY(-2px); border-color:var(--lime); color:var(--lime); }
-.nav-btn.primary { border-color:var(--lime); background:var(--lime); color:var(--lime-ink); }
-.nav-btn.primary:hover { color:var(--lime-ink); }
-/* Текущая страница: кнопка не прыгает и отмечена линией снизу */
-.nav-btn[aria-current="page"] { box-shadow:inset 0 -3px 0 rgba(10,13,12,.35); }
-.nav-btn[aria-current="page"]:hover { transform:none; }
+.nav-links { display:flex; align-items:center; gap:8px; }
 
-/* Меню Apps: открывается при наведении и фокусе, сама кнопка ведёт на выбор платформы (на телефоне — сразу туда) */
-/* flex: кнопка в меню стоит на одной линии с Contact */
-.menu { position:relative; display:flex; }
-.menu .caret { display:inline-block; margin-left:4px; font-size:.75em; transition:transform .15s; }
-.menu-list { position:absolute; top:calc(100% + 8px); right:0; z-index:10; min-width:220px; margin:0; padding:6px; list-style:none;
-  border:1px solid var(--line); border-radius:14px; background:var(--panel); box-shadow:0 16px 40px rgba(0,0,0,.45);
-  visibility:hidden; opacity:0; transform:translateY(-4px); transition:opacity .15s, transform .15s, visibility .15s; }
-/* Мостик над списком: курсор не теряет меню в зазоре под кнопкой */
-.menu-list::before { content:""; position:absolute; left:0; right:0; top:-10px; height:10px; }
-.menu:hover .menu-list, .menu:focus-within .menu-list { visibility:visible; opacity:1; transform:none; }
-.menu:hover .caret, .menu:focus-within .caret { transform:rotate(180deg); }
-.menu-list a { display:block; padding:9px 12px; border-radius:9px; font:600 15px/1.25 var(--body); text-decoration:none; }
-.menu-list a small { display:block; font:400 12.5px/1.3 var(--body); color:var(--muted); }
-.menu-list a:hover, .menu-list a:focus-visible { background:var(--panel-2); color:var(--lime); }
-.menu-list a[aria-current="page"] { color:var(--lime); }
+/* Кнопки */
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:44px; padding:10px 18px; border:1px solid var(--line); border-radius:12px; background:var(--panel); color:var(--ink); font:600 16px/1.2 var(--body); text-decoration:none; white-space:nowrap; cursor:pointer; transition:transform .15s, border-color .15s, color .15s, background-color .15s; }
+.btn:hover { border-color:var(--lime); color:var(--lime); }
+.btn.primary { border-color:var(--lime); background:var(--lime); color:var(--lime-ink); }
+.btn.primary:hover { background:#d4f75e; color:var(--lime-ink); }
+.btn.ghost { border-color:transparent; background:transparent; }
+.btn.ghost:hover { border-color:var(--line); background:var(--panel); color:var(--ink); }
+.btn.ghost[aria-current="page"] { color:var(--lime); }
+.btn.lg { min-height:52px; padding:14px 24px; font-size:17px; border-radius:14px; }
+.btn .arrow { transition:transform .2s var(--ease); }
+.btn:hover .arrow { transform:translateX(3px); }
+
+/* Меню Apps: кнопка-раскрывашка (disclosure) — работает мышью, пальцем и с клавиатуры (site.js) */
+.menu { position:relative; }
+.menu > .btn .caret { width:12px; height:12px; transition:transform .2s var(--ease); }
+.menu > .btn[aria-expanded="true"] .caret { transform:rotate(180deg); }
+.menu-panel { position:absolute; top:calc(100% + 10px); right:0; z-index:10; width:min(300px, calc(100vw - 32px)); padding:8px;
+  border:1px solid var(--line); border-radius:16px; background:var(--panel); box-shadow:0 24px 60px rgba(0,0,0,.55);
+  transform-origin:top right; animation:menu-in .18s var(--ease); }
+.menu-panel[hidden] { display:none; }
+@keyframes menu-in { from { opacity:0; transform:translateY(-6px) scale(.98); } }
+.menu-panel ul { margin:0; padding:0; list-style:none; }
+.menu-panel a { display:flex; align-items:center; gap:12px; padding:10px 12px; border-radius:11px; text-decoration:none; }
+.menu-panel a:hover, .menu-panel a:focus-visible { background:var(--panel-2); }
+.menu-panel a[aria-current="page"] .menu-name { color:var(--lime); }
+.menu-mark { flex:none; display:grid; place-items:center; width:36px; height:36px; border-radius:10px; font:800 15px var(--display); color:var(--lime-ink); background:rgb(var(--glow, 198,241,53)); }
+.menu-text { display:flex; flex-direction:column; min-width:0; }
+.menu-name { font:600 15px/1.25 var(--body); }
+.menu-note { font-size:13px; line-height:1.3; color:var(--muted); }
+.menu-all { margin-top:6px; padding-top:6px; border-top:1px solid var(--line); }
+.menu-all a { justify-content:space-between; font-size:14px; font-weight:500; color:var(--soft); }
+/* Узкий экран: панель во всю ширину под шапкой (она — ближайший позиционированный предок) */
+@media (max-width:560px) { .menu { position:static; } .menu-panel { top:calc(100% + 8px); left:16px; right:16px; width:auto; } }
+
+/* Цвет платформы: метки в меню, плитки, подписи */
+.wix { --glow:198,241,53; }
+.shopify { --glow:45,212,191; }
+.monday { --glow:251,113,133; }
+
+/* Заголовок внутренних страниц */
+.page-head { position:relative; border-bottom:1px solid var(--line); overflow:hidden; }
+.page-head::before { content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(60% 90% at 85% 0%, rgba(var(--glow, 198,241,53),.13), transparent 70%); }
+.page-head > * { position:relative; }
+.page-title { padding-top:clamp(28px, 5vw, 56px); padding-bottom:clamp(28px, 4vw, 44px); }
+.crumbs { margin:0 0 14px; font:500 13px var(--mono); color:var(--muted); }
+.crumbs a { text-decoration:none; }
+.crumbs a:hover { color:var(--lime); }
+.page-title h1 { margin:0; font:800 clamp(2.5rem, 7vw, 4.5rem)/1 var(--display); letter-spacing:-.035em; text-wrap:balance; }
+.lead { margin:14px 0 0; max-width:600px; font-size:clamp(16px, 1.8vw, 19px); color:var(--soft); text-wrap:pretty; }
+
+/* Заголовок раздела */
+.section { padding-top:clamp(56px, 8vw, 96px); }
+.section-head { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:end; gap:8px 24px; margin-bottom:24px; }
+.section-head h2 { margin:0; font:800 clamp(1.9rem, 4vw, 2.8rem)/1.02 var(--display); letter-spacing:-.03em; text-wrap:balance; }
+.section-head p { margin:0; max-width:460px; color:var(--muted); }
 
 /* Плитки платформ: главная и страница Apps */
-.platforms { display:grid; grid-template-columns:repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap:16px; }
-.platform-card { --glow:198,241,53; position:relative; display:flex; flex-direction:column; gap:6px; min-height:190px; padding:22px; border:1px solid var(--line); border-radius:18px; text-decoration:none;
-  background:radial-gradient(120% 90% at 100% 0%, rgba(var(--glow),.16), transparent 60%), var(--panel); transition:transform .2s, border-color .2s; }
-.platform-card:hover { transform:translateY(-4px); border-color:rgb(var(--glow)); }
-.platform-card.shopify { --glow:45,212,191; }
-.platform-card.monday { --glow:251,113,133; }
-.platform-name { font:800 clamp(1.9rem, 3.4vw, 2.5rem)/1 var(--display); letter-spacing:-.03em; }
-.platform-text { color:var(--muted); }
-.platform-count { margin-top:auto; font:500 13px var(--mono); color:rgb(var(--glow)); }
-.platform-card .arrow { position:absolute; right:22px; bottom:18px; font-size:22px; transition:transform .2s; }
-.platform-card:hover .arrow { transform:translateX(4px); color:rgb(var(--glow)); }
+.platforms { display:grid; grid-template-columns:repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap:16px; }
+.platform-card { position:relative; display:flex; flex-direction:column; gap:8px; min-height:240px; padding:24px; border:1px solid var(--line); border-radius:20px; text-decoration:none; overflow:hidden;
+  background:radial-gradient(120% 90% at 100% 0%, rgba(var(--glow),.18), transparent 60%), var(--panel); transition:transform .25s var(--ease), border-color .25s; }
+.platform-card:hover { transform:translateY(-4px); border-color:rgba(var(--glow),.7); }
+.platform-name { margin:0 0 4px; font:800 clamp(2rem, 3.4vw, 2.6rem)/1 var(--display); letter-spacing:-.03em; }
+.platform-text { max-width:30ch; color:var(--muted); }
+.platform-foot { display:flex; align-items:center; gap:12px; margin-top:auto; padding-top:16px; }
+.platform-count { font:500 13px var(--mono); color:rgb(var(--glow)); }
+.platform-card .go { display:grid; place-items:center; width:44px; height:44px; margin-left:auto; border:1px solid var(--line-2); border-radius:50%; font-size:18px; transition:transform .25s var(--ease), background-color .25s, color .25s, border-color .25s; }
+.platform-card:hover .go { transform:translateX(4px); border-color:rgb(var(--glow)); background:rgb(var(--glow)); color:var(--lime-ink); }
+/* Иконки приложений платформы стопкой (заполняет platforms.js) */
+.icons { display:flex; }
+.icons:empty { display:none; }
+.icons img, .icons span { width:34px; height:34px; margin-left:-8px; border:2px solid var(--panel); border-radius:10px; background:var(--panel-2); }
+.icons :first-child { margin-left:0; }
+.icons span { display:grid; place-items:center; font:500 11px var(--mono); color:var(--soft); }
 
-/* Подвал */
-footer { margin-top:clamp(48px, 6vw, 80px); border-top:1px solid var(--line); padding-top:22px; padding-bottom:30px; }
-footer p { margin:0; font-size:14px; color:var(--muted); text-align:center; }
+/* Подвал: бренд и колонки ссылок */
+.site-footer { margin-top:clamp(64px, 9vw, 112px); border-top:1px solid var(--line); background:linear-gradient(180deg, var(--panel), var(--bg) 70%); }
+.footer-grid { display:grid; grid-template-columns:minmax(0, 2fr) repeat(2, minmax(0, 1fr)); gap:32px; padding-top:44px; padding-bottom:28px; }
+.footer-grid p { margin:12px 0 0; max-width:340px; font-size:15px; color:var(--muted); }
+.footer-grid h2 { margin:4px 0 12px; font:500 12px var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+.footer-grid ul { margin:0; padding:0; list-style:none; }
+.footer-grid li a { display:inline-block; padding:5px 0; font-size:15px; text-decoration:none; color:var(--soft); }
+.footer-grid li a:hover { color:var(--lime); }
+.mono { font-family:var(--mono); }
+.legal { padding-bottom:28px; font-size:13px; color:var(--muted); }
+.legal p { margin:0; padding-top:18px; border-top:1px solid var(--line); }
+@media (max-width:720px) { .footer-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); } .footer-grid > :first-child { grid-column:1 / -1; } }
 
-@media (max-width:420px) { .nav-btn { padding:9px 14px; font-size:15px; } }
+/* Появление при прокрутке — только где браузер умеет scroll-driven animations и пользователь не против движения */
+@media (prefers-reduced-motion:no-preference) {
+  @supports (animation-timeline:view()) {
+    .reveal { animation:reveal linear both; animation-timeline:view(); animation-range:entry 0% entry 40%; }
+    @keyframes reveal { from { opacity:0; transform:translateY(28px); } }
+  }
+}
+
+@media (max-width:480px) {
+  .wrap { padding:0 16px; }
+  .btn { padding:10px 14px; font-size:15px; }
+}
 @media (prefers-reduced-motion:reduce) {
   html { scroll-behavior:auto; }
-  *, *::before { animation:none !important; transition:none !important; }
+  @view-transition { navigation:none; }
+  *, *::before, *::after { animation:none !important; transition:none !important; }
 }

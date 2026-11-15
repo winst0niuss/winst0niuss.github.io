@@ -1,33 +1,43 @@
-/* Страницы платформ (wix, shopify, monday): заголовок, фильтр цены и карточки приложений */
-/* Заголовок страницы */
-.page-head { position:relative; border-bottom:1px solid var(--line); overflow:hidden; }
-.page-head::before { content:""; position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(60% 90% at 85% 0%, rgba(198,241,53,.12), transparent 70%); }
-.page-head > * { position:relative; }
-.page-title { padding-top:clamp(16px, 3vw, 32px); padding-bottom:clamp(28px, 4vw, 44px); }
-h1 { margin:0; font:800 clamp(2.5rem, 7vw, 4.5rem)/1 var(--display); letter-spacing:-.035em; }
-.lead { margin:14px 0 0; max-width:560px; font-size:clamp(16px, 1.8vw, 19px); color:#c9d3ce; }
+/* Страницы платформ (wix, shopify, monday): переключатель платформ, поиск и фильтр, карточки приложений */
 
-/* Чипы фильтров: платформа и цена */
-.filters { display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
-.chip { display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border:1px solid var(--line); border-radius:99px; background:var(--panel); color:var(--ink); font:500 14px var(--body); cursor:pointer; transition:border-color .15s, color .15s, background-color .15s; }
+/* Переключатель платформ под заголовком: сегменты-ссылки */
+.switcher { display:inline-flex; flex-wrap:wrap; gap:4px; margin-top:24px; padding:4px; border:1px solid var(--line); border-radius:14px; background:var(--panel); }
+.switcher a { display:inline-flex; align-items:center; min-height:40px; padding:8px 16px; border-radius:10px; font:600 15px var(--body); text-decoration:none; color:var(--soft); transition:background-color .15s, color .15s; }
+.switcher a:hover { background:var(--panel-2); color:var(--ink); }
+.switcher a[aria-current="page"] { background:var(--lime); color:var(--lime-ink); }
+
+/* Панель поиска и фильтра: прилипает под шапкой, пока листаешь список */
+.toolbar { position:sticky; top:var(--header-h); z-index:20; margin:0 -24px; padding:14px 24px; background:rgba(10,13,12,.82); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--line); }
+.toolbar-row { display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px; }
+.search { position:relative; flex:1 1 280px; max-width:420px; }
+.search svg { position:absolute; left:14px; top:50%; width:18px; height:18px; transform:translateY(-50%); fill:none; stroke:var(--muted); stroke-width:2; pointer-events:none; }
+.search input { width:100%; min-height:44px; padding:10px 14px 10px 42px; border:1px solid var(--line); border-radius:12px; background:var(--panel); color:var(--ink); font:16px var(--body); transition:border-color .15s; }
+.search input::placeholder { color:var(--muted); }
+.search input:hover { border-color:var(--line-2); }
+.search input:focus-visible { outline:none; border-color:var(--lime); box-shadow:0 0 0 3px rgba(198,241,53,.2); }
+.chips { display:flex; flex-wrap:wrap; gap:6px; }
+.chip { display:inline-flex; align-items:center; gap:8px; min-height:40px; padding:8px 14px; border:1px solid var(--line); border-radius:99px; background:var(--panel); color:var(--ink); font:500 14px var(--body); cursor:pointer; transition:border-color .15s, color .15s, background-color .15s; }
 .chip:hover { border-color:var(--lime); color:var(--lime); }
 .chip b { font:500 12px var(--mono); color:var(--muted); }
 .chip[aria-pressed="true"] { border-color:var(--lime); background:var(--lime); color:var(--lime-ink); }
 .chip[aria-pressed="true"] b { color:var(--lime-ink); }
-/* Переход между платформами: чипы-ссылки, текущая платформа выделена */
-a.chip { text-decoration:none; }
-.chip[aria-current="page"] { border-color:var(--lime); background:var(--lime); color:var(--lime-ink); cursor:default; }
-.app[hidden] { display:none; }
-/* Плитки платформ на странице Apps */
-main > .platforms { padding-top:clamp(32px, 4vw, 48px); }
-.empty { padding-top:clamp(32px, 4vw, 48px); color:var(--muted); }
-.empty + .apps { padding-top:16px; }
+.result-count { margin:0 0 0 auto; font:500 13px var(--mono); color:var(--muted); }
+/* Телефон: панель не липнет — иначе занимает четверть экрана */
+@media (max-width:700px) { .toolbar { position:static; } }
+@media (max-width:480px) { .toolbar { margin:0 -16px; padding:12px 16px; } .result-count { margin-left:0; } }
 
-/* Карточки приложений */
-.apps { padding-top:clamp(32px, 4vw, 48px); display:grid; grid-template-columns:repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap:20px; }
-.app { --glow:198,241,53; --x:50%; --y:0%; position:relative; display:flex; flex-direction:column; gap:16px; padding:16px; border:1px solid var(--line); border-radius:18px; overflow:hidden;
-  background:radial-gradient(320px circle at var(--x) var(--y), rgba(var(--glow),.13), transparent 70%), var(--panel); }
+/* Пусто: что не нашлось и как сбросить */
+.empty { padding:clamp(40px, 6vw, 72px) 0; text-align:center; }
+.empty[hidden] { display:none; }
+.empty h2 { margin:0 0 8px; font:800 1.6rem/1.1 var(--display); }
+.empty p { margin:0 0 20px; color:var(--muted); }
+
+/* Сетка карточек */
+.apps { padding-top:clamp(28px, 4vw, 40px); display:grid; grid-template-columns:repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap:20px; }
+.app[hidden] { display:none; }
+.app { --glow:198,241,53; --x:50%; --y:0%; position:relative; display:flex; flex-direction:column; gap:18px; padding:14px 14px 18px; border:1px solid var(--line); border-radius:20px;
+  background:radial-gradient(360px circle at var(--x) var(--y), rgba(var(--glow),.12), transparent 70%), var(--panel); transition:border-color .25s, transform .25s var(--ease); }
+.app:hover { border-color:rgba(var(--glow),.45); }
 .app.fitly { --glow:45,212,191; }
 .app.size { --glow:77,140,255; }
 .app.offer { --glow:250,204,21; }
@@ -67,34 +77,48 @@ main > .platforms { padding-top:clamp(32px, 4vw, 48px); }
   .app:nth-child(33) { order:29; }
   .app:nth-child(34) { order:30; }
 }
-.app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
-.app-top { display:flex; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
-.app-top img { flex:none; }
-.app-top img { width:40px; height:40px; border-radius:10px; }
+.app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; padding:0 6px; }
+.app-top { display:flex; flex-wrap:wrap; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
+.app-top img { flex:none; width:44px; height:44px; border-radius:12px; }
 /* Название — справа от иконки, метки — у правого края */
-.app-top { flex-wrap:wrap; }
-.app-top h2 { flex:1 1 170px; min-width:0; margin:0; }
-.tag { padding:4px 10px; border:1px solid var(--line); border-radius:99px; font:500 11px var(--mono); white-space:nowrap; }
-h2 { margin:0 0 8px; font:800 1.45rem/1.1 var(--display); letter-spacing:-.02em; }
-/* Главная фраза карточки: крупнее и ярче списка под ней */
-.app-copy > p { margin:0 0 14px; font-size:17px; line-height:1.35; font-weight:500; color:var(--ink); }
-.app ul { margin:0 0 18px; padding:14px 0 0; border-top:1px solid var(--line); list-style:none; width:100%; }
-.app li { position:relative; padding:0 0 6px 14px; font-size:13px; line-height:1.45; color:var(--muted); }
-.app li::before { content:""; position:absolute; left:0; top:.55em; width:5px; height:5px; border-radius:50%; background:rgb(var(--glow)); }
-.actions { display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center; margin-top:auto; font-size:13px; font-weight:500; }
-.actions a { text-decoration:none; }
-.actions a:not(.cta):hover { text-decoration:underline; }
-.cta { padding:8px 12px; border-radius:10px; background:var(--lime); color:var(--lime-ink); font-weight:600; transition:transform .15s; }
-.cta:hover { transform:translateY(-2px); }
-/* Ещё не в App Market: оранжевая кнопка на месте App Market, без ссылки */
-.cta.soon { background:#ff9f1c; color:#1a0f00; cursor:default; }
-.cta.soon:hover { transform:none; }
+.app-top h2 { flex:1 1 170px; min-width:0; margin:0; font:800 1.45rem/1.1 var(--display); letter-spacing:-.02em; text-wrap:balance; }
 .tags { display:flex; align-items:center; gap:6px; }
-/* Полностью бесплатное приложение: в стиле прежней метки Live, на 25% крупнее */
+.tag { padding:4px 10px; border:1px solid var(--line); border-radius:99px; font:500 11px var(--mono); white-space:nowrap; }
+/* Полностью бесплатное приложение: лаймовая метка на 25% крупнее (решение пользователя 2026-11-03) */
 .tag.free { padding:5px 12.5px; border-color:var(--lime); color:var(--lime); font-size:13.75px; }
+/* Главная фраза карточки: крупнее и ярче списка под ней */
+.app-copy > p { margin:0 0 14px; font-size:17px; line-height:1.4; font-weight:500; color:var(--ink); text-wrap:pretty; }
+.app ul { margin:0 0 20px; padding:14px 0 0; border-top:1px solid var(--line); list-style:none; width:100%; }
+.app li { position:relative; padding:0 0 7px 16px; font-size:14px; line-height:1.45; color:var(--muted); }
+.app li::before { content:""; position:absolute; left:0; top:.55em; width:6px; height:6px; border-radius:50%; background:rgb(var(--glow)); }
 
-/* Скриншот приложения */
-.shot { display:block; order:-1; overflow:hidden; border:1px solid var(--line); border-radius:12px; }
-.shot img { display:block; width:100%; height:auto; }
-a.shot { transition:transform .2s, border-color .2s; }
-a.shot:hover { transform:translateY(-4px); border-color:var(--lime); }
+/* Действия: главная кнопка, вторичные — рамкой, Terms и Privacy — тихими ссылками справа */
+.actions { display:flex; flex-wrap:wrap; align-items:center; gap:8px; width:100%; margin-top:auto; font-size:14px; font-weight:600; }
+.actions a { display:inline-flex; align-items:center; min-height:40px; padding:8px 14px; border:1px solid var(--line-2); border-radius:11px; text-decoration:none; transition:transform .15s, border-color .15s, color .15s, background-color .15s; }
+.actions a:hover { border-color:var(--lime); color:var(--lime); }
+.actions a[href$="/terms"], .actions a[href$="/privacy"] { min-height:32px; padding:6px 4px; border:0; font-size:13px; font-weight:500; color:var(--muted); }
+.actions a[href$="/terms"]:hover, .actions a[href$="/privacy"]:hover { color:var(--ink); text-decoration:underline; }
+/* Первая тихая ссылка уходит вправо */
+.actions :is(.cta, a:not([href$="/terms"]):not([href$="/privacy"])) + :is(a[href$="/terms"], a[href$="/privacy"]) { margin-left:auto; }
+/* Узкая карточка: Terms и Privacy — вместе отдельной строкой */
+.app-copy { container-type:inline-size; }
+@container (max-width:330px) {
+  .actions::after { content:""; flex-basis:100%; order:1; }
+  .actions a[href$="/terms"], .actions a[href$="/privacy"] { order:2; margin-left:0 !important; }
+}
+.actions .cta { border-color:var(--lime); background:var(--lime); color:var(--lime-ink); }
+.actions .cta:hover { background:#d4f75e; color:var(--lime-ink); transform:translateY(-2px); }
+/* Ещё не в маркете: оранжевая кнопка на месте ссылки, без ссылки (решение пользователя 2026-11-03) */
+.cta.soon { display:inline-flex; align-items:center; min-height:40px; padding:8px 14px; border-radius:11px; background:#ff9f1c; color:#1a0f00; cursor:default; }
+
+/* Скриншот: на каждой странице платформы снимки одной пропорции, width и height держат место до загрузки */
+.shot { display:block; order:-1; overflow:hidden; border:1px solid var(--line); border-radius:14px; background:#0e1312; }
+.shot img { display:block; width:100%; height:auto; transition:transform .5s var(--ease); }
+a.shot:hover img { transform:scale(1.03); }
+
+/* Карточки появляются при прокрутке (анимация reveal — в site.css) */
+@media (prefers-reduced-motion:no-preference) {
+  @supports (animation-timeline:view()) {
+    .app { animation:reveal linear both; animation-timeline:view(); animation-range:entry 0% entry 35%; }
+  }
+}

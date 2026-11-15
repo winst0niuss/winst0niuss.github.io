@@ -4,93 +4,207 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>winst0niuss — small apps for Wix, Shopify and monday.com</title>
-<meta name="description" content="Focused apps for Wix sites and stores, Shopify stores and monday.com boards. Each one does a single job.">
+<meta name="description" content="Focused apps for Wix sites and stores, Shopify stores and monday.com boards. Each one does a single job and needs no code to set up.">
+<link rel="canonical" href="https://winst0niuss.github.io/">
 <meta name="theme-color" content="#0a0d0c">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://winst0niuss.github.io/">
 <meta property="og:title" content="winst0niuss — small apps for Wix, Shopify and monday.com">
-<meta property="og:description" content="Small apps for Wix, Shopify and monday.com.">
+<meta property="og:description" content="Focused apps for Wix sites and stores, Shopify stores and monday.com boards. Each one does a single job and needs no code to set up.">
 <meta property="og:image" content="https://winst0niuss.github.io/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="site.css">
 <style>
-  /* Первый экран: заголовок и карусель */
+  /* Первый экран: текст слева, карусель скриншотов справа */
   .hero { position:relative; border-bottom:1px solid var(--line); overflow:hidden; }
   .hero::before { content:""; position:absolute; inset:0; pointer-events:none;
     background:
       radial-gradient(60% 70% at 85% 10%, rgba(198,241,53,.16), transparent 70%),
       radial-gradient(50% 60% at 5% 90%, rgba(15,122,112,.28), transparent 70%); }
-  .hero > * { position:relative; }
-  .hero-body { display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 560px); gap:clamp(32px, 5vw, 64px); align-items:center; padding-top:clamp(24px, 4vw, 48px); padding-bottom:clamp(40px, 5vw, 64px); }
+  /* Тонкая сетка на фоне, гаснет к краям */
+  .hero::after { content:""; position:absolute; inset:0; pointer-events:none; opacity:.35;
+    background-image:linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size:56px 56px;
+    mask-image:radial-gradient(70% 60% at 50% 40%, #000, transparent); -webkit-mask-image:radial-gradient(70% 60% at 50% 40%, #000, transparent); }
+  .hero > * { position:relative; z-index:1; }
+  .hero-body { display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 560px); gap:clamp(32px, 5vw, 64px); align-items:center; padding-top:clamp(32px, 6vw, 72px); padding-bottom:clamp(48px, 6vw, 80px); }
+  .eyebrow { display:inline-flex; align-items:center; gap:10px; margin:0 0 22px; padding:6px 14px 6px 10px; border:1px solid var(--line); border-radius:99px; background:rgba(17,22,20,.7); font:500 13px var(--mono); color:var(--soft); }
+  .eyebrow .dot { width:8px; height:8px; border-radius:50%; background:var(--lime); box-shadow:0 0 0 4px rgba(198,241,53,.18); }
   /* Размер заголовка — от ширины колонки: самая длинная строка «& monday.com» помещается целиком */
   .hero-copy { container-type:inline-size; }
-  h1 { margin:0; font:800 clamp(2.5rem, min(13.5cqi, 12vh), 6.5rem)/.98 var(--display); letter-spacing:-.035em; width:fit-content; }
+  h1 { margin:0; font:800 clamp(2.5rem, min(13.5cqi, 11vh), 6.5rem)/.98 var(--display); letter-spacing:-.035em; width:fit-content; }
   h1 .line { display:block; }
   h1 .line:nth-child(3) { color:var(--lime); }
   /* Подпись: моноширинный шрифт, как у логотипа, печатается по символу */
-  h1 .by { margin-top:.4em; font:500 clamp(1.1rem, 2.3vw, 1.65rem)/1.2 var(--mono); letter-spacing:0; color:var(--muted); }
+  h1 .by { margin-top:.45em; font:500 clamp(1.05rem, 2.1vw, 1.5rem)/1.2 var(--mono); letter-spacing:0; color:var(--muted); }
   h1 .by b { font-weight:500; color:var(--ink); }
   /* Буквы заголовка поднимаются из размытия по очереди, подпись появляется по символу */
   h1 .word { white-space:nowrap; }
-  h1 .char { display:inline-block; animation:letter .7s var(--d) cubic-bezier(.2,.8,.2,1) both; }
+  h1 .char { display:inline-block; animation:letter .7s var(--d) var(--ease) both; }
   h1 .by .char { display:inline; animation:type .01s var(--d) both; }
   @keyframes letter { from { opacity:0; transform:translateY(.45em) rotate(8deg); filter:blur(10px); } }
   @keyframes type { from { opacity:0; } }
+  .hero-lead { margin:24px 0 0; max-width:480px; font-size:clamp(17px, 1.6vw, 19px); color:var(--soft); text-wrap:pretty; animation:rise .7s .9s var(--ease) both; }
+  .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; animation:rise .7s 1.05s var(--ease) both; }
+  @keyframes rise { from { opacity:0; transform:translateY(14px); } }
 
-  /* Карусель скриншотов: слайды собираются из карточек приложений */
-  .track { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:none; border:1px solid var(--line); border-radius:18px; background:var(--panel); }
+  /* Карусель скриншотов: слайды собираются из карточек страниц платформ */
+  .carousel { animation:rise .8s .3s var(--ease) both; }
+  .frame { position:relative; border:1px solid var(--line); border-radius:22px; background:var(--panel); box-shadow:0 30px 80px rgba(0,0,0,.45); overflow:hidden; }
+  .track { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:none; }
   .track::-webkit-scrollbar { display:none; }
   .slide { flex:0 0 100%; scroll-snap-align:start; text-decoration:none; }
   .slide img { display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:contain; background:#0e1312; }
-  .slide span { display:block; padding:10px 16px; font-size:15px; font-weight:600; }
+  .slide span { display:flex; justify-content:space-between; gap:12px; padding:12px 18px; font-size:15px; font-weight:600; }
+  .slide span small { font:500 12px/1.9 var(--mono); color:var(--muted); }
   .slide:hover span { color:var(--lime); }
-  .carousel-controls { display:flex; align-items:center; gap:8px; margin-top:10px; }
+  /* Полоса до следующего слайда: её конец листает карусель (паузу держит animation-play-state) */
+  .progress { position:absolute; left:0; right:0; bottom:0; height:3px; background:var(--line); }
+  .progress i { display:block; height:100%; background:var(--lime); transform-origin:left; animation:progress 6s linear both; }
+  .carousel.paused .progress i { animation-play-state:paused; }
+  @keyframes progress { from { transform:scaleX(0); } }
+  .carousel-controls { display:flex; align-items:center; gap:8px; margin-top:12px; }
   .carousel-controls output { margin-right:auto; font:500 13px var(--mono); color:var(--muted); }
-  .carousel-controls button { width:38px; height:38px; border:1px solid var(--line); border-radius:10px; background:var(--panel); color:var(--ink); font-size:14px; cursor:pointer; }
+  .carousel-controls button { display:grid; place-items:center; width:44px; height:44px; border:1px solid var(--line); border-radius:12px; background:var(--panel); color:var(--ink); font-size:15px; cursor:pointer; transition:border-color .15s, color .15s; }
   .carousel-controls button:hover { border-color:var(--lime); color:var(--lime); }
-  /* Плитки платформ под первым экраном */
-  .platforms-block { padding-top:clamp(40px, 5vw, 64px); }
-  .platforms-block h2 { margin:0 0 20px; font:800 clamp(1.8rem, 4vw, 2.6rem)/1 var(--display); letter-spacing:-.03em; }
+
+  /* Почему эти приложения: три пункта */
+  .features { display:grid; grid-template-columns:repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap:16px; margin:0; padding:0; list-style:none; }
+  .feature { padding:24px; border:1px solid var(--line); border-radius:20px; background:var(--panel); }
+  .feature svg { width:44px; height:44px; padding:10px; border-radius:12px; background:rgba(198,241,53,.12); stroke:var(--lime); fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  .feature h3 { margin:18px 0 6px; font:800 1.35rem/1.15 var(--display); letter-spacing:-.02em; }
+  .feature p { margin:0; color:var(--muted); }
+
   @media (max-width:860px) { .hero-body { grid-template-columns:minmax(0, 1fr); } }
-  @media (prefers-reduced-motion:reduce) { .track { scroll-behavior:auto; } }
+  @media (prefers-reduced-motion:reduce) { .track { scroll-behavior:auto; } .progress { display:none; } }
 </style>
 </head>
 <body>
-  <header class="hero">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
     <div class="wrap nav">
-      <a class="brand" href="./"><img src="favicon.svg" alt="" width="30" height="30">winst0niuss</a>
-      <nav aria-label="Main"><div class="menu"><a class="nav-btn primary" href="apps">Apps<span class="caret" aria-hidden="true">▾</span></a><ul class="menu-list"><li><a href="wix">Wix apps<small>Sites and online stores</small></a></li><li><a href="shopify">Shopify apps<small>Online stores</small></a></li><li><a href="monday">monday.com apps<small>Work management boards</small></a></li></ul></div><a class="nav-btn" href="contact">Contact</a></nav>
-    </div>
-    <div class="wrap hero-body">
-      <div class="hero-copy">
-        <h1 id="title" aria-label="Small apps for Wix, Shopify and monday.com by Winst0niuss"><span class="line">Small apps</span><span class="line">for Wix, Shopify</span><span class="line">&amp;&nbsp;monday.com</span><span class="line by">by <b>Winst0niuss</b></span></h1>
-      </div>
-      <div id="carousel" role="group" aria-roledescription="carousel" aria-label="App screenshots" hidden>
-        <div class="track" id="track"></div>
-        <div class="carousel-controls">
-          <output id="carousel-count"></output>
-          <button type="button" id="carousel-prev" aria-label="Previous app">←</button>
-          <button type="button" id="carousel-toggle"></button>
-          <button type="button" id="carousel-next" aria-label="Next app">→</button>
+      <a class="brand" href="./"><img src="favicon.svg" alt="" width="30" height="30"><span>winst0niuss</span></a>
+      <nav class="nav-links" aria-label="Main">
+        <div class="menu">
+          <button type="button" class="btn primary" aria-expanded="false" aria-controls="apps-menu">Apps<svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="menu-panel" id="apps-menu" hidden>
+            <ul>
+            <li><a class="wix" href="wix"><span class="menu-mark" aria-hidden="true">W</span><span class="menu-text"><span class="menu-name">Wix apps</span><span class="menu-note">Sites and online stores</span></span></a></li>
+            <li><a class="shopify" href="shopify"><span class="menu-mark" aria-hidden="true">S</span><span class="menu-text"><span class="menu-name">Shopify apps</span><span class="menu-note">Online stores</span></span></a></li>
+            <li><a class="monday" href="monday"><span class="menu-mark" aria-hidden="true">m</span><span class="menu-text"><span class="menu-name">monday.com apps</span><span class="menu-note">Work management boards</span></span></a></li>
+            </ul>
+            <div class="menu-all"><a href="apps">All platforms <span aria-hidden="true">→</span></a></div>
+          </div>
         </div>
-      </div>
+        <a class="btn ghost" href="contact">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <main class="wrap platforms-block" aria-labelledby="platforms-title">
-    <h2 id="platforms-title">Apps by platform</h2>
+  <main id="main">
+    <section class="hero" aria-labelledby="title">
+      <div class="wrap hero-body">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Independent app developer</p>
+          <h1 id="title" aria-label="Small apps for Wix, Shopify and monday.com by Winst0niuss"><span class="line">Small apps</span><span class="line">for Wix, Shopify</span><span class="line">&amp;&nbsp;monday.com</span><span class="line by">by <b>Winst0niuss</b></span></h1>
+          <p class="hero-lead">Focused apps for websites, online stores and work management boards. Each one does a single job and needs no code to set up.</p>
+          <div class="hero-actions">
+            <a class="btn primary lg" href="#platforms">Browse apps <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="btn lg" href="contact">Contact me</a>
+          </div>
+        </div>
+        <div class="carousel" id="carousel" role="group" aria-roledescription="carousel" aria-label="App screenshots" hidden>
+          <div class="frame">
+            <div class="track" id="track" aria-live="off"></div>
+            <div class="progress" aria-hidden="true"><i id="progress"></i></div>
+          </div>
+          <div class="carousel-controls">
+            <output id="carousel-count"></output>
+            <button type="button" id="carousel-prev" aria-label="Previous app">←</button>
+            <button type="button" id="carousel-toggle"></button>
+            <button type="button" id="carousel-next" aria-label="Next app">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section" id="platforms" aria-labelledby="platforms-title">
+      <div class="section-head">
+        <h2 id="platforms-title">Apps by platform</h2>
+        <p>Pick your platform to see its apps.</p>
+      </div>
     <div class="platforms">
-      <a class="platform-card" href="wix"><span class="platform-name">Wix</span><span class="platform-text">Apps for Wix sites and online stores</span><span class="platform-count" data-count="wix"></span><span class="arrow" aria-hidden="true">→</span></a>
-      <a class="platform-card shopify" href="shopify"><span class="platform-name">Shopify</span><span class="platform-text">Apps for Shopify online stores</span><span class="platform-count" data-count="shopify"></span><span class="arrow" aria-hidden="true">→</span></a>
-      <a class="platform-card monday" href="monday"><span class="platform-name">monday.com</span><span class="platform-text">Apps for monday.com work management boards</span><span class="platform-count" data-count="monday"></span><span class="arrow" aria-hidden="true">→</span></a>
+      <a class="platform-card wix reveal" href="wix">
+        <h3 class="platform-name">Wix</h3>
+        <span class="platform-text">Apps for Wix sites and online stores</span>
+        <span class="platform-foot"><span class="icons" data-icons="wix"></span><span class="platform-count" data-count="wix"></span><span class="go" aria-hidden="true">→</span></span>
+      </a>
+      <a class="platform-card shopify reveal" href="shopify">
+        <h3 class="platform-name">Shopify</h3>
+        <span class="platform-text">Apps for Shopify online stores</span>
+        <span class="platform-foot"><span class="icons" data-icons="shopify"></span><span class="platform-count" data-count="shopify"></span><span class="go" aria-hidden="true">→</span></span>
+      </a>
+      <a class="platform-card monday reveal" href="monday">
+        <h3 class="platform-name">monday.com</h3>
+        <span class="platform-text">Apps for monday.com work management boards</span>
+        <span class="platform-foot"><span class="icons" data-icons="monday"></span><span class="platform-count" data-count="monday"></span><span class="go" aria-hidden="true">→</span></span>
+      </a>
     </div>
+    </section>
+
+    <section class="wrap section" aria-labelledby="why-title">
+      <div class="section-head">
+        <h2 id="why-title">Why these apps</h2>
+      </div>
+      <ul class="features">
+        <li class="feature reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+          <h3>One job, done well</h3>
+          <p>Every app focuses on one specific problem, so there is less to learn.</p>
+        </li>
+        <li class="feature reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="M4 4l16 16"/></svg>
+          <h3>No code</h3>
+          <p>Install the app through the platform and set it up without writing any code.</p>
+        </li>
+        <li class="feature reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+          <h3>Talk to the developer</h3>
+          <p>Questions and ideas go straight to the person who builds the apps.</p>
+        </li>
+      </ul>
+    </section>
   </main>
 
-  <footer>
-    <div class="wrap"><p>© 2026 <span style="font-family:var(--mono)">winst0niuss</span> · Independent apps for Wix, Shopify and monday.com. Not affiliated with or endorsed by Wix.com Ltd., Shopify Inc. or monday.com Ltd. · <a href="contact">Contact</a> · <a href="privacy">Privacy policies</a></p></div>
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand" href="./"><img src="favicon.svg" alt="" width="30" height="30"><span>winst0niuss</span></a>
+        <p>Small, focused apps for Wix, Shopify and monday.com. Each one does a single job.</p>
+      </div>
+      <nav aria-labelledby="footer-apps">
+        <h2 id="footer-apps">Apps</h2>
+        <ul>
+          <li><a href="wix">Wix apps</a></li>
+          <li><a href="shopify">Shopify apps</a></li>
+          <li><a href="monday">monday.com apps</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="footer-info">
+        <h2 id="footer-info">Info</h2>
+        <ul>
+          <li><a href="contact">Contact</a></li>
+          <li><a href="privacy">Privacy policies</a></li>
+          <li><a href="https://github.com/winst0niuss">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="wrap legal"><p>© 2026 <span class="mono">winst0niuss</span> · Independent apps for Wix, Shopify and monday.com. Not affiliated with or endorsed by Wix.com Ltd., Shopify Inc. or monday.com Ltd.</p></div>
   </footer>
 
+<script src="site.js"></script>
 <script src="platforms.js"></script>
 <script>
   const $ = (id) => document.getElementById(id);
@@ -122,12 +236,12 @@
     }
     return delay;
   };
-  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reducedMotion) {
     const lines = [...document.querySelectorAll("#title .line")];
     let delay = 0;
     lines.filter((line) => !line.classList.contains("by")).forEach((line) => { delay = splitChars(line, delay, 35); });
-    const by = document.querySelector("#title .by");
-    splitChars(by, 1000, 55);
+    splitChars(document.querySelector("#title .by"), 1000, 55);
     // Буквы — только для глаз, экранный диктор читает aria-label заголовка
     lines.forEach((line) => line.setAttribute("aria-hidden", "true"));
   }
@@ -145,51 +259,65 @@
       image.alt = "";
       image.width = 1200;
       image.height = 900;
-      // Подпись с платформой: в карусели приложения всех платформ
-      const name = document.createElement("span");
-      name.textContent = `${card.querySelector("h2").textContent} · ${platform}`;
-      slide.append(image, name);
+      // Подпись: название и платформа
+      const caption = document.createElement("span");
+      const tag = document.createElement("small");
+      tag.textContent = platform;
+      caption.append(card.querySelector("h2").textContent, tag);
+      slide.append(image, caption);
       track.append(slide);
     }));
-    $("carousel").hidden = false;
+    const carousel = $("carousel");
+    carousel.hidden = false;
 
+    const count = () => track.children.length;
     const currentSlide = () => Math.round(track.scrollLeft / track.clientWidth);
+    // Полоса прогресса начинается заново с каждым слайдом
+    const restartProgress = () => {
+      const bar = $("progress");
+      bar.style.animation = "none";
+      void bar.offsetWidth;
+      bar.style.animation = "";
+    };
     const showSlide = (index) => {
-      const count = track.children.length;
-      track.scrollTo({ left: ((index + count) % count) * track.clientWidth });
+      track.scrollTo({ left: ((index + count()) % count()) * track.clientWidth });
+      restartProgress();
     };
     const updateCount = () => {
-      $("carousel-count").textContent = `${currentSlide() + 1} / ${track.children.length}`;
+      $("carousel-count").textContent = `${currentSlide() + 1} / ${count()}`;
     };
     track.addEventListener("scroll", updateCount, { passive: true });
+    // Пролистали пальцем — отсчёт до следующего слайда начинается заново
+    track.addEventListener("scrollend", restartProgress);
     updateCount();
     $("carousel-prev").addEventListener("click", () => showSlide(currentSlide() - 1));
     $("carousel-next").addEventListener("click", () => showSlide(currentSlide() + 1));
 
-    // Автопрокрутка: стоит под курсором и фокусом, кнопка выключает её совсем
-    let playing = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Автопрокрутка: стоит под курсором и фокусом, кнопка выключает её совсем; без движения — выключена
+    let playing = !reducedMotion;
     let held = false;
-    const updateToggle = () => {
+    const update = () => {
+      carousel.classList.toggle("paused", !playing || held || document.hidden);
       $("carousel-toggle").textContent = playing ? "❚❚" : "▶";
       $("carousel-toggle").setAttribute("aria-label", playing ? "Pause carousel" : "Play carousel");
     };
-    updateToggle();
+    update();
     $("carousel-toggle").addEventListener("click", () => {
       playing = !playing;
-      updateToggle();
+      update();
     });
-    const hold = (value) => () => { held = value; };
-    $("carousel").addEventListener("pointerenter", hold(true));
-    $("carousel").addEventListener("pointerleave", hold(false));
-    $("carousel").addEventListener("focusin", hold(true));
-    $("carousel").addEventListener("focusout", hold(false));
-    setInterval(() => {
-      if (playing && !held && !document.hidden) showSlide(currentSlide() + 1);
-    }, 5000);
+    const hold = (value) => () => { held = value; update(); };
+    carousel.addEventListener("pointerenter", hold(true));
+    carousel.addEventListener("pointerleave", hold(false));
+    carousel.addEventListener("focusin", hold(true));
+    carousel.addEventListener("focusout", hold(false));
+    document.addEventListener("visibilitychange", update);
+    $("progress").addEventListener("animationend", () => showSlide(currentSlide() + 1));
   };
+
   // Без карусели и счётчиков остаются заголовок и плитки; ошибка — в консоли
   loadPlatforms().then((platforms) => {
-    showCounts(platforms);
+    fillPlatformCards(platforms);
     startCarousel(platforms);
   }).catch((error) => console.error(error));
 </script>

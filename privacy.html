@@ -4,15 +4,60 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Privacy policies — winst0niuss</title>
-<meta name="description" content="Privacy policies of winst0niuss apps for Wix and Shopify stores.">
+<meta name="description" content="Privacy policies of winst0niuss apps for Wix, Shopify and monday.com, and of this website.">
+<link rel="canonical" href="https://winst0niuss.github.io/privacy">
+<meta name="theme-color" content="#0a0d0c">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="legal.css">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://winst0niuss.github.io/privacy">
+<meta property="og:title" content="Privacy policies — winst0niuss">
+<meta property="og:description" content="Privacy policies of winst0niuss apps for Wix, Shopify and monday.com, and of this website.">
+<meta property="og:image" content="https://winst0niuss.github.io/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* Текст политики: узкая колонка для удобного чтения */
+  .prose { max-width:760px; color:var(--soft); }
+  .prose a { color:var(--lime); }
+  .prose h2 { margin:40px 0 10px; padding-top:20px; border-top:1px solid var(--line); color:var(--ink); font:800 1.5rem/1.15 var(--display); letter-spacing:-.02em; }
+  .prose p, .prose ul { margin:0 0 12px; }
+  .prose ul { padding-left:22px; }
+  .prose li { margin-bottom:6px; }
+</style>
 </head>
 <body>
-  <main>
-    <a class="back" href="apps">← All apps</a>
-    <h1>Privacy policies</h1>
-    <p>Each app has its own privacy policy, because each one uses different data. Choose your app:</p>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="./"><img src="favicon.svg" alt="" width="30" height="30"><span>winst0niuss</span></a>
+      <nav class="nav-links" aria-label="Main">
+        <div class="menu">
+          <button type="button" class="btn primary" aria-expanded="false" aria-controls="apps-menu">Apps<svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="menu-panel" id="apps-menu" hidden>
+            <ul>
+            <li><a class="wix" href="wix"><span class="menu-mark" aria-hidden="true">W</span><span class="menu-text"><span class="menu-name">Wix apps</span><span class="menu-note">Sites and online stores</span></span></a></li>
+            <li><a class="shopify" href="shopify"><span class="menu-mark" aria-hidden="true">S</span><span class="menu-text"><span class="menu-name">Shopify apps</span><span class="menu-note">Online stores</span></span></a></li>
+            <li><a class="monday" href="monday"><span class="menu-mark" aria-hidden="true">m</span><span class="menu-text"><span class="menu-name">monday.com apps</span><span class="menu-note">Work management boards</span></span></a></li>
+            </ul>
+            <div class="menu-all"><a href="apps">All platforms <span aria-hidden="true">→</span></a></div>
+          </div>
+        </div>
+        <a class="btn ghost" href="contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <div class="wrap page-title">
+      <h1>Privacy policies</h1>
+      <p class="lead">Each app has its own privacy policy explaining how it handles data.</p>
+    </div>
+  </div>
+
+  <main class="wrap section prose" id="main">
+    <p>Choose your app:</p>
     <h2>Wix apps</h2>
     <ul>
       <li><a href="fitly/privacy">Fitly Size Chart privacy policy</a></li>
@@ -56,11 +101,43 @@
       <li><a href="https://fitly.votely.workers.dev/privacy">Fitly: Size Chart &amp; Guide privacy policy</a></li>
       <li><a href="https://cartcap.votely.workers.dev/privacy">Cartcap: Min Max Order Limits privacy policy</a></li>
     </ul>
+    <h2>monday.com apps</h2>
+    <ul>
+      <li><a href="working-days-holidays/privacy">Working Days &amp; Holidays privacy policy</a></li>
+    </ul>
     <h2>This website</h2>
     <p>This website counts visits with <a href="https://www.cloudflare.com/web-analytics/">Cloudflare Web Analytics</a>. It doesn't use cookies and doesn't collect visitors' personal data. We use these numbers only to see how many people visit the site and which pages they open.</p>
     <h2>Contact</h2>
     <p>Email: <a href="mailto:chumachenko.vadym@gmail.com">chumachenko.vadym@gmail.com</a></p>
   </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand" href="./"><img src="favicon.svg" alt="" width="30" height="30"><span>winst0niuss</span></a>
+        <p>Small, focused apps for Wix, Shopify and monday.com. Each one does a single job.</p>
+      </div>
+      <nav aria-labelledby="footer-apps">
+        <h2 id="footer-apps">Apps</h2>
+        <ul>
+          <li><a href="wix">Wix apps</a></li>
+          <li><a href="shopify">Shopify apps</a></li>
+          <li><a href="monday">monday.com apps</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="footer-info">
+        <h2 id="footer-info">Info</h2>
+        <ul>
+          <li><a href="contact">Contact</a></li>
+          <li><a href="privacy">Privacy policies</a></li>
+          <li><a href="https://github.com/winst0niuss">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="wrap legal"><p>© 2026 <span class="mono">winst0niuss</span> · Independent apps for Wix, Shopify and monday.com. Not affiliated with or endorsed by Wix.com Ltd., Shopify Inc. or monday.com Ltd.</p></div>
+  </footer>
+
+<script src="site.js"></script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "76807075799a4c879defb6611f18b595"}'></script>
 </body>
 </html>
