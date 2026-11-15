@@ -57,8 +57,14 @@
   .track::-webkit-scrollbar { display:none; }
   .slide { flex:0 0 100%; scroll-snap-align:start; text-decoration:none; }
   .slide img { display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:contain; background:#0e1312; }
-  .slide span { display:flex; justify-content:space-between; gap:12px; padding:12px 18px; font-size:15px; font-weight:600; }
-  .slide span small { font:500 12px/1.9 var(--mono); color:var(--muted); }
+  /* Подпись ровно 48px: под неё же резервируется место до загрузки */
+  .slide span { display:flex; justify-content:space-between; align-items:center; gap:12px; min-height:48px; padding:12px 18px; font-size:15px; line-height:1.5; font-weight:600; }
+  /* Пока слайды грузятся — пустая рамка размера слайда, чтобы блок ниже не прыгал */
+  .track:empty { padding-bottom:48px; }
+  .track:empty::before { content:""; flex:0 0 100%; aspect-ratio:4/3; background:#0e1312; }
+  .carousel.loading .progress { visibility:hidden; }
+  .slide strong { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:600; }
+  .slide span small { flex:none; font:500 12px/1.9 var(--mono); color:var(--muted); }
   .slide:hover span { color:var(--lime); }
   /* Полоса до следующего слайда: её конец листает карусель (паузу держит animation-play-state) */
   .progress { position:absolute; left:0; right:0; bottom:0; height:3px; background:var(--line); }
@@ -115,7 +121,7 @@
             <a class="btn lg" href="contact">Contact me</a>
           </div>
         </div>
-        <div class="carousel" id="carousel" role="group" aria-roledescription="carousel" aria-label="App screenshots" hidden>
+        <div class="carousel loading" id="carousel" role="group" aria-roledescription="carousel" aria-label="App screenshots">
           <div class="frame">
             <div class="track" id="track" aria-live="off"></div>
             <div class="progress" aria-hidden="true"><i id="progress"></i></div>
@@ -237,14 +243,16 @@
       image.height = 900;
       // Подпись: название и платформа
       const caption = document.createElement("span");
+      const title = document.createElement("strong");
+      title.textContent = card.querySelector("h2").textContent;
       const tag = document.createElement("small");
       tag.textContent = platform;
-      caption.append(card.querySelector("h2").textContent, tag);
+      caption.append(title, tag);
       slide.append(image, caption);
       track.append(slide);
     }));
     const carousel = $("carousel");
-    carousel.hidden = false;
+    carousel.classList.remove("loading");
 
     const count = () => track.children.length;
     const currentSlide = () => Math.round(track.scrollLeft / track.clientWidth);
@@ -289,10 +297,14 @@
     carousel.addEventListener("focusout", hold(false));
     document.addEventListener("visibilitychange", update);
     $("progress").addEventListener("animationend", () => showSlide(currentSlide() + 1));
+    restartProgress();
   };
 
-  // Без карусели остаётся заголовок; ошибка — в консоли
-  loadPlatforms().then(startCarousel).catch((error) => console.error(error));
+  // Без карусели остаётся заголовок (пустую рамку убираем); ошибка — в консоли
+  loadPlatforms().then(startCarousel).catch((error) => {
+    $("carousel").hidden = true;
+    console.error(error);
+  });
 </script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "76807075799a4c879defb6611f18b595"}'></script>
 </body>
