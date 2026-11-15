@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>winst0niuss — apps for Wix and Shopify stores</title>
-<meta name="description" content="Focused apps for Wix and Shopify online stores. Each one does a single job: size charts, a size finder, pricing by size.">
+<title>winst0niuss — small apps for Wix, Shopify and monday.com</title>
+<meta name="description" content="Focused apps for Wix sites and stores, Shopify stores and monday.com boards. Each one does a single job.">
 <meta name="theme-color" content="#0a0d0c">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<meta property="og:title" content="winst0niuss — apps for Wix and Shopify stores">
-<meta property="og:description" content="Small apps for Wix and Shopify stores.">
+<meta property="og:title" content="winst0niuss — small apps for Wix, Shopify and monday.com">
+<meta property="og:description" content="Small apps for Wix, Shopify and monday.com.">
 <meta property="og:image" content="https://winst0niuss.github.io/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,13 +23,16 @@
       radial-gradient(50% 60% at 5% 90%, rgba(15,122,112,.28), transparent 70%); }
   .hero > * { position:relative; }
   .hero-body { display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 560px); gap:clamp(32px, 5vw, 64px); align-items:center; padding-top:clamp(24px, 4vw, 48px); padding-bottom:clamp(40px, 5vw, 64px); }
-  h1 { margin:0; font:800 clamp(2.5rem, min(9vw, 12vh), 6.5rem)/.98 var(--display); letter-spacing:-.035em; width:fit-content; }
+  /* Размер заголовка — от ширины колонки: самая длинная строка «& monday.com» помещается целиком */
+  .hero-copy { container-type:inline-size; }
+  h1 { margin:0; font:800 clamp(2.5rem, min(13.5cqi, 12vh), 6.5rem)/.98 var(--display); letter-spacing:-.035em; width:fit-content; }
   h1 .line { display:block; }
   h1 .line:nth-child(3) { color:var(--lime); }
   /* Подпись: моноширинный шрифт, как у логотипа, печатается по символу */
   h1 .by { margin-top:.4em; font:500 clamp(1.1rem, 2.3vw, 1.65rem)/1.2 var(--mono); letter-spacing:0; color:var(--muted); }
   h1 .by b { font-weight:500; color:var(--ink); }
   /* Буквы заголовка поднимаются из размытия по очереди, подпись появляется по символу */
+  h1 .word { white-space:nowrap; }
   h1 .char { display:inline-block; animation:letter .7s var(--d) cubic-bezier(.2,.8,.2,1) both; }
   h1 .by .char { display:inline; animation:type .01s var(--d) both; }
   @keyframes letter { from { opacity:0; transform:translateY(.45em) rotate(8deg); filter:blur(10px); } }
@@ -46,8 +49,9 @@
   .carousel-controls output { margin-right:auto; font:500 13px var(--mono); color:var(--muted); }
   .carousel-controls button { width:38px; height:38px; border:1px solid var(--line); border-radius:10px; background:var(--panel); color:var(--ink); font-size:14px; cursor:pointer; }
   .carousel-controls button:hover { border-color:var(--lime); color:var(--lime); }
-  /* Подвал сразу под первым экраном: у первого экрана уже есть линия снизу */
-  footer { margin-top:0; border-top:0; }
+  /* Плитки платформ под первым экраном */
+  .platforms-block { padding-top:clamp(40px, 5vw, 64px); }
+  .platforms-block h2 { margin:0 0 20px; font:800 clamp(1.8rem, 4vw, 2.6rem)/1 var(--display); letter-spacing:-.03em; }
   @media (max-width:860px) { .hero-body { grid-template-columns:minmax(0, 1fr); } }
   @media (prefers-reduced-motion:reduce) { .track { scroll-behavior:auto; } }
 </style>
@@ -56,11 +60,11 @@
   <header class="hero">
     <div class="wrap nav">
       <a class="brand" href="./"><img src="favicon.svg" alt="" width="30" height="30">winst0niuss</a>
-      <nav aria-label="Main"><a class="nav-btn primary" href="apps">Apps</a><a class="nav-btn" href="contact">Contact</a></nav>
+      <nav aria-label="Main"><div class="menu"><a class="nav-btn primary" href="apps">Apps<span class="caret" aria-hidden="true">▾</span></a><ul class="menu-list"><li><a href="wix">Wix apps<small>Sites and online stores</small></a></li><li><a href="shopify">Shopify apps<small>Online stores</small></a></li><li><a href="monday">monday.com apps<small>Work management boards</small></a></li></ul></div><a class="nav-btn" href="contact">Contact</a></nav>
     </div>
     <div class="wrap hero-body">
-      <div>
-        <h1 id="title" aria-label="Small apps for Wix and Shopify stores by Winst0niuss"><span class="line">Small apps</span><span class="line">for Wix &amp; Shopify</span><span class="line">stores</span><span class="line by">by <b>Winst0niuss</b></span></h1>
+      <div class="hero-copy">
+        <h1 id="title" aria-label="Small apps for Wix, Shopify and monday.com by Winst0niuss"><span class="line">Small apps</span><span class="line">for Wix, Shopify</span><span class="line">&amp;&nbsp;monday.com</span><span class="line by">by <b>Winst0niuss</b></span></h1>
       </div>
       <div id="carousel" role="group" aria-roledescription="carousel" aria-label="App screenshots" hidden>
         <div class="track" id="track"></div>
@@ -74,10 +78,20 @@
     </div>
   </header>
 
+  <main class="wrap platforms-block" aria-labelledby="platforms-title">
+    <h2 id="platforms-title">Apps by platform</h2>
+    <div class="platforms">
+      <a class="platform-card" href="wix"><span class="platform-name">Wix</span><span class="platform-text">Apps for Wix sites and online stores</span><span class="platform-count" data-count="wix"></span><span class="arrow" aria-hidden="true">→</span></a>
+      <a class="platform-card shopify" href="shopify"><span class="platform-name">Shopify</span><span class="platform-text">Apps for Shopify online stores</span><span class="platform-count" data-count="shopify"></span><span class="arrow" aria-hidden="true">→</span></a>
+      <a class="platform-card monday" href="monday"><span class="platform-name">monday.com</span><span class="platform-text">Apps for monday.com work management boards</span><span class="platform-count" data-count="monday"></span><span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </main>
+
   <footer>
-    <div class="wrap"><p>© 2026 <span style="font-family:var(--mono)">winst0niuss</span> · Independent apps published in the Wix App Market and the Shopify App Store. Not affiliated with or endorsed by Wix.com Ltd. or Shopify Inc. · <a href="contact">Contact</a> · <a href="privacy">Privacy policies</a></p></div>
+    <div class="wrap"><p>© 2026 <span style="font-family:var(--mono)">winst0niuss</span> · Independent apps for Wix, Shopify and monday.com. Not affiliated with or endorsed by Wix.com Ltd., Shopify Inc. or monday.com Ltd. · <a href="contact">Contact</a> · <a href="privacy">Privacy policies</a></p></div>
   </footer>
 
+<script src="platforms.js"></script>
 <script>
   const $ = (id) => document.getElementById(id);
 
@@ -88,17 +102,23 @@
         delay = splitChars(child, delay, step);
         continue;
       }
-      const chars = [...child.textContent].map((char) => {
+      // Буквы слова — в общей обёртке без переноса: иначе строка рвётся посреди слова
+      const parts = child.textContent.split(/( )/).filter(Boolean).map((part) => {
         // Пробел оставляем текстом: у inline-block он схлопнулся бы
-        if (char === " ") return document.createTextNode(" ");
-        const span = document.createElement("span");
-        span.className = "char";
-        span.textContent = char;
-        span.style.setProperty("--d", `${delay}ms`);
-        delay += step;
-        return span;
+        if (part === " ") return document.createTextNode(" ");
+        const word = document.createElement("span");
+        word.className = "word";
+        for (const char of part) {
+          const span = document.createElement("span");
+          span.className = "char";
+          span.textContent = char;
+          span.style.setProperty("--d", `${delay}ms`);
+          delay += step;
+          word.append(span);
+        }
+        return word;
       });
-      child.replaceWith(...chars);
+      child.replaceWith(...parts);
     }
     return delay;
   };
@@ -112,32 +132,25 @@
     lines.forEach((line) => line.setAttribute("aria-hidden", "true"));
   }
 
-  // Карусель: слайды — из карточек страницы Apps, новое приложение попадает в неё само
+  // Карусель: слайды — из карточек страниц платформ (platforms.js)
   const track = $("track");
-  const loadCards = async () => {
-    const response = await fetch("apps.html");
-    if (!response.ok) throw new Error(`apps.html: ${response.status}`);
-    const page = new DOMParser().parseFromString(await response.text(), "text/html");
-    return [...page.querySelectorAll(".app")];
-  };
-  const startCarousel = (cards) => {
-    // Без скриншота приложение в карусель не попадает; без ссылки App Market слайд ведёт на страницу Apps
-    cards.filter((card) => card.querySelector(".shot img")).forEach((card) => {
+  const startCarousel = (platforms) => {
+    // Без скриншота приложение в карусель не попадает; без ссылки в маркет слайд ведёт на страницу платформы
+    platforms.forEach(({ slug, name: platform, cards }) => cards.filter((card) => card.querySelector(".shot img")).forEach((card) => {
       const slide = document.createElement("a");
       slide.className = "slide";
-      slide.href = card.querySelector(".actions a.cta")?.getAttribute("href") ?? "apps";
+      slide.href = card.querySelector(".actions a.cta")?.getAttribute("href") ?? slug;
       const image = document.createElement("img");
       image.src = card.querySelector(".shot img").getAttribute("src");
       image.alt = "";
       image.width = 1200;
       image.height = 900;
-      // Подпись с платформой: в карусели вперемешку приложения Wix и Shopify
+      // Подпись с платформой: в карусели приложения всех платформ
       const name = document.createElement("span");
-      const platform = card.closest(".platform")?.querySelector(".platform-head h2")?.textContent.replace(/ apps$/, "");
-      name.textContent = platform ? `${card.querySelector("h2").textContent} · ${platform}` : card.querySelector("h2").textContent;
+      name.textContent = `${card.querySelector("h2").textContent} · ${platform}`;
       slide.append(image, name);
       track.append(slide);
-    });
+    }));
     $("carousel").hidden = false;
 
     const currentSlide = () => Math.round(track.scrollLeft / track.clientWidth);
@@ -174,8 +187,11 @@
       if (playing && !held && !document.hidden) showSlide(currentSlide() + 1);
     }, 5000);
   };
-  // Без карусели остаётся заголовок; ошибка — в консоли
-  loadCards().then(startCarousel).catch((error) => console.error(error));
+  // Без карусели и счётчиков остаются заголовок и плитки; ошибка — в консоли
+  loadPlatforms().then((platforms) => {
+    showCounts(platforms);
+    startCarousel(platforms);
+  }).catch((error) => console.error(error));
 </script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "76807075799a4c879defb6611f18b595"}'></script>
 </body>
