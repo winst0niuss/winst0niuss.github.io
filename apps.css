@@ -76,6 +76,9 @@
   .app:nth-child(32) { order:28; }
   .app:nth-child(33) { order:29; }
   .app:nth-child(34) { order:30; }
+  .app:nth-child(35) { order:31; }
+  .app:nth-child(36) { order:32; }
+  .app:nth-child(37) { order:33; }
 }
 .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; padding:0 6px; }
 .app-top { display:flex; flex-wrap:wrap; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
