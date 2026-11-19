@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+<!-- Концепция 2: пейзаж, слева серый, справа цветной. Основной #0E2A47 (тёмно-синий), акцент #FFC93C. -->
+<rect width="1000" height="1000" fill="#0E2A47"/>
+<clipPath id="c"><rect x="130" y="190" width="740" height="620" rx="80"/></clipPath>
+<clipPath id="l"><rect x="0" y="0" width="500" height="1000"/></clipPath>
+<clipPath id="r"><rect x="500" y="0" width="500" height="1000"/></clipPath>
+<g clip-path="url(#c)">
+<rect x="130" y="190" width="370" height="620" fill="#DDE3EA"/>
+<rect x="500" y="190" width="370" height="620" fill="#7FD1FF"/>
+<g clip-path="url(#l)">
+<circle cx="330" cy="370" r="70" fill="#9AA5B1"/>
+<path d="M60 810L330 450L500 700V810Z" fill="#6B7684"/>
+</g>
+<g clip-path="url(#r)">
+<circle cx="700" cy="370" r="70" fill="#FFC93C"/>
+<path d="M500 700L640 520L760 650L900 810H500Z" fill="#2FB36B"/>
+</g>
+</g>
+<rect x="482" y="190" width="36" height="620" fill="#fff"/>
+<circle cx="500" cy="500" r="80" fill="#fff"/>
+<circle cx="500" cy="500" r="30" fill="#0E2A47"/>
+</svg>
