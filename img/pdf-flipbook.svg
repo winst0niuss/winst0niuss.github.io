@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+<!-- Концепция 2: лист с загнутым углом и стрелками. Основной #0E7C66 (изумруд), акцент #FFD23F. -->
+<rect width="1000" height="1000" fill="#0E7C66"/>
+<path d="M300 150H590L710 270V850H300Z" fill="#fff"/>
+<path d="M590 150V270H710Z" fill="#9FD8C8"/>
+<g stroke="#0E7C66" stroke-width="28" stroke-linecap="round"><path d="M360 420H650"/><path d="M360 520H650"/><path d="M360 620H650"/><path d="M360 720H540"/></g>
+<circle cx="145" cy="500" r="85" fill="#FFD23F"/><circle cx="855" cy="500" r="85" fill="#FFD23F"/>
+<g fill="none" stroke="#0A4F42" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"><path d="M165 450L115 500L165 550"/><path d="M835 450L885 500L835 550"/></g>
+</svg>

@@ -82,6 +82,8 @@
   .app:nth-child(38) { order:34; }
   .app:nth-child(39) { order:35; }
   .app:nth-child(40) { order:36; }
+  .app:nth-child(41) { order:37; }
+  .app:nth-child(42) { order:38; }
 }
 .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; padding:0 6px; }
 .app-top { display:flex; flex-wrap:wrap; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
