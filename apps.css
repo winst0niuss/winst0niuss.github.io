@@ -44,7 +44,7 @@
 /* Четвёртый цвет для карточки Made In: любой из трёх давал одноцветных соседей. Discount Links (34-я) — offer: в 2 колонки над ней Made In (coral), слева VAT Toggle (fitly), в 3 колонки над ней FAQ (size) */
 .app.coral { --glow:251,113,133; }
 .app > * { min-width:0; }
-/* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 … 49 (новые карточки — в конец: без order они встали бы перед 7-й) */
+/* В сетке по две карточки порядок из HTML ставит одноцветные рядом: 1 2 3 4 7 5 6 8 9 … 51 (новые карточки — в конец: без order они встали бы перед 7-й) */
 @media (min-width:708px) and (max-width:1047px) {
   .app:nth-child(7) { order:1; }
   .app:nth-child(5) { order:2; }
@@ -91,6 +91,8 @@
   .app:nth-child(47) { order:43; }
   .app:nth-child(48) { order:44; }
   .app:nth-child(49) { order:45; }
+  .app:nth-child(50) { order:46; }
+  .app:nth-child(51) { order:47; }
 }
 .app-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; padding:0 6px; }
 .app-top { display:flex; flex-wrap:wrap; align-items:center; gap:12px; width:100%; margin-bottom:12px; }
