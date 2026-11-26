@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+<!-- Основной #0F3D2A тёмно-зелёный, акцент #B6F26B лайм, белый знак -->
+
+<rect width="1000" height="1000" fill="#0F3D2A"/>
+<g transform="translate(190 230) scale(3)">
+<rect x="0" y="0" width="122" height="92" rx="12" fill="#FFFFFF"/>
+<path d="M130 26 H166 Q172 26 176 32 L198 62 Q200 65 200 69 V92 H130 Z" fill="#FFFFFF"/>
+<path d="M140 36 H164 L184 62 H140 Z" fill="#0F3D2A"/>
+<circle cx="48" cy="96" r="22" fill="#0F3D2A"/><circle cx="160" cy="96" r="22" fill="#0F3D2A"/>
+<circle cx="48" cy="96" r="14" fill="#FFFFFF"/><circle cx="160" cy="96" r="14" fill="#FFFFFF"/></g>
+<rect x="150" y="700" width="700" height="110" rx="55" fill="#FFFFFF" fill-opacity="0.22"/>
+<rect x="150" y="700" width="470" height="110" rx="55" fill="#B6F26B"/>
+</svg>
